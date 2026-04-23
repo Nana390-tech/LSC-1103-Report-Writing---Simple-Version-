@@ -1,0 +1,2200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Report Writing Booster | LSC 1103</title>
+ 
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --g1:#16A34A;--g2:#22C55E;--g3:#4ADE80;--g4:#BBF7D0;--g5:#F0FDF4;
+  --y1:#CA8A04;--y2:#EAB308;--y3:#FACC15;--y4:#FDE047;--y5:#FEFCE8;
+  --dark:#1A2E1A;--mid:#374151;--muted:#6B7280;--white:#FFFFFF;
+  --red:#EF4444;--blue:#3B82F6;--orange:#F97316;--purple:#A855F7;
+  --shadow:0 4px 20px rgba(22,163,74,.15);
+  --radius:16px;
+}
+body{font-family:system-ui,-apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;background:var(--g5);color:var(--dark);min-height:100vh;overflow-x:hidden}
+ 
+/* ── LAYOUT ── */
+.app{display:flex;min-height:100vh}
+.sidebar{width:270px;background:linear-gradient(160deg,#0f5c2a 0%,#16A34A 60%,#1f9e50 100%);color:white;flex-shrink:0;position:fixed;height:100vh;overflow-y:auto;z-index:200;display:flex;flex-direction:column}
+.main{margin-left:270px;flex:1;padding:28px 32px 60px;min-height:100vh}
+@media(max-width:768px){.sidebar{transform:translateX(-100%);transition:.3s}.main{margin-left:0}}
+ 
+/* ── SIDEBAR ── */
+.sb-top{padding:20px 18px 14px}
+.sb-logo{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.sb-logo-icon{width:44px;height:44px;background:var(--y3);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.sb-logo h1{font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1.15rem;line-height:1.2;color:white}
+.sb-logo h1 span{display:block;font-size:.75rem;font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-weight:600;opacity:.75}
+.xp-box{background:rgba(255,255,255,.12);border-radius:12px;padding:12px 14px;margin-bottom:4px}
+.xp-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px}
+.xp-label{font-size:.72rem;opacity:.8;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.xp-val{font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1.1rem;color:var(--y3)}
+.xp-bar-bg{height:9px;background:rgba(255,255,255,.2);border-radius:99px;overflow:hidden}
+.xp-bar-fill{height:100%;background:linear-gradient(90deg,var(--y3),var(--y2));border-radius:99px;transition:width .6s ease}
+.level-badge{display:flex;align-items:center;gap:6px;margin-top:8px}
+.level-badge .lbadge{background:var(--y3);color:var(--dark);font-weight:900;font-size:.72rem;padding:3px 9px;border-radius:99px;font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif}
+.level-badge .lname{font-size:.72rem;opacity:.85;font-weight:700}
+ 
+.sb-nav{flex:1;padding:8px 0}
+.nav-section{font-size:.65rem;font-weight:900;letter-spacing:1px;text-transform:uppercase;opacity:.55;padding:12px 18px 4px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 18px;cursor:pointer;font-size:.82rem;font-weight:700;border-left:4px solid transparent;transition:all .2s;border-radius:0 8px 8px 0;margin:1px 0}
+.nav-item:hover{background:rgba(255,255,255,.1);border-left-color:rgba(255,255,255,.4)}
+.nav-item.active{background:rgba(255,255,255,.18);border-left-color:var(--y3);color:var(--y3)}
+.nav-item.locked{opacity:.4;cursor:not-allowed}
+.nav-icon{font-size:1.1rem;width:24px;text-align:center}
+.nav-stars{margin-left:auto;font-size:.75rem}
+.sb-footer{padding:14px 18px;border-top:1px solid rgba(255,255,255,.15);font-size:.67rem;opacity:.55;text-align:center}
+ 
+/* ── MAIN HEADER ── */
+.page-header{background:white;border-radius:var(--radius);padding:22px 26px;margin-bottom:22px;box-shadow:var(--shadow);display:flex;align-items:center;gap:16px;position:relative;overflow:hidden}
+.page-header::before{content:'';position:absolute;right:-20px;top:-20px;width:120px;height:120px;background:var(--g4);border-radius:50%;opacity:.4}
+.page-header-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0}
+.page-header-text h2{font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1.5rem;color:var(--g1)}
+.page-header-text p{font-size:.85rem;color:var(--muted);margin-top:2px}
+.page-header-xp{margin-left:auto;background:var(--y4);color:var(--y1);font-weight:900;font-size:.8rem;padding:5px 12px;border-radius:99px;display:flex;align-items:center;gap:5px;z-index:1}
+ 
+/* ── CARDS ── */
+.card{background:white;border-radius:var(--radius);padding:22px;margin-bottom:18px;box-shadow:var(--shadow)}
+.card-title{font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1.1rem;color:var(--g1);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.card-subtitle{font-size:.85rem;color:var(--muted);margin-bottom:16px;line-height:1.5}
+ 
+/* ── LESSON BOX ── */
+.lesson-box{background:linear-gradient(135deg,var(--g5) 0%,var(--y5) 100%);border:2px solid var(--g3);border-radius:14px;padding:18px 20px;margin-bottom:16px}
+.lesson-box .lb-label{font-size:.7rem;font-weight:900;text-transform:uppercase;letter-spacing:.8px;color:var(--g1);margin-bottom:8px}
+.lesson-box p{font-size:.9rem;line-height:1.7;color:var(--mid)}
+.lesson-box strong{color:var(--g1)}
+ 
+/* ── FORMULA BOX ── */
+.formula-box{background:var(--dark);border-radius:12px;padding:16px 20px;margin:14px 0;color:white}
+.formula-box .fl{font-size:.7rem;font-weight:900;text-transform:uppercase;letter-spacing:.8px;color:var(--y3);margin-bottom:8px}
+.formula-box code{font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1rem;color:var(--y3);display:block;line-height:1.6}
+.formula-box .fex{font-size:.82rem;color:rgba(255,255,255,.7);margin-top:8px;font-style:italic}
+ 
+/* ── MODEL SENTENCE ── */
+.model-sent{background:var(--g4);border-left:5px solid var(--g2);border-radius:0 12px 12px 0;padding:14px 18px;margin:12px 0}
+.model-sent .ms-label{font-size:.68rem;font-weight:900;text-transform:uppercase;color:var(--g1);letter-spacing:.7px;margin-bottom:5px}
+.model-sent p{font-size:.9rem;color:var(--dark);font-weight:600;line-height:1.5}
+.model-sent em{color:var(--g1)}
+ 
+/* ── ACTIVITIES ── */
+.activity-card{background:white;border:2px solid var(--g3);border-radius:var(--radius);padding:22px;margin-bottom:16px}
+.activity-header{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.act-badge{background:var(--g1);color:white;font-size:.72rem;font-weight:900;padding:4px 10px;border-radius:99px;text-transform:uppercase;letter-spacing:.5px}
+.act-badge.yellow{background:var(--y2);color:var(--dark)}
+.act-badge.orange{background:#F97316;color:white}
+.act-badge.blue{background:#3B82F6;color:white}
+.act-badge.purple{background:#A855F7;color:white}
+.act-title{font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1rem;color:var(--dark)}
+.xp-chip{margin-left:auto;background:var(--y5);border:2px solid var(--y3);color:var(--y1);font-weight:900;font-size:.72rem;padding:3px 10px;border-radius:99px}
+ 
+/* ── FILL BLANK ── */
+.fill-sent{font-size:.95rem;line-height:2.2;color:var(--mid);margin-bottom:12px}
+.blank{display:inline-block;border-bottom:3px solid var(--g2);min-width:120px;padding:0 6px;margin:0 3px;text-align:center;font-weight:700;color:var(--g1);cursor:pointer;border-radius:4px;transition:background .2s}
+.blank:hover{background:var(--g5)}
+.blank.filled{background:var(--g4);color:var(--g1);border-bottom-color:var(--g1)}
+.blank.wrong{background:#FEE2E2;border-bottom-color:var(--red);color:var(--red)}
+.blank.correct{background:#DCFCE7;border-bottom-color:var(--g1);color:var(--g1)}
+ 
+/* ── WORD BANK ── */
+.word-bank{display:flex;flex-wrap:wrap;gap:8px;padding:14px;background:var(--y5);border:2px dashed var(--y3);border-radius:12px;margin-bottom:14px}
+.word-chip{background:var(--y3);color:var(--dark);font-weight:800;font-size:.8rem;padding:6px 14px;border-radius:99px;cursor:pointer;transition:all .2s;user-select:none;border:2px solid var(--y2)}
+.word-chip:hover{background:var(--y2);transform:translateY(-2px);box-shadow:0 4px 10px rgba(234,179,8,.3)}
+.word-chip.used{background:#E5E7EB;color:#9CA3AF;border-color:#D1D5DB;cursor:default;transform:none;box-shadow:none}
+ 
+/* ── MCQ ── */
+.mcq-options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.mcq-opt{background:var(--g5);border:2px solid var(--g3);border-radius:12px;padding:12px 16px;cursor:pointer;font-size:.88rem;font-weight:700;color:var(--mid);transition:all .2s;display:flex;align-items:center;gap:10px}
+.mcq-opt:hover{border-color:var(--g1);background:var(--g4);color:var(--dark)}
+.mcq-opt.correct{background:#DCFCE7;border-color:var(--g1);color:var(--g1)}
+.mcq-opt.wrong{background:#FEE2E2;border-color:var(--red);color:var(--red)}
+.mcq-opt .opt-letter{width:28px;height:28px;border-radius:50%;background:var(--g2);color:white;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:900;flex-shrink:0}
+.mcq-opt.correct .opt-letter{background:var(--g1)}
+.mcq-opt.wrong .opt-letter{background:var(--red)}
+ 
+/* ── SENTENCE BUILDER ── */
+.sent-builder{background:var(--g5);border:2px solid var(--g3);border-radius:12px;padding:16px;margin-bottom:14px}
+.sb-parts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.sb-part{background:white;border:2px solid var(--g3);border-radius:10px;padding:8px 14px;font-size:.82rem;font-weight:700;color:var(--mid)}
+.sb-part.fixed{background:var(--g4);border-color:var(--g2);color:var(--g1)}
+.sb-input-area{border:2px solid var(--g2);border-radius:10px;padding:12px;background:white;font-size:.88rem;color:var(--dark);width:100%;min-height:60px;resize:none;font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif;outline:none}
+.sb-input-area:focus{border-color:var(--g1);box-shadow:0 0 0 3px rgba(34,197,94,.15)}
+ 
+/* ── TEXT INPUTS ── */
+textarea.ans-area{width:100%;border:2px solid var(--g3);border-radius:12px;padding:12px 14px;font-size:.88rem;color:var(--dark);font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif;resize:vertical;min-height:80px;outline:none;transition:border .2s;background:var(--g5)}
+textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0 3px rgba(34,197,94,.15)}
+.wc-row{display:flex;justify-content:flex-end;margin-top:5px;font-size:.72rem;color:var(--muted);font-weight:700}
+ 
+/* ── CHECKLIST ── */
+.checklist{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.chk-item{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--g5);border:2px solid var(--g3);border-radius:10px;cursor:pointer;transition:all .2s;font-size:.85rem;font-weight:600}
+.chk-item:hover{background:var(--g4)}
+.chk-item.checked{background:#DCFCE7;border-color:var(--g1)}
+.chk-box{width:22px;height:22px;border-radius:6px;border:2.5px solid var(--g2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+.chk-item.checked .chk-box{background:var(--g1);border-color:var(--g1);color:white}
+ 
+/* ── BUTTONS ── */
+.btn{padding:10px 22px;border-radius:99px;border:none;font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-weight:800;font-size:.88rem;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:7px}
+.btn-green{background:var(--g1);color:white;box-shadow:0 4px 14px rgba(22,163,74,.35)}
+.btn-green:hover{background:#15803D;transform:translateY(-2px);box-shadow:0 6px 20px rgba(22,163,74,.4)}
+.btn-yellow{background:var(--y3);color:var(--dark);box-shadow:0 4px 14px rgba(234,179,8,.35)}
+.btn-yellow:hover{background:var(--y2);transform:translateY(-2px)}
+.btn-outline{background:transparent;border:2px solid var(--g2);color:var(--g1)}
+.btn-outline:hover{background:var(--g4)}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+ 
+/* ── FEEDBACK ── */
+.feedback{border-radius:12px;padding:14px 18px;margin-top:12px;font-size:.88rem;font-weight:700;display:flex;align-items:flex-start;gap:10px;animation:slideIn .3s ease}
+.feedback.success{background:#DCFCE7;color:var(--g1);border:2px solid var(--g3)}
+.feedback.error{background:#FEE2E2;color:var(--red);border:2px solid #FECACA}
+.feedback.info{background:var(--y5);color:var(--y1);border:2px solid var(--y3)}
+@keyframes slideIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+ 
+/* ── PROGRESS STEPS ── */
+.step-trail{display:flex;align-items:center;gap:0;margin-bottom:20px;flex-wrap:wrap}
+.step-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:900;flex-shrink:0;transition:all .3s}
+.step-dot.done{background:var(--g1);color:white}
+.step-dot.active{background:var(--y3);color:var(--dark);box-shadow:0 0 0 4px var(--y4)}
+.step-dot.pending{background:#E5E7EB;color:#9CA3AF}
+.step-line{flex:1;height:3px;background:#E5E7EB;min-width:20px}
+.step-line.done{background:var(--g2)}
+ 
+/* ── REPORT PARTS VISUAL ── */
+.report-map{display:grid;grid-template-columns:1fr;gap:8px;margin:14px 0}
+.rm-row{display:flex;align-items:stretch;gap:12px;border-radius:12px;overflow:hidden;border:2px solid var(--g3)}
+.rm-label{background:var(--g1);color:white;font-weight:900;font-size:.78rem;padding:12px 14px;min-width:130px;display:flex;align-items:center;text-transform:uppercase;letter-spacing:.5px;flex-shrink:0}
+.rm-content{padding:12px 16px;font-size:.85rem;color:var(--mid);line-height:1.5;flex:1;background:white}
+.rm-content strong{color:var(--g1);display:block;margin-bottom:3px}
+.rm-content em{color:var(--muted);font-style:italic}
+ 
+/* ── DRAG REORDER ── */
+.drag-list{display:flex;flex-direction:column;gap:8px;margin:14px 0}
+.drag-item{background:white;border:2px solid var(--g3);border-radius:12px;padding:12px 16px;cursor:grab;display:flex;align-items:center;gap:10px;font-size:.87rem;font-weight:700;color:var(--mid);transition:all .2s;user-select:none}
+.drag-item:hover{border-color:var(--g1);background:var(--g4)}
+.drag-item.dragging{opacity:.5;border-style:dashed}
+.drag-item .drag-handle{color:#9CA3AF;font-size:1rem}
+.drag-item .drag-num{background:var(--g3);color:white;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:900;flex-shrink:0}
+ 
+/* ── CHART MINI ── */
+.chart-area{background:white;border:2px solid var(--g3);border-radius:12px;padding:14px;margin:12px 0;overflow:hidden}
+.chart-title{font-size:.78rem;font-weight:900;color:var(--g1);text-align:center;margin-bottom:12px;text-transform:uppercase;letter-spacing:.5px}
+.bar-chart{display:flex;align-items:flex-end;gap:14px;height:130px;padding:0 8px}
+.bar-wrap{display:flex;flex-direction:column;align-items:center;flex:1;gap:5px}
+.bar{width:100%;border-radius:6px 6px 0 0;transition:height .8s ease;position:relative;display:flex;align-items:flex-start;justify-content:center;padding-top:5px}
+.bar span{font-size:.72rem;font-weight:900;color:white}
+.bar-label{font-size:.72rem;font-weight:700;color:var(--muted);text-align:center}
+ 
+/* ── SENTENCE FRAMES ── */
+.sent-frame{background:var(--y5);border:2px solid var(--y3);border-radius:12px;padding:16px 18px;margin:12px 0}
+.sf-label{font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.7px;color:var(--y1);margin-bottom:8px}
+.sf-parts{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:.9rem;font-weight:600}
+.sf-fixed{color:var(--dark)}
+.sf-blank{background:white;border:2px solid var(--y3);border-radius:8px;padding:4px 12px;min-width:90px;text-align:center;color:var(--muted);font-style:italic}
+.sf-blank.filled{color:var(--y1);font-style:normal;font-weight:800;border-color:var(--y2)}
+ 
+/* ── BADGE DISPLAY ── */
+.badges-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.badge-item{background:white;border:2px solid var(--g3);border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:8px;font-size:.8rem;font-weight:700;color:var(--mid)}
+.badge-item.earned{border-color:var(--y2);background:var(--y5);color:var(--y1)}
+.badge-item .bi{font-size:1.3rem}
+ 
+/* ── HOME MODULE ── */
+.module-map{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:16px}
+.mm-card{background:white;border:2px solid var(--g3);border-radius:14px;padding:16px 12px;text-align:center;cursor:pointer;transition:all .25s}
+.mm-card:hover{border-color:var(--g1);transform:translateY(-3px);box-shadow:0 8px 24px rgba(22,163,74,.2)}
+.mm-card.active-mod{border-color:var(--g1);background:var(--g5)}
+.mm-card.locked-mod{opacity:.45;cursor:not-allowed;filter:grayscale(1)}
+.mm-icon{font-size:2rem;margin-bottom:8px}
+.mm-title{font-size:.78rem;font-weight:800;color:var(--dark);margin-bottom:4px}
+.mm-stars{font-size:.8rem;color:var(--y2)}
+ 
+/* ── TOAST ── */
+.toast{position:fixed;bottom:30px;right:30px;background:var(--dark);color:white;padding:14px 22px;border-radius:14px;font-weight:800;font-size:.88rem;display:flex;align-items:center;gap:10px;z-index:9999;transform:translateY(80px);opacity:0;transition:all .4s;box-shadow:0 8px 30px rgba(0,0,0,.3)}
+.toast.show{transform:translateY(0);opacity:1}
+.toast .xp-gain{background:var(--y3);color:var(--dark);padding:3px 10px;border-radius:99px;font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif}
+ 
+/* ── MATCH GAME ── */
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.match-col{display:flex;flex-direction:column;gap:8px}
+.match-item{background:var(--g5);border:2px solid var(--g3);border-radius:10px;padding:10px 14px;font-size:.82rem;font-weight:700;color:var(--mid);cursor:pointer;transition:all .2s;min-height:44px;display:flex;align-items:center}
+.match-item:hover{border-color:var(--g1);background:var(--g4)}
+.match-item.selected{border-color:var(--y2);background:var(--y5);color:var(--y1)}
+.match-item.matched{border-color:var(--g1);background:#DCFCE7;color:var(--g1);cursor:default}
+.match-item.wrong-flash{border-color:var(--red);background:#FEE2E2;animation:shake .3s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%,75%{transform:translateX(-4px)}50%{transform:translateX(4px)}}
+ 
+/* ── SECTIONS HIDDEN/SHOW ── */
+.module-section{display:none}
+.module-section.active{display:block;animation:fadeUp .4s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+ 
+/* ── DIVIDER ── */
+.divider{height:2px;background:linear-gradient(90deg,var(--g3),var(--y3),transparent);border-radius:99px;margin:20px 0;opacity:.5}
+ 
+/* ── INFO PILL ── */
+.info-pill{display:inline-flex;align-items:center;gap:6px;background:var(--y4);color:var(--y1);font-size:.75rem;font-weight:800;padding:5px 12px;border-radius:99px;margin-bottom:10px}
+ 
+/* ── SCORE RING ── */
+.score-ring{width:80px;height:80px;border-radius:50%;background:conic-gradient(var(--g2) 0%, #E5E7EB 0%);display:flex;align-items:center;justify-content:center;font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1.2rem;color:var(--g1);flex-shrink:0;position:relative;transition:all .5s}
+.score-ring::before{content:'';position:absolute;inset:8px;background:white;border-radius:50%}
+.score-ring span{position:relative;z-index:1}
+ 
+/* scrollbar */
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--g5)}::-webkit-scrollbar-thumb{background:var(--g3);border-radius:99px}
+</style>
+</head>
+<body>
+ 
+<div class="toast" id="toast"><span id="toast-msg">✅ Well done!</span> <span class="xp-gain" id="toast-xp">+20 XP</span></div>
+ 
+<div class="app">
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sb-top">
+    <div class="sb-logo">
+      <div class="sb-logo-icon">📝</div>
+      <h1>Report Booster<span>LSC 1103 — Report Writing</span></h1>
+    </div>
+    <div class="xp-box">
+      <div class="xp-row">
+        <span class="xp-label">⚡ Your XP</span>
+        <span class="xp-val" id="xp-display">0</span>
+      </div>
+      <div class="xp-bar-bg"><div class="xp-bar-fill" id="xp-bar" style="width:0%"></div></div>
+      <div class="level-badge"><span class="lbadge" id="level-badge">Lv 1</span><span class="lname" id="level-name">Beginner Writer</span></div>
+    </div>
+  </div>
+  <nav class="sb-nav">
+    <div class="nav-section">📚 Modules</div>
+    <div class="nav-item active" onclick="showModule('home')" id="nav-home"><span class="nav-icon">🏠</span> Home & Map<span class="nav-stars" id="stars-home"></span></div>
+    <div class="nav-item" onclick="showModule('m1')" id="nav-m1"><span class="nav-icon">📋</span> M1 · Report Parts<span class="nav-stars" id="stars-m1"></span></div>
+    <div class="nav-item" onclick="showModule('m2')" id="nav-m2"><span class="nav-icon">✍️</span> M2 · Title Writing<span class="nav-stars" id="stars-m2"></span></div>
+    <div class="nav-item" onclick="showModule('m3')" id="nav-m3"><span class="nav-icon">📖</span> M3 · Introduction<span class="nav-stars" id="stars-m3"></span></div>
+    <div class="nav-item" onclick="showModule('m4')" id="nav-m4"><span class="nav-icon">📊</span> M4 · Findings<span class="nav-stars" id="stars-m4"></span></div>
+    <div class="nav-item" onclick="showModule('m5')" id="nav-m5"><span class="nav-icon">🔚</span> M5 · Conclusion<span class="nav-stars" id="stars-m5"></span></div>
+    <div class="nav-item" onclick="showModule('m6')" id="nav-m6"><span class="nav-icon">💬</span> M6 · Language Bank<span class="nav-stars" id="stars-m6"></span></div>
+    <div class="nav-item" onclick="showModule('exam')" id="nav-exam"><span class="nav-icon">🎓</span> Exam Practice<span class="nav-stars" id="stars-exam"></span></div>
+  </nav>
+  <div class="sb-footer">Designed by: Nazila Motahari · HCT UAE</div>
+</aside>
+ 
+<!-- MAIN -->
+<main class="main">
+ 
+<!-- ══ HOME ══ -->
+<div class="module-section active" id="mod-home">
+  <div class="page-header" style="background:linear-gradient(135deg,white 60%,var(--g4))">
+    <div class="page-header-icon" style="background:var(--g4)">🚀</div>
+    <div class="page-header-text">
+      <h2>Welcome to Report Booster!</h2>
+      <p>Build your report sentence by sentence — one step at a time 💪</p>
+    </div>
+  </div>
+ 
+  <div class="card">
+    <div class="card-title">📌 How to Use This App</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px">
+      <div style="background:var(--g5);border:2px solid var(--g3);border-radius:12px;padding:14px">
+        <div style="font-size:1.5rem;margin-bottom:6px">📚</div>
+        <div style="font-weight:800;font-size:.85rem;color:var(--g1);margin-bottom:4px">1. Learn</div>
+        <div style="font-size:.8rem;color:var(--muted)">Read the lesson and look at the formula</div>
+      </div>
+      <div style="background:var(--y5);border:2px solid var(--y3);border-radius:12px;padding:14px">
+        <div style="font-size:1.5rem;margin-bottom:6px">✏️</div>
+        <div style="font-weight:800;font-size:.85rem;color:var(--y1);margin-bottom:4px">2. Practice</div>
+        <div style="font-size:.8rem;color:var(--muted)">Do the activities: fill gaps, order sentences, match words</div>
+      </div>
+      <div style="background:#EFF6FF;border:2px solid #BFDBFE;border-radius:12px;padding:14px">
+        <div style="font-size:1.5rem;margin-bottom:6px">✍️</div>
+        <div style="font-weight:800;font-size:.85rem;color:#1D4ED8;margin-bottom:4px">3. Write</div>
+        <div style="font-size:.8rem;color:var(--muted)">Write your own sentences using the frames</div>
+      </div>
+      <div style="background:#FDF4FF;border:2px solid #E9D5FF;border-radius:12px;padding:14px">
+        <div style="font-size:1.5rem;margin-bottom:6px">⭐</div>
+        <div style="font-weight:800;font-size:.85rem;color:#7C3AED;margin-bottom:4px">4. Earn XP</div>
+        <div style="font-size:.8rem;color:var(--muted)">Collect points and badges as you improve!</div>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="card">
+    <div class="card-title">🗺️ Your Learning Map — Choose a Module</div>
+    <div class="module-map">
+      <div class="mm-card active-mod" onclick="showModule('m1')"><div class="mm-icon">📋</div><div class="mm-title">M1 Report Parts</div><div class="mm-stars" id="map-stars-m1">☆☆☆</div></div>
+      <div class="mm-card" onclick="showModule('m2')"><div class="mm-icon">✍️</div><div class="mm-title">M2 Title Writing</div><div class="mm-stars" id="map-stars-m2">☆☆☆</div></div>
+      <div class="mm-card" onclick="showModule('m3')"><div class="mm-icon">📖</div><div class="mm-title">M3 Introduction</div><div class="mm-stars" id="map-stars-m3">☆☆☆</div></div>
+      <div class="mm-card" onclick="showModule('m4')"><div class="mm-icon">📊</div><div class="mm-title">M4 Findings</div><div class="mm-stars" id="map-stars-m4">☆☆☆</div></div>
+      <div class="mm-card" onclick="showModule('m5')"><div class="mm-icon">🔚</div><div class="mm-title">M5 Conclusion</div><div class="mm-stars" id="map-stars-m5">☆☆☆</div></div>
+      <div class="mm-card" onclick="showModule('m6')"><div class="mm-icon">💬</div><div class="mm-title">M6 Language</div><div class="mm-stars" id="map-stars-m6">☆☆☆</div></div>
+      <div class="mm-card" onclick="showModule('exam')" style="grid-column:span 1;border-color:var(--y2);background:var(--y5)"><div class="mm-icon">🎓</div><div class="mm-title">Exam Practice</div><div class="mm-stars" id="map-stars-exam">☆☆☆</div></div>
+    </div>
+  </div>
+ 
+  <div class="card">
+    <div class="card-title">🏅 Your Badges</div>
+    <div class="badges-grid" id="badge-display">
+      <div class="badge-item" id="badge-starter"><span class="bi">🌱</span> Starter</div>
+      <div class="badge-item" id="badge-title"><span class="bi">🏷️</span> Title Master</div>
+      <div class="badge-item" id="badge-intro"><span class="bi">📖</span> Intro Writer</div>
+      <div class="badge-item" id="badge-findings"><span class="bi">📊</span> Data Reader</div>
+      <div class="badge-item" id="badge-conc"><span class="bi">🔚</span> Conclusion Pro</div>
+      <div class="badge-item" id="badge-vocab"><span class="bi">💬</span> Word Power</div>
+      <div class="badge-item" id="badge-exam"><span class="bi">🎓</span> Exam Ready</div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ══ MODULE 1 — REPORT PARTS ══ -->
+<div class="module-section" id="mod-m1">
+  <div class="page-header" style="background:linear-gradient(135deg,white,var(--g4))">
+    <div class="page-header-icon" style="background:var(--g4)">📋</div>
+    <div class="page-header-text"><h2>Module 1 · Report Parts</h2><p>Learn the structure of a formal report</p></div>
+    <div class="page-header-xp">⚡ Up to 60 XP</div>
+  </div>
+ 
+  <!-- LESSON -->
+  <div class="card">
+    <div class="card-title">📚 What is a Report?</div>
+    <div class="lesson-box">
+      <div class="lb-label">📌 Key Idea</div>
+      <p>A report is a <strong>formal document</strong> that gives information about a topic. It has a clear structure with different parts. Each part has a <strong>special job</strong> to do.</p>
+    </div>
+    <div class="info-pill">⭐ A formal report has 5 main parts</div>
+    <div class="report-map">
+      <div class="rm-row"><div class="rm-label">1 · Title</div><div class="rm-content"><strong>What is the report about?</strong><em>Example: A Report on Social Media Use Among HCT Students</em></div></div>
+      <div class="rm-row"><div class="rm-label">2 · Introduction</div><div class="rm-content"><strong>Why was the report written? Who? What? How?</strong><em>Background · Purpose · Scope · Method</em></div></div>
+      <div class="rm-row"><div class="rm-label">3 · Findings</div><div class="rm-content"><strong>What did you find out? (Describe the data)</strong><em>Use charts and statistics to show results</em></div></div>
+      <div class="rm-row"><div class="rm-label">4 · Conclusion</div><div class="rm-content"><strong>What do the findings mean?</strong><em>Summarise the most important points</em></div></div>
+      <div class="rm-row"><div class="rm-label">5 · Recommendations</div><div class="rm-content"><strong>What should happen next?</strong><em>Give advice based on the findings</em></div></div>
+    </div>
+  </div>
+ 
+  <!-- ACTIVITY 1 — MCQ -->
+  <div class="activity-card">
+    <div class="activity-header">
+      <span class="act-badge">Activity 1</span>
+      <span class="act-title">🎯 Quick Quiz — Which Part?</span>
+      <span class="xp-chip">+20 XP</span>
+    </div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:14px">Read each sentence. Which part of the report does it belong to? Click the correct answer.</p>
+ 
+    <div id="m1-q1" style="margin-bottom:18px">
+      <div style="background:var(--y5);border-left:4px solid var(--y3);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700;color:var(--dark)">"It is recommended that the college provides more computer labs."</div>
+      <div class="mcq-options">
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','m1-q1')"><span class="opt-letter">A</span>Introduction</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','m1-q1')"><span class="opt-letter">B</span>Findings</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','m1-q1')"><span class="opt-letter">C</span>Conclusion</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','m1-q1')"><span class="opt-letter">D</span>Recommendations</div>
+      </div>
+    </div>
+ 
+    <div id="m1-q2" style="margin-bottom:18px">
+      <div style="background:var(--y5);border-left:4px solid var(--y3);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700;color:var(--dark)">"According to the chart, 65% of students use Instagram daily."</div>
+      <div class="mcq-options">
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','m1-q2')"><span class="opt-letter">A</span>Title</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','m1-q2')"><span class="opt-letter">B</span>Findings</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','m1-q2')"><span class="opt-letter">C</span>Conclusion</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','m1-q2')"><span class="opt-letter">D</span>Recommendations</div>
+      </div>
+    </div>
+ 
+    <div id="m1-q3">
+      <div style="background:var(--y5);border-left:4px solid var(--y3);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700;color:var(--dark)">"This report was conducted to investigate the social media habits of HCT students."</div>
+      <div class="mcq-options">
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','m1-q3')"><span class="opt-letter">A</span>Title</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','m1-q3')"><span class="opt-letter">B</span>Introduction</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','m1-q3')"><span class="opt-letter">C</span>Findings</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','m1-q3')"><span class="opt-letter">D</span>Conclusion</div>
+      </div>
+    </div>
+    <div class="btn-row"><button class="btn btn-green" onclick="completeActivity('m1-act1',20,'m1')">✅ Submit Answers</button></div>
+    <div id="fb-m1-act1"></div>
+  </div>
+ 
+  <!-- ACTIVITY 2 — REORDER WITH ARROWS -->
+  <div class="activity-card">
+    <div class="activity-header">
+      <span class="act-badge yellow">Activity 2</span>
+      <span class="act-title">🔀 Put the Report in Order</span>
+      <span class="xp-chip">+20 XP</span>
+    </div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:12px">These report parts are in the wrong order. Use the <strong>↑ Up</strong> and <strong>↓ Down</strong> buttons to move each part into the correct position.</p>
+    <div class="info-pill" style="margin-bottom:14px">🎯 Goal: 1 = first part · 5 = last part</div>
+    <div id="order-list-m1" style="display:flex;flex-direction:column;gap:8px;margin-bottom:14px"></div>
+    <div class="btn-row">
+      <button class="btn btn-yellow" onclick="shuffleOrderList()">🔀 Shuffle Again</button>
+      <button class="btn btn-green" onclick="checkOrderList('m1-act2',20,'m1')">✅ Check My Order</button>
+    </div>
+    <div id="fb-m1-act2"></div>
+  </div>
+ 
+  <!-- ACTIVITY 3 — MATCH -->
+  <div class="activity-card">
+    <div class="activity-header">
+      <span class="act-badge blue">Activity 3</span>
+      <span class="act-title">🔗 Match Part → Purpose</span>
+      <span class="xp-chip">+20 XP</span>
+    </div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:14px">Click a report part on the left, then click its purpose on the right.</p>
+    <div class="match-grid" id="match-grid-m1">
+      <div class="match-col" id="match-left">
+        <div class="match-item" onclick="selectMatch(this,'left','title')" data-id="title">📌 Title</div>
+        <div class="match-item" onclick="selectMatch(this,'left','intro')" data-id="intro">📖 Introduction</div>
+        <div class="match-item" onclick="selectMatch(this,'left','findings')" data-id="findings">📊 Findings</div>
+        <div class="match-item" onclick="selectMatch(this,'left','conc')" data-id="conc">🔚 Conclusion</div>
+        <div class="match-item" onclick="selectMatch(this,'left','rec')" data-id="rec">💡 Recommendations</div>
+      </div>
+      <div class="match-col" id="match-right">
+        <div class="match-item" onclick="selectMatch(this,'right','conc')" data-id="conc">Summarises main results</div>
+        <div class="match-item" onclick="selectMatch(this,'right','findings')" data-id="findings">Shows and explains data</div>
+        <div class="match-item" onclick="selectMatch(this,'right','rec')" data-id="rec">Gives advice for the future</div>
+        <div class="match-item" onclick="selectMatch(this,'right','title')" data-id="title">Names the topic of the report</div>
+        <div class="match-item" onclick="selectMatch(this,'right','intro')" data-id="intro">Explains background and purpose</div>
+      </div>
+    </div>
+    <div id="fb-m1-act3" style="margin-top:12px"></div>
+  </div>
+</div>
+ 
+<!-- ══ MODULE 2 — TITLE WRITING ══ -->
+<div class="module-section" id="mod-m2">
+  <div class="page-header" style="background:linear-gradient(135deg,white,var(--y5))">
+    <div class="page-header-icon" style="background:var(--y4)">✍️</div>
+    <div class="page-header-text"><h2>Module 2 · Writing the Title</h2><p>Master the full formula — Type + Purpose + 5W+1H</p></div>
+    <div class="page-header-xp">⚡ Up to 140 XP</div>
+  </div>
+ 
+  <!-- LESSON: 3 TYPES -->
+  <div class="card">
+    <div class="card-title">📚 Step 1 — Know Your Report Type</div>
+    <div class="lesson-box">
+      <div class="lb-label">📌 Key Idea</div>
+      <p>There are <strong>3 types</strong> of report. The type <strong>must appear in your title</strong>. Each type has its own <strong>purpose verb</strong> — the verb that comes after "to".</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;margin-top:14px">
+      <div style="background:var(--g5);border:3px solid var(--g2);border-radius:14px;padding:16px;position:relative">
+        <div style="position:absolute;top:-12px;left:14px;background:var(--g1);color:white;font-size:.7rem;font-weight:900;padding:3px 10px;border-radius:99px;text-transform:uppercase">Type 1</div>
+        <div style="font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1rem;color:var(--g1);margin:8px 0 5px">📋 Informative Report</div>
+        <div style="font-size:.8rem;color:var(--mid);line-height:1.6;margin-bottom:8px">Collects and <strong>presents facts</strong>. No problem to solve.</div>
+        <div style="background:var(--g4);border-radius:8px;padding:8px;font-size:.78rem;color:var(--dark)"><span style="font-weight:900;color:var(--g1)">Purpose verbs:</span> to <strong>Analyse</strong> / to <strong>Examine</strong> / to <strong>Investigate</strong></div>
+        <div style="background:white;border:2px solid var(--g3);border-radius:8px;padding:6px 10px;margin-top:6px;font-size:.75rem;color:var(--mid)">Use <strong>"An"</strong> (vowel sound)</div>
+      </div>
+      <div style="background:var(--y5);border:3px solid var(--y2);border-radius:14px;padding:16px;position:relative">
+        <div style="position:absolute;top:-12px;left:14px;background:var(--y2);color:var(--dark);font-size:.7rem;font-weight:900;padding:3px 10px;border-radius:99px;text-transform:uppercase">Type 2</div>
+        <div style="font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1rem;color:var(--y1);margin:8px 0 5px">🔧 Problem-Solving Report</div>
+        <div style="font-size:.8rem;color:var(--mid);line-height:1.6;margin-bottom:8px">Identifies a <strong>problem</strong> and suggests <strong>solutions</strong>.</div>
+        <div style="background:var(--y4);border-radius:8px;padding:8px;font-size:.78rem;color:var(--dark)"><span style="font-weight:900;color:var(--y1)">Purpose verbs:</span> to <strong>Address</strong> / to <strong>Solve</strong> / to <strong>Resolve</strong></div>
+        <div style="background:white;border:2px solid var(--y3);border-radius:8px;padding:6px 10px;margin-top:6px;font-size:.75rem;color:var(--mid)">Use <strong>"A"</strong> (consonant)</div>
+      </div>
+      <div style="background:#EFF6FF;border:3px solid #93C5FD;border-radius:14px;padding:16px;position:relative">
+        <div style="position:absolute;top:-12px;left:14px;background:#3B82F6;color:white;font-size:.7rem;font-weight:900;padding:3px 10px;border-radius:99px;text-transform:uppercase">Type 3</div>
+        <div style="font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1rem;color:#1D4ED8;margin:8px 0 5px">📊 Evaluation Study Report</div>
+        <div style="font-size:.8rem;color:var(--mid);line-height:1.6;margin-bottom:8px"><strong>Measures and compares</strong> how well something is working.</div>
+        <div style="background:#DBEAFE;border-radius:8px;padding:8px;font-size:.78rem;color:var(--dark)"><span style="font-weight:900;color:#1D4ED8">Purpose verbs:</span> to <strong>Compare</strong> / to <strong>Evaluate</strong> / to <strong>Assess</strong></div>
+        <div style="background:white;border:2px solid #93C5FD;border-radius:8px;padding:6px 10px;margin-top:6px;font-size:.75rem;color:var(--mid)">Use <strong>"An"</strong> (vowel sound)</div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- LESSON: FULL FORMULA WITH 5W+1H -->
+  <div class="card">
+    <div class="card-title">📚 Step 2 — The Full Title Formula (5W+1H)</div>
+    <div class="lesson-box">
+      <div class="lb-label">📌 Remember: A title tells the FULL story!</div>
+      <p>Your title must include: <strong>Type + Purpose + What + Who + Where + When + How</strong></p>
+    </div>
+    <div class="formula-box">
+      <div class="fl">✨ COMPLETE TITLE FORMULA</div>
+      <code>An/A [TYPE] Report to [VERB] the [WHAT] of/by/among [WHO] in [WHERE] in [YEAR] Using [METHOD].</code>
+      <div class="fex">⚠️ Don't forget the full stop (.) at the end!</div>
+    </div>
+    <div style="margin:16px 0 8px;font-size:.78rem;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.6px">Colour-coded breakdown:</div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;align-items:center;line-height:2.4;font-size:.82rem;font-weight:700">
+      <span style="background:#DCFCE7;color:#166534;padding:4px 10px;border-radius:8px;border:2px solid #86EFAC">An Informative Report</span>
+      <span style="background:#FEF9C3;color:#854D0E;padding:4px 10px;border-radius:8px;border:2px solid #FDE047">to Analyse</span>
+      <span style="background:#DBEAFE;color:#1E3A8A;padding:4px 10px;border-radius:8px;border:2px solid #93C5FD">the Study Habits</span>
+      <span style="background:#F3E8FF;color:#581C87;padding:4px 10px;border-radius:8px;border:2px solid #D8B4FE">of HCT Students</span>
+      <span style="background:#FFE4E6;color:#9F1239;padding:4px 10px;border-radius:8px;border:2px solid #FECDD3">in Abu Dhabi</span>
+      <span style="background:#CCFBF1;color:#134E4A;padding:4px 10px;border-radius:8px;border:2px solid #5EEAD4">in 2024</span>
+      <span style="background:#FEF3C7;color:#78350F;padding:4px 10px;border-radius:8px;border:2px solid #FCD34D">Using Survey Methods.</span>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px">
+      <span style="font-size:.75rem;background:#DCFCE7;color:#166534;padding:3px 9px;border-radius:99px;border:1.5px solid #86EFAC;font-weight:800">🟢 Report Type</span>
+      <span style="font-size:.75rem;background:#FEF9C3;color:#854D0E;padding:3px 9px;border-radius:99px;border:1.5px solid #FDE047;font-weight:800">🟡 Purpose (to + Verb)</span>
+      <span style="font-size:.75rem;background:#DBEAFE;color:#1E3A8A;padding:3px 9px;border-radius:99px;border:1.5px solid #93C5FD;font-weight:800">🔵 WHAT</span>
+      <span style="font-size:.75rem;background:#F3E8FF;color:#581C87;padding:3px 9px;border-radius:99px;border:1.5px solid #D8B4FE;font-weight:800">🟣 WHO</span>
+      <span style="font-size:.75rem;background:#FFE4E6;color:#9F1239;padding:3px 9px;border-radius:99px;border:1.5px solid #FECDD3;font-weight:800">🔴 WHERE</span>
+      <span style="font-size:.75rem;background:#CCFBF1;color:#134E4A;padding:3px 9px;border-radius:99px;border:1.5px solid #5EEAD4;font-weight:800">🩵 WHEN</span>
+      <span style="font-size:.75rem;background:#FEF3C7;color:#78350F;padding:3px 9px;border-radius:99px;border:1.5px solid #FCD34D;font-weight:800">🟠 HOW (method)</span>
+    </div>
+    <div style="font-size:.78rem;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px">Study these 3 model titles:</div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="background:var(--g5);border:2px solid var(--g3);border-radius:12px;padding:14px">
+        <div style="font-size:.7rem;font-weight:900;text-transform:uppercase;color:var(--g1);margin-bottom:6px">📋 Informative</div>
+        <div style="font-size:.88rem;line-height:2;color:var(--dark)">
+          <span style="background:#DCFCE7;color:#166534;padding:2px 6px;border-radius:5px;font-weight:800">An Informative Report</span>&nbsp;<span style="background:#FEF9C3;color:#854D0E;padding:2px 6px;border-radius:5px;font-weight:800">to Analyse</span>&nbsp;<span style="background:#DBEAFE;color:#1E3A8A;padding:2px 6px;border-radius:5px;font-weight:800">the Social Media Use</span>&nbsp;<span style="background:#F3E8FF;color:#581C87;padding:2px 6px;border-radius:5px;font-weight:800">of HCT Students</span>&nbsp;<span style="background:#FFE4E6;color:#9F1239;padding:2px 6px;border-radius:5px;font-weight:800">in Abu Dhabi</span>&nbsp;<span style="background:#CCFBF1;color:#134E4A;padding:2px 6px;border-radius:5px;font-weight:800">in 2024</span>&nbsp;<span style="background:#FEF3C7;color:#78350F;padding:2px 6px;border-radius:5px;font-weight:800">Using Survey Methods.</span>
+        </div>
+      </div>
+      <div style="background:var(--y5);border:2px solid var(--y3);border-radius:12px;padding:14px">
+        <div style="font-size:.7rem;font-weight:900;text-transform:uppercase;color:var(--y1);margin-bottom:6px">🔧 Problem-Solving</div>
+        <div style="font-size:.88rem;line-height:2;color:var(--dark)">
+          <span style="background:#DCFCE7;color:#166534;padding:2px 6px;border-radius:5px;font-weight:800">A Problem-Solving Report</span>&nbsp;<span style="background:#FEF9C3;color:#854D0E;padding:2px 6px;border-radius:5px;font-weight:800">to Address</span>&nbsp;<span style="background:#DBEAFE;color:#1E3A8A;padding:2px 6px;border-radius:5px;font-weight:800">the Challenges of Low Attendance</span>&nbsp;<span style="background:#F3E8FF;color:#581C87;padding:2px 6px;border-radius:5px;font-weight:800">Among HCT Students</span>&nbsp;<span style="background:#FFE4E6;color:#9F1239;padding:2px 6px;border-radius:5px;font-weight:800">in Abu Dhabi</span>&nbsp;<span style="background:#CCFBF1;color:#134E4A;padding:2px 6px;border-radius:5px;font-weight:800">in 2024</span>&nbsp;<span style="background:#FEF3C7;color:#78350F;padding:2px 6px;border-radius:5px;font-weight:800">Using Observation Data.</span>
+        </div>
+      </div>
+      <div style="background:#EFF6FF;border:2px solid #BFDBFE;border-radius:12px;padding:14px">
+        <div style="font-size:.7rem;font-weight:900;text-transform:uppercase;color:#1D4ED8;margin-bottom:6px">📊 Evaluation Study</div>
+        <div style="font-size:.88rem;line-height:2;color:var(--dark)">
+          <span style="background:#DCFCE7;color:#166534;padding:2px 6px;border-radius:5px;font-weight:800">An Evaluation Study Report</span>&nbsp;<span style="background:#FEF9C3;color:#854D0E;padding:2px 6px;border-radius:5px;font-weight:800">to Compare</span>&nbsp;<span style="background:#DBEAFE;color:#1E3A8A;padding:2px 6px;border-radius:5px;font-weight:800">the Impact of Online Learning</span>&nbsp;<span style="background:#F3E8FF;color:#581C87;padding:2px 6px;border-radius:5px;font-weight:800">on Academic Performance Among HCT Students</span>&nbsp;<span style="background:#FFE4E6;color:#9F1239;padding:2px 6px;border-radius:5px;font-weight:800">in Abu Dhabi</span>&nbsp;<span style="background:#CCFBF1;color:#134E4A;padding:2px 6px;border-radius:5px;font-weight:800">in 2024</span>&nbsp;<span style="background:#FEF3C7;color:#78350F;padding:2px 6px;border-radius:5px;font-weight:800">Using Grade Analysis.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- ACTIVITY 1: REPORT TYPE -->
+  <div class="activity-card">
+    <div class="activity-header">
+      <span class="act-badge">Activity 1</span>
+      <span class="act-title">🔍 Which Type of Report?</span>
+      <span class="xp-chip">+20 XP</span>
+    </div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:14px">Read each scenario and choose the correct report type.</p>
+    <div id="type-q1" style="margin-bottom:16px">
+      <div style="background:var(--y5);border-left:4px solid var(--y3);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700">"You want to collect data on how many hours HCT students sleep per night. You will present the facts — no problem to solve."</div>
+      <div class="mcq-options">
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','type-q1')"><span class="opt-letter">A</span>📋 Informative Report</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','type-q1')"><span class="opt-letter">B</span>🔧 Problem-Solving Report</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','type-q1')"><span class="opt-letter">C</span>📊 Evaluation Study Report</div>
+      </div>
+    </div>
+    <div id="type-q2" style="margin-bottom:16px">
+      <div style="background:var(--y5);border-left:4px solid var(--y3);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700">"HCT students are eating too much junk food. You want to find the causes and suggest healthier eating strategies."</div>
+      <div class="mcq-options">
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','type-q2')"><span class="opt-letter">A</span>📋 Informative Report</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','type-q2')"><span class="opt-letter">B</span>🔧 Problem-Solving Report</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','type-q2')"><span class="opt-letter">C</span>📊 Evaluation Study Report</div>
+      </div>
+    </div>
+    <div id="type-q3">
+      <div style="background:var(--y5);border-left:4px solid var(--y3);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700">"HCT introduced a new study skills programme. You want to measure whether it improved students' grades."</div>
+      <div class="mcq-options">
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','type-q3')"><span class="opt-letter">A</span>📋 Informative Report</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','type-q3')"><span class="opt-letter">B</span>🔧 Problem-Solving Report</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','type-q3')"><span class="opt-letter">C</span>📊 Evaluation Study Report</div>
+      </div>
+    </div>
+    <div class="btn-row"><button class="btn btn-green" onclick="completeActivity('m2-act1',20,'m2')">✅ Submit</button></div>
+    <div id="fb-m2-act1"></div>
+  </div>
+ 
+  <!-- ACTIVITY 2: MATCH VERB -->
+  <div class="activity-card">
+    <div class="activity-header">
+      <span class="act-badge yellow">Activity 2</span>
+      <span class="act-title">🔗 Match Purpose Verb → Report Type</span>
+      <span class="xp-chip">+20 XP</span>
+    </div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:14px">Click a verb on the left, then click its correct report type on the right.</p>
+    <div class="match-grid" id="match-grid-m2">
+      <div class="match-col" id="match-verb-left">
+        <div class="match-item" onclick="selectMatch(this,'left','analyse')" data-id="analyse">to Analyse</div>
+        <div class="match-item" onclick="selectMatch(this,'left','address')" data-id="address">to Address</div>
+        <div class="match-item" onclick="selectMatch(this,'left','compare')" data-id="compare">to Compare</div>
+        <div class="match-item" onclick="selectMatch(this,'left','solve')" data-id="solve">to Solve</div>
+        <div class="match-item" onclick="selectMatch(this,'left','evaluate')" data-id="evaluate">to Evaluate</div>
+        <div class="match-item" onclick="selectMatch(this,'left','examine')" data-id="examine">to Examine</div>
+      </div>
+      <div class="match-col" id="match-verb-right">
+        <div class="match-item" onclick="selectMatch(this,'right','analyse')" data-id="analyse">📋 Informative Report</div>
+        <div class="match-item" onclick="selectMatch(this,'right','address')" data-id="address">🔧 Problem-Solving Report</div>
+        <div class="match-item" onclick="selectMatch(this,'right','compare')" data-id="compare">📊 Evaluation Study Report</div>
+        <div class="match-item" onclick="selectMatch(this,'right','solve')" data-id="solve">🔧 Problem-Solving Report</div>
+        <div class="match-item" onclick="selectMatch(this,'right','evaluate')" data-id="evaluate">📊 Evaluation Study Report</div>
+        <div class="match-item" onclick="selectMatch(this,'right','examine')" data-id="examine">📋 Informative Report</div>
+      </div>
+    </div>
+    <div id="fb-m2-act2" style="margin-top:12px"></div>
+  </div>
+ 
+  <!-- ACTIVITY 3: LABEL 5W+1H -->
+  <div class="activity-card">
+    <div class="activity-header">
+      <span class="act-badge blue">Activity 3</span>
+      <span class="act-title">🏷️ Label the 5W+1H Parts</span>
+      <span class="xp-chip">+20 XP</span>
+    </div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:12px">Look at this title. Answer the questions about what each coloured part means.</p>
+    <div style="background:var(--dark);border-radius:12px;padding:16px;margin-bottom:16px;font-size:.85rem;line-height:2.4;color:white">
+      <span style="background:#DCFCE7;color:#166534;padding:2px 8px;border-radius:6px;font-weight:800">An Informative Report to Analyse</span>&nbsp;<span style="background:#DBEAFE;color:#1E3A8A;padding:2px 8px;border-radius:6px;font-weight:800">the Training Effectiveness</span>&nbsp;<span style="background:#F3E8FF;color:#581C87;padding:2px 8px;border-radius:6px;font-weight:800">for Factory Workers</span>&nbsp;<span style="background:#FFE4E6;color:#9F1239;padding:2px 8px;border-radius:6px;font-weight:800">in the Plastic Factory</span>&nbsp;<span style="background:#CCFBF1;color:#134E4A;padding:2px 8px;border-radius:6px;font-weight:800">in 2023</span>&nbsp;<span style="background:#FEF3C7;color:#78350F;padding:2px 8px;border-radius:6px;font-weight:800">Using Survey Methods.</span>
+    </div>
+    <div id="label-q1" style="margin-bottom:14px">
+      <p style="font-size:.85rem;font-weight:800;margin-bottom:8px">🔵 "the Training Effectiveness" is the...</p>
+      <div class="mcq-options">
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','label-q1')"><span class="opt-letter">A</span>WHAT (topic)</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','label-q1')"><span class="opt-letter">B</span>WHO</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','label-q1')"><span class="opt-letter">C</span>WHERE</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','label-q1')"><span class="opt-letter">D</span>HOW</div>
+      </div>
+    </div>
+    <div id="label-q2" style="margin-bottom:14px">
+      <p style="font-size:.85rem;font-weight:800;margin-bottom:8px">🟣 "for Factory Workers" is the...</p>
+      <div class="mcq-options">
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','label-q2')"><span class="opt-letter">A</span>WHAT (topic)</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','label-q2')"><span class="opt-letter">B</span>WHO</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','label-q2')"><span class="opt-letter">C</span>WHERE</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','label-q2')"><span class="opt-letter">D</span>WHEN</div>
+      </div>
+    </div>
+    <div id="label-q3">
+      <p style="font-size:.85rem;font-weight:800;margin-bottom:8px">🟠 "Using Survey Methods" is the...</p>
+      <div class="mcq-options">
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','label-q3')"><span class="opt-letter">A</span>WHERE</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','label-q3')"><span class="opt-letter">B</span>WHEN</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','label-q3')"><span class="opt-letter">C</span>WHO</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','label-q3')"><span class="opt-letter">D</span>HOW (method)</div>
+      </div>
+    </div>
+    <div class="btn-row"><button class="btn btn-green" onclick="completeActivity('m2-act3',20,'m2')">✅ Submit</button></div>
+    <div id="fb-m2-act3"></div>
+  </div>
+ 
+  <!-- ACTIVITY 4: JUMBLE — INFORMATIVE -->
+  <div class="activity-card">
+    <div class="activity-header">
+      <span class="act-badge orange">Activity 4</span>
+      <span class="act-title">🔀 Title Jumble — Informative Report</span>
+      <span class="xp-chip">+20 XP</span>
+    </div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:6px">The parts of this title are mixed up! Click each part in the <strong>correct order</strong> to build the full title.</p>
+    <div class="info-pill" style="margin-bottom:12px">💡 Start with: An/A + Type → to + Verb → WHAT → WHO → WHERE → WHEN → HOW</div>
+    <div id="jumble1-chips" style="display:flex;flex-wrap:wrap;gap:8px;padding:14px;background:var(--y5);border:2px dashed var(--y3);border-radius:12px;margin-bottom:10px;min-height:52px"></div>
+    <div style="font-size:.8rem;font-weight:700;color:var(--g1);margin-bottom:5px">Your title 👇 (click a placed part to remove it)</div>
+    <div id="jumble1-build" style="min-height:54px;background:var(--g5);border:2px solid var(--g3);border-radius:12px;padding:12px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.85rem;color:var(--muted);font-style:italic">Click parts above to build...</div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="resetJumble('jumble1')">🔄 Reset</button>
+      <button class="btn btn-green" onclick="checkJumble('jumble1','m2-act4',20,'m2')">✅ Check Title</button>
+    </div>
+    <div id="fb-m2-act4"></div>
+  </div>
+ 
+  <!-- ACTIVITY 5: JUMBLE — PROBLEM-SOLVING -->
+  <div class="activity-card">
+    <div class="activity-header">
+      <span class="act-badge" style="background:#F97316">Activity 5</span>
+      <span class="act-title">🔀 Title Jumble — Problem-Solving Report</span>
+      <span class="xp-chip">+20 XP</span>
+    </div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:12px">Click the parts in the correct order to build this Problem-Solving Report title.</p>
+    <div id="jumble2-chips" style="display:flex;flex-wrap:wrap;gap:8px;padding:14px;background:var(--y5);border:2px dashed var(--y3);border-radius:12px;margin-bottom:10px;min-height:52px"></div>
+    <div id="jumble2-build" style="min-height:54px;background:var(--g5);border:2px solid var(--g3);border-radius:12px;padding:12px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.85rem;color:var(--muted);font-style:italic">Click parts above to build...</div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="resetJumble('jumble2')">🔄 Reset</button>
+      <button class="btn btn-green" onclick="checkJumble('jumble2','m2-act5',20,'m2')">✅ Check Title</button>
+    </div>
+    <div id="fb-m2-act5"></div>
+  </div>
+ 
+  <!-- ACTIVITY 6: JUMBLE — EVALUATION -->
+  <div class="activity-card">
+    <div class="activity-header">
+      <span class="act-badge purple">Activity 6</span>
+      <span class="act-title">🔀 Title Jumble — Evaluation Study Report</span>
+      <span class="xp-chip">+20 XP</span>
+    </div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:12px">Click the parts in the correct order to build this Evaluation Study Report title.</p>
+    <div id="jumble3-chips" style="display:flex;flex-wrap:wrap;gap:8px;padding:14px;background:var(--y5);border:2px dashed var(--y3);border-radius:12px;margin-bottom:10px;min-height:52px"></div>
+    <div id="jumble3-build" style="min-height:54px;background:var(--g5);border:2px solid var(--g3);border-radius:12px;padding:12px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.85rem;color:var(--muted);font-style:italic">Click parts above to build...</div>
+    <div class="btn-row">
+      <button class="btn btn-outline" onclick="resetJumble('jumble3')">🔄 Reset</button>
+      <button class="btn btn-green" onclick="checkJumble('jumble3','m2-act6',20,'m2')">✅ Check Title</button>
+    </div>
+    <div id="fb-m2-act6"></div>
+  </div>
+ 
+  <!-- ACTIVITY 7: BUILD YOUR OWN TITLE -->
+  <div class="activity-card">
+    <div class="activity-header">
+      <span class="act-badge" style="background:var(--purple)">Activity 7</span>
+      <span class="act-title">🖊️ Build Your Own Full Title</span>
+      <span class="xp-chip">+20 XP</span>
+    </div>
+    <div class="lesson-box" style="margin-bottom:16px">
+      <div class="lb-label">📌 Your Scenario</div>
+      <p>You surveyed <strong>50 HCT students</strong> about their <strong>exercise habits</strong> at <strong>HCT Abu Dhabi</strong> in <strong>2024</strong> using a <strong>Google Form questionnaire</strong>. The purpose is to <strong>analyse the facts</strong> — no problem to solve.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+      <div>
+        <label style="font-size:.78rem;font-weight:900;color:#166534;display:block;margin-bottom:4px">🟢 Report Type (with An/A)</label>
+        <select id="m2-part-type" onchange="buildTitlePreview()" style="width:100%;padding:9px 12px;border:2px solid var(--g3);border-radius:10px;font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.82rem;background:var(--g5);color:var(--dark)">
+          <option value="">-- Choose type --</option>
+          <option value="An Informative Report">An Informative Report</option>
+          <option value="A Problem-Solving Report">A Problem-Solving Report</option>
+          <option value="An Evaluation Study Report">An Evaluation Study Report</option>
+        </select>
+      </div>
+      <div>
+        <label style="font-size:.78rem;font-weight:900;color:#854D0E;display:block;margin-bottom:4px">🟡 Purpose Verb (to...)</label>
+        <select id="m2-part-verb" onchange="buildTitlePreview()" style="width:100%;padding:9px 12px;border:2px solid var(--y3);border-radius:10px;font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.82rem;background:var(--y5);color:var(--dark)">
+          <option value="">-- Choose verb --</option>
+          <option value="to Analyse">to Analyse</option>
+          <option value="to Examine">to Examine</option>
+          <option value="to Investigate">to Investigate</option>
+        </select>
+      </div>
+      <div>
+        <label style="font-size:.78rem;font-weight:900;color:#1E3A8A;display:block;margin-bottom:4px">🔵 WHAT (the topic)</label>
+        <input id="m2-part-what" type="text" placeholder="e.g. the Exercise Habits" oninput="buildTitlePreview()" style="width:100%;padding:9px 12px;border:2px solid #BFDBFE;border-radius:10px;font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.82rem;background:#EFF6FF;color:var(--dark)">
+      </div>
+      <div>
+        <label style="font-size:.78rem;font-weight:900;color:#581C87;display:block;margin-bottom:4px">🟣 WHO</label>
+        <input id="m2-part-who" type="text" placeholder="e.g. of HCT Students" oninput="buildTitlePreview()" style="width:100%;padding:9px 12px;border:2px solid #D8B4FE;border-radius:10px;font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.82rem;background:#F3E8FF;color:var(--dark)">
+      </div>
+      <div>
+        <label style="font-size:.78rem;font-weight:900;color:#9F1239;display:block;margin-bottom:4px">🔴 WHERE</label>
+        <input id="m2-part-where" type="text" placeholder="e.g. in Abu Dhabi" oninput="buildTitlePreview()" style="width:100%;padding:9px 12px;border:2px solid #FECDD3;border-radius:10px;font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.82rem;background:#FFE4E6;color:var(--dark)">
+      </div>
+      <div>
+        <label style="font-size:.78rem;font-weight:900;color:#134E4A;display:block;margin-bottom:4px">🩵 WHEN (year)</label>
+        <input id="m2-part-when" type="text" placeholder="e.g. in 2024" oninput="buildTitlePreview()" style="width:100%;padding:9px 12px;border:2px solid #5EEAD4;border-radius:10px;font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.82rem;background:#CCFBF1;color:var(--dark)">
+      </div>
+      <div style="grid-column:span 2">
+        <label style="font-size:.78rem;font-weight:900;color:#78350F;display:block;margin-bottom:4px">🟠 HOW (Using...)</label>
+        <input id="m2-part-how" type="text" placeholder="e.g. Using Survey Methods" oninput="buildTitlePreview()" style="width:100%;padding:9px 12px;border:2px solid #FCD34D;border-radius:10px;font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-weight:700;font-size:.82rem;background:#FEF3C7;color:var(--dark)">
+      </div>
+    </div>
+    <div style="font-size:.78rem;font-weight:900;color:var(--g1);margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px">Your complete title:</div>
+    <div id="title-preview" style="background:var(--dark);color:var(--y3);border-radius:12px;padding:14px 18px;font-size:.9rem;font-weight:700;line-height:1.8;min-height:52px;font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif">Fill in the parts above to see your title here...</div>
+    <div class="checklist" style="margin-top:14px">
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>I chose the correct report type for the scenario</div>
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>I used the correct purpose verb (Analyse/Examine for Informative)</div>
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>My title includes all 5W+1H parts (What/Who/Where/When/How)</div>
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>I used capital letters on all important words</div>
+    </div>
+    <div class="btn-row"><button class="btn btn-green" onclick="submitFullTitle()">✅ Submit My Title</button></div>
+    <div id="fb-m2-act7"></div>
+  </div>
+</div>
+ 
+<!-- ══ MODULE 3 — INTRODUCTION ══ -->
+<div class="module-section" id="mod-m3">
+  <div class="page-header" style="background:linear-gradient(135deg,white,#EFF6FF)">
+    <div class="page-header-icon" style="background:#DBEAFE">📖</div>
+    <div class="page-header-text"><h2>Module 3 · Writing the Introduction</h2><p>Learn to write 4 key sentences — one by one</p></div>
+    <div class="page-header-xp">⚡ Up to 80 XP</div>
+  </div>
+ 
+  <div class="card">
+    <div class="card-title">📚 The Introduction — 3 Key Sentences</div>
+    <div class="lesson-box">
+      <div class="lb-label">📌 Key Idea</div>
+      <p>The introduction is <strong>one short paragraph</strong> with <strong>3 sentences</strong>. Each sentence has a job. Memorise this template — you can use it in any report!</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:14px">
+      <div style="background:var(--g5);border:3px solid var(--g2);border-radius:12px;padding:14px;position:relative">
+        <div style="position:absolute;top:-12px;left:14px;background:var(--g1);color:white;font-size:.7rem;font-weight:900;padding:3px 10px;border-radius:99px;text-transform:uppercase">Sentence 1</div>
+        <div style="font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:.95rem;color:var(--g1);margin:8px 0 5px">Type + Who Requested It</div>
+        <div style="font-size:.82rem;color:var(--muted);margin-bottom:8px">Tell the reader what <strong>type</strong> of report it is and who asked for it.</div>
+        <div style="background:var(--g4);border-radius:8px;padding:10px;font-size:.82rem;color:var(--dark);font-weight:700;line-height:1.6">"This is an <span style="color:var(--g1)">[Informative / Problem-Solving / Evaluation]</span> report, requested by <span style="color:var(--g1)">[name or title]</span>."</div>
+        <div style="background:white;border:2px solid var(--g3);border-radius:8px;padding:8px;margin-top:8px;font-size:.78rem;color:var(--mid);font-style:italic">Example: "This is an Informative report, requested by the college manager."</div>
+      </div>
+      <div style="background:var(--y5);border:3px solid var(--y2);border-radius:12px;padding:14px;position:relative">
+        <div style="position:absolute;top:-12px;left:14px;background:var(--y2);color:var(--dark);font-size:.7rem;font-weight:900;padding:3px 10px;border-radius:99px;text-transform:uppercase">Sentence 2</div>
+        <div style="font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:.95rem;color:var(--y1);margin:8px 0 5px">Purpose + Goal</div>
+        <div style="font-size:.82rem;color:var(--muted);margin-bottom:8px">Say WHY the report was written and what it will help to achieve.</div>
+        <div style="background:var(--y4);border-radius:8px;padding:10px;font-size:.82rem;color:var(--dark);font-weight:700;line-height:1.6">"The purpose of this report is to <span style="color:var(--y1)">[verb: analyse/address/compare]</span> <span style="color:var(--y1)">[topic]</span> to help <span style="color:var(--y1)">[goal/reason]</span>."</div>
+        <div style="background:white;border:2px solid var(--y3);border-radius:8px;padding:8px;margin-top:8px;font-size:.78rem;color:var(--mid);font-style:italic">Example: "The purpose of this report is to analyse the social media use of HCT students to help improve digital wellbeing."</div>
+      </div>
+      <div style="background:#EFF6FF;border:3px solid #93C5FD;border-radius:12px;padding:14px;position:relative">
+        <div style="position:absolute;top:-12px;left:14px;background:#3B82F6;color:white;font-size:.7rem;font-weight:900;padding:3px 10px;border-radius:99px;text-transform:uppercase">Sentence 3</div>
+        <div style="font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:.95rem;color:#1D4ED8;margin:8px 0 5px">Overview of the Report</div>
+        <div style="font-size:.82rem;color:var(--muted);margin-bottom:8px">Tell the reader what <strong>sections</strong> are included in the report.</div>
+        <div style="background:#DBEAFE;border-radius:8px;padding:10px;font-size:.82rem;color:var(--dark);font-weight:700;line-height:1.6">"It includes an overview of <span style="color:#1D4ED8">[key sections]</span>, with each section providing insights and data that support the main findings and conclusions."</div>
+        <div style="background:white;border:2px solid #93C5FD;border-radius:8px;padding:8px;margin-top:8px;font-size:.78rem;color:var(--mid);font-style:italic">Example: "It includes an overview of the survey methods used, the key findings, and specific recommendations for improvement."</div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- FORMULA CARD -->
+  <div class="card">
+    <div class="card-title">🔑 The Introduction Template — Memorise This!</div>
+    <div style="background:var(--dark);border-radius:14px;padding:20px 22px;color:white;line-height:2.2;font-size:.88rem">
+      <div style="color:var(--y3);font-weight:900;font-size:.72rem;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px">✨ TEMPLATE</div>
+      <div style="margin-bottom:8px"><span style="background:var(--g4);color:#166534;padding:2px 10px;border-radius:6px;font-weight:800;font-size:.85rem">S1</span>&nbsp; This is an/a [<em style="color:var(--y3)">type</em>] report, requested by [<em style="color:var(--y3)">name/title</em>].</div>
+      <div style="margin-bottom:8px"><span style="background:var(--y4);color:#78350F;padding:2px 10px;border-radius:6px;font-weight:800;font-size:.85rem">S2</span>&nbsp; The purpose of this report is to [<em style="color:var(--y3)">verb</em>] [<em style="color:var(--y3)">topic</em>] to help [<em style="color:var(--y3)">goal</em>].</div>
+      <div><span style="background:#DBEAFE;color:#1E3A8A;padding:2px 10px;border-radius:6px;font-weight:800;font-size:.85rem">S3</span>&nbsp; It includes an overview of [<em style="color:var(--y3)">sections</em>], with each section providing insights and data that support the main findings and conclusions.</div>
+    </div>
+ 
+    <div style="margin-top:16px;font-size:.78rem;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px">Full example — Informative Report</div>
+    <div style="background:var(--g5);border:2px solid var(--g3);border-radius:12px;padding:16px;font-size:.88rem;line-height:1.9;color:var(--dark)">
+      <span style="background:var(--g4);color:#166534;font-weight:800;padding:1px 6px;border-radius:5px">This is an Informative report, requested by the training supervisor.</span>
+      <span style="background:var(--y4);color:#78350F;font-weight:800;padding:1px 6px;border-radius:5px">The purpose of this report is to analyse the effectiveness of training for factory workers to help improve skill development and productivity.</span>
+      <span style="background:#DBEAFE;color:#1E3A8A;font-weight:800;padding:1px 6px;border-radius:5px">It includes an overview of the survey methods used, findings from worker feedback, and an analysis of key areas of improvement. Each section provides insights and data that support the main findings and conclusions.</span>
+    </div>
+  </div>
+ 
+  <!-- ACTIVITY 1 — IDENTIFY INTRO SENTENCES -->
+  <div class="activity-card">
+    <div class="activity-header">
+      <span class="act-badge">Activity 1</span>
+      <span class="act-title">🔍 Which Sentence Is It?</span>
+      <span class="xp-chip">+20 XP</span>
+    </div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:14px">Read each sentence. Is it Sentence 1 (Type), Sentence 2 (Purpose), or Sentence 3 (Overview)?</p>
+ 
+    <div id="intro-q1" style="margin-bottom:16px">
+      <div style="background:var(--y5);border-left:4px solid var(--y3);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700">"The purpose of this report is to address the challenges of material waste to help reduce costs and improve sustainability."</div>
+      <div class="mcq-options">
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','intro-q1')"><span class="opt-letter">A</span>Sentence 1 — Type + Who requested</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','intro-q1')"><span class="opt-letter">B</span>Sentence 2 — Purpose + Goal</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','intro-q1')"><span class="opt-letter">C</span>Sentence 3 — Overview of sections</div>
+      </div>
+    </div>
+    <div id="intro-q2" style="margin-bottom:16px">
+      <div style="background:var(--y5);border-left:4px solid var(--y3);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700">"It includes an overview of the methods used for data collection, findings from incident reports, and an analysis comparing the effectiveness of safety measures."</div>
+      <div class="mcq-options">
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','intro-q2')"><span class="opt-letter">A</span>Sentence 1 — Type + Who requested</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','intro-q2')"><span class="opt-letter">B</span>Sentence 2 — Purpose + Goal</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','intro-q2')"><span class="opt-letter">C</span>Sentence 3 — Overview of sections</div>
+      </div>
+    </div>
+    <div id="intro-q3">
+      <div style="background:var(--y5);border-left:4px solid var(--y3);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700">"This is a Problem-Solving report, requested by the operations manager."</div>
+      <div class="mcq-options">
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','intro-q3')"><span class="opt-letter">A</span>Sentence 1 — Type + Who requested</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','intro-q3')"><span class="opt-letter">B</span>Sentence 2 — Purpose + Goal</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','intro-q3')"><span class="opt-letter">C</span>Sentence 3 — Overview of sections</div>
+      </div>
+    </div>
+    <div class="btn-row"><button class="btn btn-green" onclick="completeActivity('m3-act1',20,'m3')">✅ Done</button></div>
+    <div id="fb-m3-act1"></div>
+  </div>
+ 
+  <!-- ACTIVITY 2 — FILL BLANKS INTRO (PPTX TEMPLATE) -->
+  <div class="activity-card">
+    <div class="activity-header">
+      <span class="act-badge yellow">Activity 2</span>
+      <span class="act-title">🧩 Complete the Introduction</span>
+      <span class="xp-chip">+20 XP</span>
+    </div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:14px">Use the word bank to fill in the gaps. Follow the 3-sentence template exactly.</p>
+    <div style="background:var(--dark);color:var(--y3);border-radius:10px;padding:10px 14px;font-size:.78rem;margin-bottom:12px;font-weight:700">
+      📌 Scenario: An <strong>Informative</strong> report about <strong>screen time habits</strong> of HCT students, requested by the <strong>college manager</strong>, using a <strong>Google Form questionnaire</strong>.
+    </div>
+    <div class="word-bank" id="wb-m3">
+      <span class="word-chip" onclick="pickWord(this,'wb-m3')">Informative</span>
+      <span class="word-chip" onclick="pickWord(this,'wb-m3')">the college manager</span>
+      <span class="word-chip" onclick="pickWord(this,'wb-m3')">analyse</span>
+      <span class="word-chip" onclick="pickWord(this,'wb-m3')">improve</span>
+      <span class="word-chip" onclick="pickWord(this,'wb-m3')">the survey methods and key findings</span>
+      <span class="word-chip" onclick="pickWord(this,'wb-m3')">support</span>
+    </div>
+    <div style="background:var(--g5);border:2px solid var(--g3);border-radius:12px;padding:18px;font-size:.9rem;line-height:2.8;color:var(--mid)">
+      <div style="margin-bottom:6px"><span style="background:var(--g4);color:#166534;font-size:.7rem;font-weight:900;padding:2px 8px;border-radius:99px;text-transform:uppercase;margin-right:6px">S1</span>
+      This is an <span id="i3-b1" class="blank" onclick="fillBlank('i3-b1','Informative','wb-m3')">____</span> report, requested by <span id="i3-b2" class="blank" onclick="fillBlank('i3-b2','the college manager','wb-m3')">____</span>.</div>
+      <div style="margin-bottom:6px"><span style="background:var(--y4);color:#78350F;font-size:.7rem;font-weight:900;padding:2px 8px;border-radius:99px;text-transform:uppercase;margin-right:6px">S2</span>
+      The purpose of this report is to <span id="i3-b3" class="blank" onclick="fillBlank('i3-b3','analyse','wb-m3')">____</span> the screen time habits of HCT students to help <span id="i3-b4" class="blank" onclick="fillBlank('i3-b4','improve','wb-m3')">____</span> student wellbeing.</div>
+      <div><span style="background:#DBEAFE;color:#1E3A8A;font-size:.7rem;font-weight:900;padding:2px 8px;border-radius:99px;text-transform:uppercase;margin-right:6px">S3</span>
+      It includes an overview of <span id="i3-b5" class="blank" onclick="fillBlank('i3-b5','the survey methods and key findings','wb-m3')">____</span>, with each section providing insights and data that <span id="i3-b6" class="blank" onclick="fillBlank('i3-b6','support','wb-m3')">____</span> the main findings and conclusions.</div>
+    </div>
+    <div class="btn-row"><button class="btn btn-green" onclick="checkFillBlanks(['i3-b1','i3-b2','i3-b3','i3-b4','i3-b5','i3-b6'],['Informative','the college manager','analyse','improve','the survey methods and key findings','support'],'m3-act2',20,'m3')">✅ Check</button></div>
+    <div id="fb-m3-act2"></div>
+  </div>
+ 
+  <!-- ACTIVITY 3 — WRITE INTRODUCTION SENTENCE BY SENTENCE (PPTX TEMPLATE) -->
+  <div class="activity-card">
+    <div class="activity-header">
+      <span class="act-badge orange">Activity 3</span>
+      <span class="act-title">✍️ Write Your Introduction — Sentence by Sentence</span>
+      <span class="xp-chip">+40 XP</span>
+    </div>
+    <div class="lesson-box" style="margin-bottom:16px">
+      <div class="lb-label">📌 Your Scenario</div>
+      <p>You conducted an <strong>Informative</strong> report about <strong>screen time habits</strong> of <strong>40 HCT students</strong>, requested by the <strong>college manager</strong>. Data was collected using a <strong>Google Form questionnaire</strong>. Write your 3-sentence introduction using the template.</p>
+    </div>
+ 
+    <div class="step-trail">
+      <div class="step-dot active" id="step-1">1</div><div class="step-line" id="line-1"></div>
+      <div class="step-dot pending" id="step-2">2</div><div class="step-line" id="line-2"></div>
+      <div class="step-dot pending" id="step-3">3</div>
+    </div>
+ 
+    <!-- Sentence 1: Type + Who Requested -->
+    <div id="intro-s1">
+      <div style="font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1rem;color:var(--g1);margin-bottom:8px">Sentence 1 — Type + Who Requested It 🏷️</div>
+      <div class="sent-frame">
+        <div class="sf-label">✨ Template</div>
+        <div class="sf-parts">
+          <span class="sf-fixed">This is an/a</span>
+          <span class="sf-blank">[type]</span>
+          <span class="sf-fixed">report, requested by</span>
+          <span class="sf-blank">[name or title]</span>
+          <span class="sf-fixed">.</span>
+        </div>
+      </div>
+      <div class="model-sent">
+        <div class="ms-label">💡 Hint</div>
+        <p>Type: <em>Informative / Problem-Solving / Evaluation</em> &nbsp;|&nbsp; Requested by: <em>the college manager / the department head / the lecturer</em></p>
+      </div>
+      <textarea class="ans-area" id="m3-s1" placeholder='e.g. "This is an Informative report, requested by the college manager."' oninput="updateWC(this,'wc-s1')"></textarea>
+      <div class="wc-row">Words: <span id="wc-s1">0</span></div>
+      <div class="btn-row"><button class="btn btn-green" onclick="nextIntroStep(1)">✅ Next Sentence →</button></div>
+      <div id="fb-intro-s1"></div>
+    </div>
+ 
+    <!-- Sentence 2: Purpose + Goal -->
+    <div id="intro-s2" style="display:none;margin-top:16px">
+      <div style="font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1rem;color:var(--y1);margin-bottom:8px">Sentence 2 — Purpose + Goal 🎯</div>
+      <div class="sent-frame">
+        <div class="sf-label">✨ Template</div>
+        <div class="sf-parts">
+          <span class="sf-fixed">The purpose of this report is to</span>
+          <span class="sf-blank">[verb]</span>
+          <span class="sf-blank">[topic]</span>
+          <span class="sf-fixed">to help</span>
+          <span class="sf-blank">[goal]</span>
+          <span class="sf-fixed">.</span>
+        </div>
+      </div>
+      <div class="model-sent">
+        <div class="ms-label">💡 Hint</div>
+        <p>Verb: <em>analyse / address / compare / examine</em> &nbsp;|&nbsp; Goal: <em>improve student wellbeing / reduce the problem / increase effectiveness</em></p>
+      </div>
+      <textarea class="ans-area" id="m3-s2" placeholder='e.g. "The purpose of this report is to analyse the screen time habits of HCT students to help improve student wellbeing."' oninput="updateWC(this,'wc-s2')"></textarea>
+      <div class="wc-row">Words: <span id="wc-s2">0</span></div>
+      <div class="btn-row"><button class="btn btn-green" onclick="nextIntroStep(2)">✅ Next Sentence →</button></div>
+      <div id="fb-intro-s2"></div>
+    </div>
+ 
+    <!-- Sentence 3: Overview of sections -->
+    <div id="intro-s3" style="display:none;margin-top:16px">
+      <div style="font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1rem;color:#1D4ED8;margin-bottom:8px">Sentence 3 — Overview of Sections 📋</div>
+      <div class="sent-frame">
+        <div class="sf-label">✨ Template</div>
+        <div class="sf-parts">
+          <span class="sf-fixed">It includes an overview of</span>
+          <span class="sf-blank">[sections in the report]</span>
+          <span class="sf-fixed">, with each section providing insights and data that support the main findings and conclusions.</span>
+        </div>
+      </div>
+      <div class="model-sent">
+        <div class="ms-label">💡 Hint — what sections are in your report?</div>
+        <p><em>the survey methods used, the key findings, and specific recommendations</em></p>
+      </div>
+      <textarea class="ans-area" id="m3-s3" placeholder='e.g. "It includes an overview of the survey methods used, the key findings, and specific recommendations, with each section providing insights and data that support the main findings and conclusions."' oninput="updateWC(this,'wc-s3')"></textarea>
+      <div class="wc-row">Words: <span id="wc-s3">0</span></div>
+      <div class="btn-row"><button class="btn btn-green" onclick="finishIntro()">🎉 Finish My Introduction!</button></div>
+      <div id="fb-intro-s3"></div>
+    </div>
+ 
+    <div id="intro-complete" style="display:none;margin-top:16px">
+      <div class="feedback success">🎉 Excellent! Here is your complete Introduction:</div>
+      <div id="full-intro" style="background:var(--g4);border:2px solid var(--g2);border-radius:12px;padding:16px 20px;margin-top:10px;font-size:.9rem;line-height:2;color:var(--dark);font-weight:600"></div>
+      <div class="model-sent" style="margin-top:12px">
+        <div class="ms-label">✅ Compare with this model answer</div>
+        <p>This is an <em>Informative</em> report, requested by <em>the college manager</em>. The purpose of this report is to <em>analyse the screen time habits of HCT students</em> to help <em>improve student wellbeing</em>. It includes an overview of <em>the survey methods used, the key findings, and specific recommendations</em>, with each section providing insights and data that support the main findings and conclusions.</p>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ══ MODULE 4 — FINDINGS ══ -->
+<div class="module-section" id="mod-m4">
+  <div class="page-header" style="background:linear-gradient(135deg,white,var(--g4))">
+    <div class="page-header-icon" style="background:var(--g4)">📊</div>
+    <div class="page-header-text"><h2>Module 4 · Writing Findings</h2><p>Describe charts and data in formal sentences</p></div>
+    <div class="page-header-xp">⚡ Up to 80 XP</div>
+  </div>
+ 
+  <div class="card">
+    <div class="card-title">📚 How to Write Findings</div>
+    <div class="lesson-box">
+      <div class="lb-label">📌 Key Rule</div>
+      <p>In the Findings section, you <strong>describe what you can see in the chart or data</strong>. Use numbers and percentages. Use <strong>formal language</strong>. Do NOT give your opinion here.</p>
+    </div>
+    <div class="formula-box">
+      <div class="fl">📊 FINDINGS SENTENCE FORMULA</div>
+      <code>According to [Figure/Chart 1], [percentage]% of [who] [verb] [what].</code>
+      <div class="fex">According to Figure 1, 65% of students use social media more than 3 hours a day.</div>
+    </div>
+    <div style="margin-top:12px">
+      <div class="info-pill">📌 Useful Language</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
+        <div style="background:var(--g5);border:2px solid var(--g3);border-radius:10px;padding:12px;font-size:.82rem">
+          <div style="font-weight:900;color:var(--g1);margin-bottom:6px">📈 For High Numbers</div>
+          <div style="color:var(--mid)">the majority of (more than 50%)<br>most students (60%+)<br>almost all (90%+)<br>nearly three-quarters</div>
+        </div>
+        <div style="background:var(--y5);border:2px solid var(--y3);border-radius:10px;padding:12px;font-size:.82rem">
+          <div style="font-weight:900;color:var(--y1);margin-bottom:6px">📉 For Low Numbers</div>
+          <div style="color:var(--mid)">a minority of<br>only a few (less than 20%)<br>fewer than half<br>less than one-third</div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- MINI BAR CHART -->
+  <div class="activity-card">
+    <div class="activity-header">
+      <span class="act-badge">Activity 1</span>
+      <span class="act-title">📊 Read the Chart & Answer</span>
+      <span class="xp-chip">+20 XP</span>
+    </div>
+    <div class="chart-area">
+      <div class="chart-title">Figure 1: Most Popular Social Media Platforms Among HCT Students</div>
+      <div class="bar-chart">
+        <div class="bar-wrap"><div class="bar" style="height:90%;background:linear-gradient(180deg,var(--g2),var(--g1))"><span>65%</span></div><div class="bar-label">Instagram</div></div>
+        <div class="bar-wrap"><div class="bar" style="height:60%;background:linear-gradient(180deg,var(--y3),var(--y2))"><span>45%</span></div><div class="bar-label">Snapchat</div></div>
+        <div class="bar-wrap"><div class="bar" style="height:50%;background:linear-gradient(180deg,#60A5FA,#3B82F6)"><span>38%</span></div><div class="bar-label">TikTok</div></div>
+        <div class="bar-wrap"><div class="bar" style="height:30%;background:linear-gradient(180deg,#C084FC,#A855F7)"><span>20%</span></div><div class="bar-label">Twitter/X</div></div>
+        <div class="bar-wrap"><div class="bar" style="height:18%;background:linear-gradient(180deg,#FB923C,#F97316)"><span>12%</span></div><div class="bar-label">Facebook</div></div>
+      </div>
+    </div>
+ 
+    <div id="findings-q1" style="margin-bottom:16px;margin-top:14px">
+      <p style="font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:10px">Question 1: Which platform is the MOST popular?</p>
+      <div class="mcq-options">
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','findings-q1')"><span class="opt-letter">A</span>Instagram (65%)</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','findings-q1')"><span class="opt-letter">B</span>Snapchat (45%)</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','findings-q1')"><span class="opt-letter">C</span>TikTok (38%)</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','findings-q1')"><span class="opt-letter">D</span>Facebook (12%)</div>
+      </div>
+    </div>
+    <div id="findings-q2" style="margin-bottom:16px">
+      <p style="font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:10px">Question 2: Which phrase correctly describes Facebook's result?</p>
+      <div class="mcq-options">
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','findings-q2')"><span class="opt-letter">A</span>The majority used Facebook</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','findings-q2')"><span class="opt-letter">B</span>Most students preferred Facebook</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','findings-q2')"><span class="opt-letter">C</span>Only a minority (12%) used Facebook</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','findings-q2')"><span class="opt-letter">D</span>Almost all students chose Facebook</div>
+      </div>
+    </div>
+    <div class="btn-row"><button class="btn btn-green" onclick="completeActivity('m4-act1',20,'m4')">✅ Submit</button></div>
+    <div id="fb-m4-act1"></div>
+  </div>
+ 
+  <!-- ACTIVITY 2 — SENTENCE CORRECTION -->
+  <div class="activity-card">
+    <div class="activity-header">
+      <span class="act-badge yellow">Activity 2</span>
+      <span class="act-title">🔧 Fix the Sentence</span>
+      <span class="xp-chip">+20 XP</span>
+    </div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:14px">Each findings sentence has ONE mistake. Find the mistake and choose the corrected version.</p>
+    <div id="fix-q1" style="margin-bottom:16px">
+      <div style="background:#FEF2F2;border-left:4px solid var(--red);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700;color:var(--red)">❌ "According to Figure 1, 65% of students use instagram daily."</div>
+      <div class="mcq-options">
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','fix-q1')"><span class="opt-letter">A</span>"...use Instagram daily" (just capitalize)</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','fix-q1')"><span class="opt-letter">B</span>"According to Figure 1, 65% of students use Instagram daily." ✅</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','fix-q1')"><span class="opt-letter">C</span>"According figure 1..."</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','fix-q1')"><span class="opt-letter">D</span>No change needed</div>
+      </div>
+    </div>
+    <div id="fix-q2">
+      <div style="background:#FEF2F2;border-left:4px solid var(--red);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700;color:var(--red)">❌ "I think that most people like Instagram because it is fun."</div>
+      <div class="mcq-options">
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','fix-q2')"><span class="opt-letter">A</span>Add a percentage after Instagram</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','fix-q2')"><span class="opt-letter">B</span>Remove opinion — write: "According to the data, 65% of students preferred Instagram."</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','fix-q2')"><span class="opt-letter">C</span>Change "I think" to "We think"</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','fix-q2')"><span class="opt-letter">D</span>No change needed</div>
+      </div>
+    </div>
+    <div class="btn-row"><button class="btn btn-green" onclick="completeActivity('m4-act2',20,'m4')">✅ Submit</button></div>
+    <div id="fb-m4-act2"></div>
+  </div>
+ 
+  <!-- ACTIVITY 3 — WRITE FROM CHART -->
+  <div class="activity-card">
+    <div class="activity-header">
+      <span class="act-badge orange">Activity 3</span>
+      <span class="act-title">✍️ Write 3 Findings Sentences</span>
+      <span class="xp-chip">+40 XP</span>
+    </div>
+    <div class="chart-area">
+      <div class="chart-title">Figure 2: How Many Hours Per Day Students Spend on Social Media</div>
+      <div class="bar-chart">
+        <div class="bar-wrap"><div class="bar" style="height:30%;background:linear-gradient(180deg,var(--g3),var(--g2))"><span>20%</span></div><div class="bar-label">Less than 1 hr</div></div>
+        <div class="bar-wrap"><div class="bar" style="height:45%;background:linear-gradient(180deg,var(--y3),var(--y2))"><span>35%</span></div><div class="bar-label">1–2 hrs</div></div>
+        <div class="bar-wrap"><div class="bar" style="height:85%;background:linear-gradient(180deg,var(--g2),var(--g1))"><span>60%</span></div><div class="bar-label">3–4 hrs</div></div>
+        <div class="bar-wrap"><div class="bar" style="height:40%;background:linear-gradient(180deg,#FB923C,#F97316)"><span>28%</span></div><div class="bar-label">5+ hrs</div></div>
+      </div>
+    </div>
+    <div class="sent-frame" style="margin-top:12px"><div class="sf-label">✨ Use This Formula</div><div class="sf-parts"><span class="sf-fixed">According to Figure 2,</span><span class="sf-blank">[%]</span><span class="sf-fixed">of students</span><span class="sf-blank">[verb + what]</span><span class="sf-fixed">.</span></div></div>
+    <div style="margin-top:12px">
+      <label style="font-size:.8rem;font-weight:800;color:var(--g1);display:block;margin-bottom:5px">Sentence 1 (describe the highest percentage)</label>
+      <textarea class="ans-area" id="m4-s1" placeholder="According to Figure 2, ..." oninput="updateWC(this,'wc-f1')"></textarea>
+      <div class="wc-row">Words: <span id="wc-f1">0</span></div>
+      <label style="font-size:.8rem;font-weight:800;color:var(--g1);display:block;margin-bottom:5px;margin-top:10px">Sentence 2 (describe another result)</label>
+      <textarea class="ans-area" id="m4-s2" placeholder="According to Figure 2, ..." oninput="updateWC(this,'wc-f2')"></textarea>
+      <div class="wc-row">Words: <span id="wc-f2">0</span></div>
+      <label style="font-size:.8rem;font-weight:800;color:var(--g1);display:block;margin-bottom:5px;margin-top:10px">Sentence 3 (describe the lowest percentage)</label>
+      <textarea class="ans-area" id="m4-s3" placeholder="According to Figure 2, ..." oninput="updateWC(this,'wc-f3')"></textarea>
+      <div class="wc-row">Words: <span id="wc-f3">0</span></div>
+    </div>
+    <div class="checklist">
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>I used "According to Figure 2,"</div>
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>I included a percentage or number</div>
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>I did NOT write my opinion</div>
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>I used formal language (no "I think...")</div>
+    </div>
+    <div class="btn-row"><button class="btn btn-green" onclick="completeMultiWrite(['m4-s1','m4-s2','m4-s3'],'m4-act3',40,'m4',5)">🎉 Submit Findings</button></div>
+    <div id="fb-m4-act3"></div>
+  </div>
+</div>
+ 
+<!-- ══ MODULE 5 — CONCLUSION ══ -->
+<div class="module-section" id="mod-m5">
+  <div class="page-header" style="background:linear-gradient(135deg,white,#FDF4FF)">
+    <div class="page-header-icon" style="background:#E9D5FF">🔚</div>
+    <div class="page-header-text"><h2>Module 5 · Conclusion & Recommendations</h2><p>Summarise findings and give advice</p></div>
+    <div class="page-header-xp">⚡ Up to 60 XP</div>
+  </div>
+ 
+  <div class="card">
+    <div class="card-title">📚 Conclusion vs Recommendations</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+      <div>
+        <div class="lesson-box">
+          <div class="lb-label">🔚 Conclusion</div>
+          <p>Summarise the <strong>most important findings</strong>. What did your data show? Keep it short — 2 to 3 sentences.</p>
+        </div>
+        <div class="formula-box" style="margin-top:8px">
+          <div class="fl">Formula</div>
+          <code>Overall, the findings show that [main result].</code>
+          <div class="fex">Overall, the findings show that the majority of students spend too much time on social media.</div>
+        </div>
+      </div>
+      <div>
+        <div class="lesson-box">
+          <div class="lb-label">💡 Recommendations</div>
+          <p>Give <strong>advice</strong> based on the findings. Use modal verbs like <strong>should / could / it is recommended that</strong>.</p>
+        </div>
+        <div class="formula-box" style="margin-top:8px">
+          <div class="fl">Formula</div>
+          <code>It is recommended that [who] [should + action].</code>
+          <div class="fex">It is recommended that students should limit their daily screen time to 2 hours.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- ACTIVITY 1 — CONC OR REC? -->
+  <div class="activity-card">
+    <div class="activity-header">
+      <span class="act-badge">Activity 1</span>
+      <span class="act-title">🔍 Conclusion or Recommendation?</span>
+      <span class="xp-chip">+20 XP</span>
+    </div>
+    <div id="cr-q1" style="margin-bottom:14px">
+      <div style="background:var(--y5);border-left:4px solid var(--y3);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700">"Overall, the data revealed that Instagram was the most used platform."</div>
+      <div class="mcq-options" style="grid-template-columns:1fr 1fr">
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','cr-q1')"><span class="opt-letter">A</span>✅ Conclusion</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','cr-q1')"><span class="opt-letter">B</span>Recommendation</div>
+      </div>
+    </div>
+    <div id="cr-q2" style="margin-bottom:14px">
+      <div style="background:var(--y5);border-left:4px solid var(--y3);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700">"It is recommended that the college should provide digital wellness workshops."</div>
+      <div class="mcq-options" style="grid-template-columns:1fr 1fr">
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','cr-q2')"><span class="opt-letter">A</span>Conclusion</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','cr-q2')"><span class="opt-letter">B</span>✅ Recommendation</div>
+      </div>
+    </div>
+    <div id="cr-q3">
+      <div style="background:var(--y5);border-left:4px solid var(--y3);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700">"Students could be encouraged to use apps to track their screen time."</div>
+      <div class="mcq-options" style="grid-template-columns:1fr 1fr">
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','cr-q3')"><span class="opt-letter">A</span>Conclusion</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','cr-q3')"><span class="opt-letter">B</span>✅ Recommendation</div>
+      </div>
+    </div>
+    <div class="btn-row"><button class="btn btn-green" onclick="completeActivity('m5-act1',20,'m5')">✅ Submit</button></div>
+    <div id="fb-m5-act1"></div>
+  </div>
+ 
+  <!-- ACTIVITY 2 — COMPLETE CONCLUSION + RECS -->
+  <div class="activity-card">
+    <div class="activity-header">
+      <span class="act-badge yellow">Activity 2</span>
+      <span class="act-title">✍️ Write Your Conclusion & Recommendations</span>
+      <span class="xp-chip">+40 XP</span>
+    </div>
+    <div class="lesson-box" style="margin-bottom:14px">
+      <div class="lb-label">📌 Context</div>
+      <p>Based on your findings: 60% of students use 3–4 hours of social media daily. Instagram is the most popular (65%). Only 12% use Facebook.</p>
+    </div>
+    <div style="font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:.95rem;color:var(--g1);margin-bottom:8px">🔚 Your Conclusion (2 sentences)</div>
+    <div class="sent-frame"><div class="sf-label">✨ Start with</div><div class="sf-parts"><span class="sf-fixed">Overall, the findings show that...</span></div></div>
+    <textarea class="ans-area" id="m5-conc" placeholder="Overall, the findings show that..." oninput="updateWC(this,'wc-conc')"></textarea>
+    <div class="wc-row">Words: <span id="wc-conc">0</span></div>
+    <div style="font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:.95rem;color:var(--y1);margin:14px 0 8px">💡 Your Recommendations (2 sentences)</div>
+    <div class="sent-frame"><div class="sf-label">✨ Start with</div><div class="sf-parts"><span class="sf-fixed">It is recommended that...</span></div></div>
+    <textarea class="ans-area" id="m5-rec" placeholder="It is recommended that..." oninput="updateWC(this,'wc-rec')"></textarea>
+    <div class="wc-row">Words: <span id="wc-rec">0</span></div>
+    <div class="checklist">
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>My conclusion summarises key findings</div>
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>I used "Overall, the findings show..."</div>
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>I used "It is recommended that..." OR "Students should..."</div>
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>My recommendations are based on the data</div>
+    </div>
+    <div class="btn-row"><button class="btn btn-green" onclick="completeMultiWrite(['m5-conc','m5-rec'],'m5-act2',40,'m5',8)">🎉 Submit!</button></div>
+    <div id="fb-m5-act2"></div>
+  </div>
+</div>
+ 
+<!-- ══ MODULE 6 — LANGUAGE BANK ══ -->
+<div class="module-section" id="mod-m6">
+  <div class="page-header" style="background:linear-gradient(135deg,white,var(--y5))">
+    <div class="page-header-icon" style="background:var(--y4)">💬</div>
+    <div class="page-header-text"><h2>Module 6 · Language Bank</h2><p>Learn and practise key report vocabulary</p></div>
+    <div class="page-header-xp">⚡ Up to 60 XP</div>
+  </div>
+ 
+  <div class="card">
+    <div class="card-title">📚 Essential Report Language</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px">
+      <div style="background:var(--g5);border:2px solid var(--g3);border-radius:12px;padding:14px">
+        <div style="font-weight:900;color:var(--g1);font-size:.8rem;margin-bottom:8px;text-transform:uppercase">📊 Describing Data</div>
+        <div style="font-size:.8rem;color:var(--mid);line-height:1.9">According to...<br>The data shows...<br>As shown in Figure...<br>It is evident that...<br>The results indicate...</div>
+      </div>
+      <div style="background:var(--y5);border:2px solid var(--y3);border-radius:12px;padding:14px">
+        <div style="font-weight:900;color:var(--y1);font-size:.8rem;margin-bottom:8px;text-transform:uppercase">📈 Quantities</div>
+        <div style="font-size:.8rem;color:var(--mid);line-height:1.9">the majority of (51%+)<br>most students (60%+)<br>almost all (90%+)<br>a minority of (&lt;30%)<br>only a few (&lt;20%)</div>
+      </div>
+      <div style="background:#EFF6FF;border:2px solid #BFDBFE;border-radius:12px;padding:14px">
+        <div style="font-weight:900;color:#1D4ED8;font-size:.8rem;margin-bottom:8px;text-transform:uppercase">🎯 Purpose Verbs</div>
+        <div style="font-size:.8rem;color:var(--mid);line-height:1.9">investigate<br>examine<br>analyse<br>explore<br>identify</div>
+      </div>
+      <div style="background:#FDF4FF;border:2px solid #E9D5FF;border-radius:12px;padding:14px">
+        <div style="font-weight:900;color:#7C3AED;font-size:.8rem;margin-bottom:8px;text-transform:uppercase">💡 Recommending</div>
+        <div style="font-size:.8rem;color:var(--mid);line-height:1.9">It is recommended that...<br>Students should...<br>The college could...<br>It would be beneficial...<br>Further research is needed...</div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- ACTIVITY 1 — FORMAL/INFORMAL SORT -->
+  <div class="activity-card">
+    <div class="activity-header">
+      <span class="act-badge">Activity 1</span>
+      <span class="act-title">🔀 Formal or Informal?</span>
+      <span class="xp-chip">+20 XP</span>
+    </div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:14px">Click each phrase to sort it — is it FORMAL (for a report) or INFORMAL (not acceptable)?</p>
+    <div id="sort-game" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+      <div id="sort-formal" style="background:var(--g5);border:2px dashed var(--g2);border-radius:12px;padding:14px;min-height:80px">
+        <div style="font-size:.75rem;font-weight:900;color:var(--g1);margin-bottom:8px;text-transform:uppercase">✅ Formal</div>
+      </div>
+      <div id="sort-informal" style="background:#FEF2F2;border:2px dashed var(--red);border-radius:12px;padding:14px;min-height:80px">
+        <div style="font-size:.75rem;font-weight:900;color:var(--red);margin-bottom:8px;text-transform:uppercase">❌ Informal</div>
+      </div>
+    </div>
+    <div class="btn-row"><button class="btn btn-green" onclick="checkSort('m6-act1',20,'m6')">✅ Check Sorting</button></div>
+    <div id="fb-m6-act1"></div>
+  </div>
+ 
+  <!-- ACTIVITY 2 — COMPLETE SENTENCES VOCAB -->
+  <div class="activity-card">
+    <div class="activity-header">
+      <span class="act-badge yellow">Activity 2</span>
+      <span class="act-title">🧩 Choose the Right Word</span>
+      <span class="xp-chip">+20 XP</span>
+    </div>
+    <div id="vocab-q1" style="margin-bottom:14px">
+      <p style="font-size:.88rem;font-weight:700;margin-bottom:10px">The data _____ that Instagram is the most popular platform.</p>
+      <div class="mcq-options">
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','vocab-q1')"><span class="opt-letter">A</span>tells</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','vocab-q1')"><span class="opt-letter">B</span>shows</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','vocab-q1')"><span class="opt-letter">C</span>says</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','vocab-q1')"><span class="opt-letter">D</span>speaks</div>
+      </div>
+    </div>
+    <div id="vocab-q2" style="margin-bottom:14px">
+      <p style="font-size:.88rem;font-weight:700;margin-bottom:10px">This report was conducted to _____ the study habits of students.</p>
+      <div class="mcq-options">
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','vocab-q2')"><span class="opt-letter">A</span>look</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','vocab-q2')"><span class="opt-letter">B</span>check</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','vocab-q2')"><span class="opt-letter">C</span>investigate</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','vocab-q2')"><span class="opt-letter">D</span>ask about</div>
+      </div>
+    </div>
+    <div id="vocab-q3">
+      <p style="font-size:.88rem;font-weight:700;margin-bottom:10px">_____ the data, 60% of students preferred to study at night.</p>
+      <div class="mcq-options">
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','vocab-q3')"><span class="opt-letter">A</span>Based on by</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','vocab-q3')"><span class="opt-letter">B</span>According to</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','vocab-q3')"><span class="opt-letter">C</span>Looking at</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','vocab-q3')"><span class="opt-letter">D</span>Due to</div>
+      </div>
+    </div>
+    <div class="btn-row"><button class="btn btn-green" onclick="completeActivity('m6-act2',20,'m6')">✅ Submit</button></div>
+    <div id="fb-m6-act2"></div>
+  </div>
+ 
+  <!-- ACTIVITY 3 — FORMAL REWRITE -->
+  <div class="activity-card">
+    <div class="activity-header">
+      <span class="act-badge orange">Activity 3</span>
+      <span class="act-title">🔄 Rewrite in Formal English</span>
+      <span class="xp-chip">+20 XP</span>
+    </div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:14px">These sentences are too informal for a report. Rewrite them using formal language.</p>
+    <div style="background:#FEF2F2;border-left:4px solid var(--red);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700;color:var(--red)">❌ "I think most kids like using their phones too much."</div>
+    <textarea class="ans-area" id="m6-rewrite1" placeholder="Rewrite formally: According to..." oninput="updateWC(this,'wc-rw1')"></textarea>
+    <div class="wc-row">Words: <span id="wc-rw1">0</span></div>
+    <div style="background:#DCFCE7;border-left:4px solid var(--g2);padding:12px 16px;border-radius:0 10px 10px 0;margin:12px 0 4px;font-size:.82rem;color:var(--g1);font-weight:700">✅ Model Answer: "According to the data, the majority of students spend excessive time on their mobile devices."</div>
+    <div class="btn-row"><button class="btn btn-green" onclick="completeWriteActivity('m6-rewrite1','m6-act3',20,'m6',8)">✅ Submit</button></div>
+    <div id="fb-m6-act3"></div>
+  </div>
+</div>
+ 
+<!-- ══ EXAM PRACTICE ══ -->
+<div class="module-section" id="mod-exam">
+  <div class="page-header" style="background:linear-gradient(135deg,var(--dark),#16A34A)">
+    <div class="page-header-icon" style="background:var(--y3)">🎓</div>
+    <div class="page-header-text" style="color:white"><h2 style="color:var(--y3)">Exam Practice Mode</h2><p style="color:rgba(255,255,255,.75)">Write a full report section — timed practice!</p></div>
+    <div class="page-header-xp" style="background:var(--y3);color:var(--dark)">⚡ Up to 100 XP</div>
+  </div>
+ 
+  <div class="card">
+    <div class="card-title">🗒️ Exam Tips — Read Before You Start</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px">
+      <div style="background:var(--g5);border:2px solid var(--g3);border-radius:12px;padding:14px;font-size:.82rem">
+        <div style="font-weight:900;color:var(--g1);margin-bottom:6px">⏱️ Time Management</div>
+        <div style="color:var(--mid)">Title: 2 min<br>Introduction: 8 min<br>Findings: 10 min<br>Conclusion: 5 min<br>Check: 5 min</div>
+      </div>
+      <div style="background:var(--y5);border:2px solid var(--y3);border-radius:12px;padding:14px;font-size:.82rem">
+        <div style="font-weight:900;color:var(--y1);margin-bottom:6px">✅ Always Include</div>
+        <div style="color:var(--mid)">• A formal title<br>• 4 intro sentences<br>• 3+ findings sentences<br>• Conclusion + 2 recommendations</div>
+      </div>
+      <div style="background:#FEF2F2;border:2px solid #FECACA;border-radius:12px;padding:14px;font-size:.82rem">
+        <div style="font-weight:900;color:var(--red);margin-bottom:6px">❌ Common Mistakes</div>
+        <div style="color:var(--mid)">• Using "I think"<br>• Forgetting percentages<br>• Not using formal language<br>• Missing the formula</div>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="card" id="exam-card">
+    <div class="card-title">📝 Exam Scenario</div>
+    <div style="background:var(--dark);border-radius:12px;padding:18px;color:white;margin-bottom:16px">
+      <div style="font-size:.72rem;color:var(--y3);font-weight:900;text-transform:uppercase;margin-bottom:8px">📋 Your Task</div>
+      <p style="line-height:1.7;font-size:.9rem">You are an HCT student. You surveyed <strong style="color:var(--y3)">45 students</strong> about their <strong style="color:var(--y3)">exercise habits</strong>. You used an <strong style="color:var(--y3)">online questionnaire</strong>. The chart below shows your results. Write a <strong style="color:var(--y3)">full report</strong> including: Title, Introduction, Findings, Conclusion, and Recommendations.</p>
+    </div>
+    <div class="chart-area">
+      <div class="chart-title">Figure 1: How Often HCT Students Exercise Per Week</div>
+      <div class="bar-chart">
+        <div class="bar-wrap"><div class="bar" style="height:20%;background:linear-gradient(180deg,var(--g3),var(--g2))"><span>15%</span></div><div class="bar-label">Never</div></div>
+        <div class="bar-wrap"><div class="bar" style="height:60%;background:linear-gradient(180deg,var(--y3),var(--y2))"><span>45%</span></div><div class="bar-label">1–2 times</div></div>
+        <div class="bar-wrap"><div class="bar" style="height:80%;background:linear-gradient(180deg,var(--g2),var(--g1))"><span>58%</span></div><div class="bar-label">3–4 times</div></div>
+        <div class="bar-wrap"><div class="bar" style="height:35%;background:linear-gradient(180deg,#FB923C,#F97316)"><span>25%</span></div><div class="bar-label">Daily</div></div>
+      </div>
+    </div>
+ 
+    <div style="display:flex;align-items:center;justify-content:space-between;margin:16px 0 10px">
+      <div style="font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1rem;color:var(--g1)">⏱️ Timer</div>
+      <div id="exam-timer" style="font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1.4rem;color:var(--g1);background:var(--g4);padding:6px 16px;border-radius:99px">30:00</div>
+      <button class="btn btn-green" onclick="startTimer()" id="timer-btn">▶ Start Timer</button>
+    </div>
+ 
+    <div style="margin-top:16px">
+      <label style="font-size:.85rem;font-weight:900;color:var(--g1);display:block;margin-bottom:5px">1️⃣ Title</label>
+      <textarea class="ans-area" id="ex-title" placeholder="A Report on ..." oninput="updateWC(this,'wc-ext')"></textarea>
+      <div class="wc-row">Words: <span id="wc-ext">0</span></div>
+      <label style="font-size:.85rem;font-weight:900;color:var(--g1);display:block;margin:12px 0 5px">2️⃣ Introduction (4 sentences)</label>
+      <textarea class="ans-area" style="min-height:110px" id="ex-intro" placeholder="This is an [type] report, requested by [name]. The purpose of this report is to [verb] [topic] to help [goal]. It includes an overview of [sections], with each section providing insights and data that support the main findings and conclusions." oninput="updateWC(this,'wc-exi')"></textarea>
+      <div class="wc-row">Words: <span id="wc-exi">0</span></div>
+      <label style="font-size:.85rem;font-weight:900;color:var(--g1);display:block;margin:12px 0 5px">3️⃣ Findings (3+ sentences about Figure 1)</label>
+      <textarea class="ans-area" style="min-height:110px" id="ex-find" placeholder="According to Figure 1, ..." oninput="updateWC(this,'wc-exf')"></textarea>
+      <div class="wc-row">Words: <span id="wc-exf">0</span></div>
+      <label style="font-size:.85rem;font-weight:900;color:var(--g1);display:block;margin:12px 0 5px">4️⃣ Conclusion (2 sentences)</label>
+      <textarea class="ans-area" id="ex-conc" placeholder="Overall, the findings show that..." oninput="updateWC(this,'wc-exc')"></textarea>
+      <div class="wc-row">Words: <span id="wc-exc">0</span></div>
+      <label style="font-size:.85rem;font-weight:900;color:var(--g1);display:block;margin:12px 0 5px">5️⃣ Recommendations (2 sentences)</label>
+      <textarea class="ans-area" id="ex-rec" placeholder="It is recommended that..." oninput="updateWC(this,'wc-exr')"></textarea>
+      <div class="wc-row">Words: <span id="wc-exr">0</span></div>
+    </div>
+ 
+    <div class="checklist" style="margin-top:16px">
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>✅ My title uses the formula "A Report on..."</div>
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>✅ My introduction has all 3 sentences (Type/Requested, Purpose/Goal, Overview)</div>
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>✅ My findings mention "According to Figure 1"</div>
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>✅ I used percentages and numbers from the chart</div>
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>✅ My conclusion starts with "Overall, the findings show..."</div>
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>✅ My recommendations use formal language</div>
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>✅ No informal language or "I think"</div>
+    </div>
+ 
+    <div class="btn-row">
+      <button class="btn btn-green" onclick="submitExam()">🎓 Submit My Exam!</button>
+      <button class="btn btn-outline" onclick="window.print()">🖨️ Print</button>
+    </div>
+    <div id="fb-exam"></div>
+  </div>
+</div>
+ 
+</main>
+</div>
+ 
+<script>
+// ══════════════════════════════════════
+// STATE
+// ══════════════════════════════════════
+let xp = 0;
+let completedActivities = new Set();
+let moduleStars = {m1:0,m2:0,m3:0,m4:0,m5:0,m6:0,exam:0};
+let matchState = {left:null,right:null,matched:[]};
+let timerInterval = null;
+let timerSeconds = 1800;
+let introStep = 0;
+ 
+const levels = [
+  {name:'Beginner Writer',min:0},
+  {name:'Sentence Builder',min:60},
+  {name:'Report Writer',min:150},
+  {name:'Advanced Analyst',min:280},
+  {name:'Report Expert',min:400}
+];
+ 
+// FORMAL/INFORMAL data
+const sortItems = [
+  {text:'According to the data',correct:'formal'},
+  {text:'I think...',correct:'informal'},
+  {text:'The findings indicate',correct:'formal'},
+  {text:'Loads of students',correct:'informal'},
+  {text:'It is recommended that',correct:'formal'},
+  {text:'Kids these days...',correct:'informal'},
+  {text:'The majority of respondents',correct:'formal'},
+  {text:'So basically...',correct:'informal'},
+];
+ 
+// GOOD/BAD TITLES
+const goodBadTitles = [
+  {text:'An Informative Report to Analyse the Study Habits of HCT Students in Abu Dhabi in 2024 Using Survey Methods.', correct:'good', reason:'✅ Correct! Has all parts: Type + Purpose verb (to Analyse) + What + Who + Where + When + How.'},
+  {text:'A Report on Social Media Use Among HCT Students.', correct:'bad', reason:'❌ Missing the report type word (Informative/Problem-Solving/Evaluation) AND the purpose verb (e.g. to Analyse). Too short!'},
+  {text:'a problem-solving report to address the challenges of Low Attendance among HCT Students in Abu Dhabi in 2024 Using Observation Data.', correct:'bad', reason:'❌ "a" and "problem-solving" and "report" must be capitalized. Always capitalize all important words.'},
+  {text:'An Evaluation Study Report to Compare the Impact of Online Learning on Academic Performance Among HCT Students in 2024 Using Grade Analysis.', correct:'good', reason:'✅ Correct! Type + to Compare + What + Who + When + How. Well done!'},
+  {text:'What do HCT Students Think About Exercise???', correct:'bad', reason:'❌ This is a question — titles are NEVER questions. Also has no report type, no purpose verb, and no 5W+1H details.'},
+  {text:'An Informative Report to Examine Exercise Habits of HCT Students in HCT Abu Dhabi in 2024.', correct:'bad', reason:'❌ Missing the HOW part — you must include "Using [method]" e.g. Using Survey Methods.'},
+];
+ 
+let sortAssigned = {};
+let goodBadAnswers = {};
+let selectedWord = null;
+let selectedWordBank = null;
+let fillBlanks = {};
+ 
+// ══════════════════════════════════════
+// XP & LEVELS
+// ══════════════════════════════════════
+function addXP(amount){
+  xp += amount;
+  document.getElementById('xp-display').textContent = xp;
+  const lvl = getCurrentLevel();
+  const nextLvlXP = levels[lvl+1] ? levels[lvl+1].min : levels[lvl].min + 200;
+  const progress = Math.min(((xp - levels[lvl].min) / (nextLvlXP - levels[lvl].min)) * 100, 100);
+  document.getElementById('xp-bar').style.width = progress + '%';
+  document.getElementById('level-badge').textContent = 'Lv ' + (lvl+1);
+  document.getElementById('level-name').textContent = levels[lvl].name;
+  showToast('Well done!', amount);
+}
+ 
+function getCurrentLevel(){
+  let lv = 0;
+  for(let i=0;i<levels.length;i++){if(xp >= levels[i].min) lv=i;}
+  return lv;
+}
+ 
+function showToast(msg, xpAmt){
+  const t = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = '⭐ ' + msg;
+  document.getElementById('toast-xp').textContent = '+' + xpAmt + ' XP';
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2800);
+}
+ 
+// ══════════════════════════════════════
+// NAVIGATION
+// ══════════════════════════════════════
+function showModule(id){
+  document.querySelectorAll('.module-section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('mod-'+id).classList.add('active');
+  document.getElementById('nav-'+id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+ 
+// ══════════════════════════════════════
+// FEEDBACK
+// ══════════════════════════════════════
+function showFeedback(id, type, msg){
+  const el = document.getElementById('fb-'+id);
+  if(!el) return;
+  el.innerHTML = `<div class="feedback ${type}"><span>${type==='success'?'🎉':'ℹ️'}</span> ${msg}</div>`;
+}
+ 
+// ══════════════════════════════════════
+// MCQ
+// ══════════════════════════════════════
+function checkMCQ(el, result, groupId){
+  const group = document.getElementById(groupId);
+  if(!group) return;
+  if(group.querySelector('.correct,.wrong')) return;
+  el.classList.add(result);
+  if(result === 'correct'){
+    el.innerHTML += ' ✅';
+  } else {
+    el.innerHTML += ' ❌';
+    group.querySelectorAll('.mcq-opt').forEach(o=>{
+      if(!o.classList.contains('wrong')) o.style.opacity='.4';
+    });
+  }
+}
+ 
+// ══════════════════════════════════════
+// COMPLETE ACTIVITIES
+// ══════════════════════════════════════
+function completeActivity(actId, xpAmt, module){
+  if(completedActivities.has(actId)) return;
+  completedActivities.add(actId);
+  addXP(xpAmt);
+  moduleStars[module] = (moduleStars[module]||0) + 1;
+  updateStars(module);
+  showFeedback(actId, 'success', 'Great job! You earned +' + xpAmt + ' XP! ⭐');
+  checkBadge(module);
+}
+ 
+function updateStars(mod){
+  const s = moduleStars[mod];
+  const star = s >= 3 ? '⭐⭐⭐' : s === 2 ? '⭐⭐☆' : s === 1 ? '⭐☆☆' : '☆☆☆';
+  const el = document.getElementById('stars-'+mod);
+  if(el) el.textContent = star;
+  const mel = document.getElementById('map-stars-'+mod);
+  if(mel) mel.textContent = star;
+}
+ 
+function checkBadge(module){
+  const badges = {m1:'badge-starter',m2:'badge-title',m3:'badge-intro',m4:'badge-findings',m5:'badge-conc',m6:'badge-vocab',exam:'badge-exam'};
+  if(moduleStars[module] >= 2){
+    const b = document.getElementById(badges[module]);
+    if(b) b.classList.add('earned');
+  }
+}
+ 
+// ══════════════════════════════════════
+// FILL BLANKS SYSTEM
+// ══════════════════════════════════════
+function pickWord(el, wbId){
+  if(el.classList.contains('used')) return;
+  if(selectedWord && selectedWord !== el) selectedWord.style.outline = 'none';
+  selectedWord = el;
+  selectedWordBank = wbId;
+  el.style.outline = '3px solid var(--g1)';
+}
+ 
+function fillBlank(blankId, correctWord, wbId){
+  if(!selectedWord || selectedWordBank !== wbId) return;
+  const blank = document.getElementById(blankId);
+  const word = selectedWord.textContent;
+  blank.textContent = word;
+  blank.classList.add('filled');
+  fillBlanks[blankId] = word;
+  selectedWord.classList.add('used');
+  selectedWord.style.outline = 'none';
+  selectedWord = null;
+  selectedWordBank = null;
+}
+ 
+function checkFillBlanks(ids, answers, actId, xpAmt, module){
+  let correct = 0;
+  ids.forEach((id,i)=>{
+    const el = document.getElementById(id);
+    if(!el) return;
+    const val = (fillBlanks[id]||'').toLowerCase().trim();
+    const ans = answers[i].toLowerCase().trim();
+    if(val === ans){ el.classList.remove('wrong'); el.classList.add('correct'); correct++; }
+    else { el.classList.remove('correct'); el.classList.add('wrong'); }
+  });
+  if(correct === ids.length){
+    completeActivity(actId, xpAmt, module);
+  } else {
+    showFeedback(actId, 'info', correct + '/' + ids.length + ' correct. Check the red blanks and try again!');
+  }
+}
+ 
+// ══════════════════════════════════════
+// ══════════════════════════════════════
+// ARROW-BASED REORDER (M1 Activity 2)
+// ══════════════════════════════════════
+const orderItems = [
+  {label:'Title',         icon:'📌', correct:1, color:'var(--g4)',  border:'var(--g2)'},
+  {label:'Introduction',  icon:'📖', correct:2, color:'var(--y5)',  border:'var(--y2)'},
+  {label:'Findings',      icon:'📊', correct:3, color:'#EFF6FF',   border:'#93C5FD'},
+  {label:'Conclusion',    icon:'🔚', correct:4, color:'#FDF4FF',   border:'#C084FC'},
+  {label:'Recommendations',icon:'💡',correct:5, color:'#FFF7ED',   border:'#FDC68A'},
+];
+ 
+// currentOrder holds indices into orderItems (shuffled on init)
+let currentOrder = [];
+ 
+function initOrderList(){
+  currentOrder = [0,1,2,3,4];
+  // Shuffle
+  for(let i=currentOrder.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [currentOrder[i],currentOrder[j]]=[currentOrder[j],currentOrder[i]];
+  }
+  // Make sure it's not already in correct order
+  const alreadyCorrect = currentOrder.every((v,i)=> orderItems[v].correct === i+1);
+  if(alreadyCorrect) { currentOrder.reverse(); }
+  renderOrderList();
+}
+ 
+function renderOrderList(){
+  const container = document.getElementById('order-list-m1');
+  if(!container) return;
+  container.innerHTML = currentOrder.map((itemIdx, pos) => {
+    const item = orderItems[itemIdx];
+    const isFirst = pos === 0;
+    const isLast  = pos === currentOrder.length - 1;
+    const btnBase = 'border:none;border-radius:8px;width:36px;height:36px;font-size:1rem;cursor:pointer;font-weight:900;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;';
+    const upBtn  = isFirst
+      ? `<button style="${btnBase}background:#E5E7EB;color:#9CA3AF;cursor:not-allowed;" disabled title="Already at top">↑</button>`
+      : `<button onclick="moveOrderItem(${pos},-1)" style="${btnBase}background:var(--g1);color:white;box-shadow:0 2px 8px rgba(22,163,74,.3);" title="Move up">↑</button>`;
+    const downBtn = isLast
+      ? `<button style="${btnBase}background:#E5E7EB;color:#9CA3AF;cursor:not-allowed;" disabled title="Already at bottom">↓</button>`
+      : `<button onclick="moveOrderItem(${pos},1)" style="${btnBase}background:var(--y2);color:var(--dark);box-shadow:0 2px 8px rgba(234,179,8,.3);" title="Move down">↓</button>`;
+    return `
+      <div style="display:flex;align-items:center;gap:10px;background:${item.color};border:2px solid ${item.border};border-radius:12px;padding:11px 14px;transition:all .3s;">
+        <div style="background:var(--dark);color:var(--y3);font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:.95rem;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">${pos+1}</div>
+        <span style="font-size:1.1rem;flex-shrink:0;">${item.icon}</span>
+        <span style="font-weight:800;font-size:.9rem;color:var(--dark);flex:1;">${item.label}</span>
+        <div style="display:flex;gap:6px;">${upBtn}${downBtn}</div>
+      </div>`;
+  }).join('');
+}
+ 
+function moveOrderItem(pos, dir){
+  const newPos = pos + dir;
+  if(newPos < 0 || newPos >= currentOrder.length) return;
+  [currentOrder[pos], currentOrder[newPos]] = [currentOrder[newPos], currentOrder[pos]];
+  renderOrderList();
+}
+ 
+function shuffleOrderList(){
+  const fb = document.getElementById('fb-m1-act2');
+  if(fb) fb.innerHTML = '';
+  initOrderList();
+}
+ 
+function checkOrderList(actId, xpAmt, module){
+  const isCorrect = currentOrder.every((itemIdx, pos) => orderItems[itemIdx].correct === pos + 1);
+  if(isCorrect){
+    // Highlight all items green
+    const container = document.getElementById('order-list-m1');
+    if(container){
+      [...container.children].forEach(el=>{
+        el.style.background='#DCFCE7';
+        el.style.borderColor='var(--g1)';
+      });
+    }
+    completeActivity(actId, xpAmt, module);
+    showFeedback(actId,'success','🎉 Perfect! That is the correct order of a formal report.');
+  } else {
+    // Highlight wrong positions red
+    const container = document.getElementById('order-list-m1');
+    if(container){
+      [...container.children].forEach((el, pos)=>{
+        const itemIdx = currentOrder[pos];
+        const correct = orderItems[itemIdx].correct === pos + 1;
+        el.style.background = correct ? '#DCFCE7' : '#FEE2E2';
+        el.style.borderColor = correct ? 'var(--g1)' : 'var(--red)';
+      });
+    }
+    const wrongCount = currentOrder.filter((itemIdx,pos)=> orderItems[itemIdx].correct !== pos+1).length;
+    showFeedback(actId,'info',`${wrongCount} part${wrongCount>1?'s are':' is'} in the wrong position. Use ↑ ↓ to adjust and try again!`);
+  }
+}
+ 
+// ══════════════════════════════════════
+// MATCHING
+// ══════════════════════════════════════
+function selectMatch(el, side, itemId){
+  if(el.classList.contains('matched')) return;
+  // Find the match-grid ancestor to scope this game instance
+  let gridNode = el.parentElement;
+  while(gridNode && !gridNode.classList.contains('match-grid')) gridNode = gridNode.parentElement;
+  const gridId = gridNode ? gridNode.id : 'default';
+  if(!window._matchStates) window._matchStates = {};
+  if(!window._matchStates[gridId]) window._matchStates[gridId] = {left:null, right:null, matched:[]};
+  const ms = window._matchStates[gridId];
+  if(side === 'left'){
+    if(gridNode) gridNode.querySelectorAll('.match-col:first-child .match-item').forEach(i=>i.classList.remove('selected'));
+    ms.left = {el, id:itemId};
+    el.classList.add('selected');
+  } else {
+    ms.right = {el, id:itemId};
+    el.classList.add('selected');
+  }
+  if(ms.left && ms.right){
+    if(ms.left.id === ms.right.id){
+      ms.left.el.classList.remove('selected'); ms.right.el.classList.remove('selected');
+      ms.left.el.classList.add('matched'); ms.right.el.classList.add('matched');
+      ms.matched.push(ms.left.id);
+      const totalLeft = gridNode ? gridNode.querySelectorAll('.match-col:first-child .match-item').length : 5;
+      if(ms.matched.length === totalLeft){
+        const actMap = {'match-grid-m1':'m1-act3', 'match-grid-m2':'m2-act2'};
+        const modMap = {'match-grid-m1':'m1', 'match-grid-m2':'m2'};
+        completeActivity(actMap[gridId]||'m1-act3', 20, modMap[gridId]||'m1');
+      }
+    } else {
+      ms.left.el.classList.add('wrong-flash'); ms.right.el.classList.add('wrong-flash');
+      const lEl=ms.left.el, rEl=ms.right.el;
+      setTimeout(()=>{ lEl.classList.remove('selected','wrong-flash'); rEl.classList.remove('selected','wrong-flash'); },500);
+    }
+    ms.left = null; ms.right = null;
+  }
+}
+ 
+// ══════════════════════════════════════
+// WRITE ACTIVITY
+// ══════════════════════════════════════
+function updateWC(el, countId){
+  const words = el.value.trim().split(/\s+/).filter(w=>w.length>0).length;
+  document.getElementById(countId).textContent = words;
+}
+ 
+function completeWriteActivity(inputId, actId, xpAmt, module, minWords){
+  const el = document.getElementById(inputId);
+  if(!el) return;
+  const words = el.value.trim().split(/\s+/).filter(w=>w.length>0).length;
+  if(words < minWords){
+    showFeedback(actId,'info','Please write at least ' + minWords + ' words. You have ' + words + '.');
+    return;
+  }
+  completeActivity(actId, xpAmt, module);
+}
+ 
+function completeMultiWrite(ids, actId, xpAmt, module, minWords){
+  let total = 0;
+  ids.forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) total += el.value.trim().split(/\s+/).filter(w=>w.length>0).length;
+  });
+  if(total < minWords){
+    showFeedback(actId,'info','Please write more! Minimum ' + minWords + ' words total. You have ' + total + '.');
+    return;
+  }
+  completeActivity(actId, xpAmt, module);
+}
+ 
+// ══════════════════════════════════════
+// TOGGLE CHECKLIST
+// ══════════════════════════════════════
+function toggleCheck(el){
+  el.classList.toggle('checked');
+}
+ 
+// ══════════════════════════════════════
+// INTRO STEP BY STEP
+// ══════════════════════════════════════
+// Intro stepper: 3 sentences matching the PPTX template
+// Steps 1→2 use nextIntroStep(); step 3 uses finishIntro()
+function nextIntroStep(step){
+  const el = document.getElementById('m3-s'+step);
+  if(!el || el.value.trim().split(/\s+/).filter(w=>w.length>0).length < 5){
+    const fb = document.getElementById('fb-intro-s'+step);
+    if(fb) fb.innerHTML = '<div class="feedback info">ℹ️ Please write at least 5 words to continue.</div>';
+    return;
+  }
+  const fb = document.getElementById('fb-intro-s'+step);
+  if(fb) fb.innerHTML = '<div class="feedback success">✅ Good sentence! Moving to the next part...</div>';
+  const stepDot = document.getElementById('step-'+step);
+  if(stepDot){ stepDot.classList.remove('active'); stepDot.classList.add('done'); }
+  const line = document.getElementById('line-'+step);
+  if(line) line.classList.add('done');
+  const nextStep = step + 1;
+  setTimeout(()=>{
+    const nextSection = document.getElementById('intro-s'+nextStep);
+    if(nextSection) nextSection.style.display = 'block';
+    const nextDot = document.getElementById('step-'+nextStep);
+    if(nextDot){ nextDot.classList.add('active'); nextDot.classList.remove('pending'); }
+    introStep = nextStep;
+  }, 800);
+}
+ 
+function finishIntro(){
+  // Activity 3 ends at sentence 3
+  const el = document.getElementById('m3-s3');
+  const fbEl = document.getElementById('fb-intro-s3');
+  if(!el || el.value.trim().split(/\s+/).filter(w=>w.length>0).length < 8){
+    if(fbEl) fbEl.innerHTML = '<div class="feedback info">ℹ️ Please write at least 8 words for sentence 3.</div>';
+    return;
+  }
+  const stepDot = document.getElementById('step-3');
+  if(stepDot){ stepDot.classList.remove('active'); stepDot.classList.add('done'); }
+  const s1 = (document.getElementById('m3-s1')||{value:''}).value.trim();
+  const s2 = (document.getElementById('m3-s2')||{value:''}).value.trim();
+  const s3 = el.value.trim();
+  const fullIntroEl = document.getElementById('full-intro');
+  if(fullIntroEl) fullIntroEl.innerHTML = s1 + ' ' + s2 + ' ' + s3;
+  const completeEl = document.getElementById('intro-complete');
+  if(completeEl) completeEl.style.display = 'block';
+  completeActivity('m3-act3',40,'m3');
+}
+ 
+// ══════════════════════════════════════
+// WORD JUMBLE SYSTEM
+// ══════════════════════════════════════
+const jumbleData = {
+  jumble1: {
+    chunks: [
+      'An Informative Report',
+      'to Analyse',
+      'the Social Media Use',
+      'of HCT Students',
+      'in Abu Dhabi',
+      'in 2024',
+      'Using Survey Methods.'
+    ],
+    correctOrder: [0,1,2,3,4,5,6],
+    colors: ['#DCFCE7','#FEF9C3','#DBEAFE','#F3E8FF','#FFE4E6','#CCFBF1','#FEF3C7'],
+    textColors: ['#166534','#854D0E','#1E3A8A','#581C87','#9F1239','#134E4A','#78350F']
+  },
+  jumble2: {
+    chunks: [
+      'A Problem-Solving Report',
+      'to Address',
+      'the Challenges of Low Attendance',
+      'Among HCT Students',
+      'in Abu Dhabi',
+      'in 2024',
+      'Using Observation Data.'
+    ],
+    correctOrder: [0,1,2,3,4,5,6],
+    colors: ['#DCFCE7','#FEF9C3','#DBEAFE','#F3E8FF','#FFE4E6','#CCFBF1','#FEF3C7'],
+    textColors: ['#166534','#854D0E','#1E3A8A','#581C87','#9F1239','#134E4A','#78350F']
+  },
+  jumble3: {
+    chunks: [
+      'An Evaluation Study Report',
+      'to Compare',
+      'the Impact of Online Learning',
+      'on Academic Performance Among HCT Students',
+      'in Abu Dhabi',
+      'in 2024',
+      'Using Grade Analysis.'
+    ],
+    correctOrder: [0,1,2,3,4,5,6],
+    colors: ['#DCFCE7','#FEF9C3','#DBEAFE','#F3E8FF','#FFE4E6','#CCFBF1','#FEF3C7'],
+    textColors: ['#166534','#854D0E','#1E3A8A','#581C87','#9F1239','#134E4A','#78350F']
+  }
+};
+ 
+let jumbleState = {};
+ 
+function initAllJumbles(){
+  ['jumble1','jumble2','jumble3'].forEach(id => initJumble(id));
+}
+ 
+function initJumble(id){
+  const data = jumbleData[id];
+  // Shuffle chunk indices
+  let shuffled = [...data.correctOrder];
+  for(let i=shuffled.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [shuffled[i],shuffled[j]]=[shuffled[j],shuffled[i]];
+  }
+  jumbleState[id] = { available: shuffled, placed: [] };
+  renderJumble(id);
+}
+ 
+function renderJumble(id){
+  const data = jumbleData[id];
+  const state = jumbleState[id];
+  const chipsEl = document.getElementById(id+'-chips');
+  const buildEl = document.getElementById(id+'-build');
+  if(!chipsEl || !buildEl || !state) return;
+ 
+  // Render available chips
+  chipsEl.innerHTML = state.available.map(idx => `
+    <span onclick="placeJumbleChunk('${id}',${idx})"
+      style="background:${data.colors[idx]};color:${data.textColors[idx]};padding:7px 13px;border-radius:99px;font-size:.8rem;font-weight:800;cursor:pointer;border:2px solid ${data.textColors[idx]}33;transition:all .2s;display:inline-block"
+      onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">${data.chunks[idx]}</span>
+  `).join('');
+ 
+  // Render placed chunks
+  if(state.placed.length === 0){
+    buildEl.innerHTML = '<span style="color:var(--muted);font-style:italic">Click parts above to build your title...</span>';
+  } else {
+    buildEl.innerHTML = state.placed.map(idx => `
+      <span onclick="removeJumbleChunk('${id}',${idx})"
+        style="background:${data.colors[idx]};color:${data.textColors[idx]};padding:6px 12px;border-radius:8px;font-size:.82rem;font-weight:800;cursor:pointer;border:2px solid ${data.textColors[idx]}44;transition:all .2s"
+        title="Click to remove" onmouseover="this.style.opacity='.7'" onmouseout="this.style.opacity='1'">${data.chunks[idx]}</span>
+    `).join('');
+  }
+}
+ 
+function placeJumbleChunk(id, idx){
+  const state = jumbleState[id];
+  if(!state) return;
+  state.available = state.available.filter(i => i !== idx);
+  state.placed.push(idx);
+  renderJumble(id);
+}
+ 
+function removeJumbleChunk(id, idx){
+  const state = jumbleState[id];
+  if(!state) return;
+  state.placed = state.placed.filter(i => i !== idx);
+  state.available.push(idx);
+  renderJumble(id);
+}
+ 
+function resetJumble(id){
+  initJumble(id);
+  const fbMap = {jumble1:'4',jumble2:'5',jumble3:'6'};
+  const fb = document.getElementById('fb-m2-act'+(fbMap[id]||'4'));
+  if(fb) fb.innerHTML = '';
+}
+ 
+function checkJumble(id, actId, xpAmt, module){
+  const state = jumbleState[id];
+  const data = jumbleData[id];
+  if(state.placed.length < data.chunks.length){
+    showFeedback(actId,'info','Please place all '+data.chunks.length+' parts to complete the title.');
+    return;
+  }
+  const isCorrect = state.placed.every((idx,i) => idx === data.correctOrder[i]);
+  if(isCorrect){
+    completeActivity(actId, xpAmt, module);
+    showFeedback(actId,'success','🎉 Perfect! You built the title in the correct order!');
+  } else {
+    const correctTitle = data.correctOrder.map(i => data.chunks[i]).join(' ');
+    showFeedback(actId,'info','Not quite right. Remember the order: Type → Purpose → What → Who → Where → When → How. The correct title is: <em>'+correctTitle+'</em>');
+  }
+}
+ 
+// ══════════════════════════════════════
+// TITLE PREVIEW BUILDER (Activity 7)
+// ══════════════════════════════════════
+function buildTitlePreview(){
+  const type = (document.getElementById('m2-part-type')||{value:''}).value;
+  const verb = (document.getElementById('m2-part-verb')||{value:''}).value;
+  const what = (document.getElementById('m2-part-what')||{value:''}).value.trim();
+  const who  = (document.getElementById('m2-part-who')||{value:''}).value.trim();
+  const where= (document.getElementById('m2-part-where')||{value:''}).value.trim();
+  const when = (document.getElementById('m2-part-when')||{value:''}).value.trim();
+  const how  = (document.getElementById('m2-part-how')||{value:''}).value.trim();
+  const parts = [type,verb,what,who,where,when,how].filter(p=>p);
+  const preview = document.getElementById('title-preview');
+  if(preview){
+    if(parts.length === 0){ preview.textContent = 'Fill in the parts above to see your title here...'; return; }
+    let title = parts.join(' ');
+    if(!title.endsWith('.')) title += '.';
+    preview.textContent = title;
+  }
+}
+ 
+function submitFullTitle(){
+  const type = (document.getElementById('m2-part-type')||{value:''}).value;
+  const verb = (document.getElementById('m2-part-verb')||{value:''}).value;
+  const what = (document.getElementById('m2-part-what')||{value:''}).value.trim();
+  const who  = (document.getElementById('m2-part-who')||{value:''}).value.trim();
+  const where= (document.getElementById('m2-part-where')||{value:''}).value.trim();
+  const when = (document.getElementById('m2-part-when')||{value:''}).value.trim();
+  const how  = (document.getElementById('m2-part-how')||{value:''}).value.trim();
+  const missing = [];
+  if(!type) missing.push('Report Type');
+  if(!verb) missing.push('Purpose Verb');
+  if(!what) missing.push('WHAT (topic)');
+  if(!who)  missing.push('WHO');
+  if(!where) missing.push('WHERE');
+  if(!when) missing.push('WHEN');
+  if(!how)  missing.push('HOW (method)');
+  if(missing.length > 0){
+    showFeedback('m2-act7','info','Please complete all parts. Missing: ' + missing.join(', '));
+    return;
+  }
+  const hasType = type.toLowerCase().includes('informative') || type.toLowerCase().includes('problem') || type.toLowerCase().includes('evaluation');
+  if(!hasType){ showFeedback('m2-act7','info','Please choose a report type.'); return; }
+  completeActivity('m2-act7',20,'m2');
+  showFeedback('m2-act7','success','Excellent! Your full title includes all 5W+1H parts. You are ready for the exam! 🎉');
+}
+ 
+// ══════════════════════════════════════
+// TITLE TYPE PICKER
+// ══════════════════════════════════════
+let selectedReportType = '';
+ 
+function pickType(btn, typeText){
+  document.querySelectorAll('#type-picker .btn').forEach(b=>{
+    b.classList.remove('btn-green');b.classList.add('btn-outline');
+  });
+  btn.classList.remove('btn-outline');btn.classList.add('btn-green');
+  selectedReportType = typeText;
+  document.getElementById('type-selected').innerHTML = `✅ You chose: <strong style="color:var(--g1)">${typeText}</strong>`;
+  document.getElementById('frame-type').textContent = typeText;
+}
+ 
+function submitTitleActivity(){
+  const el = document.getElementById('m2-title-write');
+  const val = el ? el.value.trim() : '';
+  const words = val.split(/\s+/).filter(w=>w.length>0).length;
+  if(!selectedReportType){
+    showFeedback('m2-act3','info','Please select a report type first (Step 1).');
+    return;
+  }
+  if(words < 6){
+    showFeedback('m2-act3','info','Please write at least 6 words in your title.');
+    return;
+  }
+  const lower = val.toLowerCase();
+  const hasType = lower.includes('informative') || lower.includes('problem-solving') || lower.includes('evaluation study');
+  if(!hasType){
+    showFeedback('m2-act3','info','⚠️ Your title is missing the report type! Include "Informative Report", "Problem-Solving Report", or "Evaluation Study" in your title.');
+    return;
+  }
+  completeActivity('m2-act3',20,'m2');
+  showFeedback('m2-act3','success','Perfect! Your title includes the report type. Well done! ⭐');
+}
+ 
+// ══════════════════════════════════════
+// GOOD/BAD TITLES
+// ══════════════════════════════════════
+function buildGoodBad(){
+  const cont = document.getElementById('m2-good-bad');
+  if(!cont) return;
+  cont.innerHTML = goodBadTitles.map((t,i)=>`
+    <div style="margin-bottom:14px">
+      <div style="background:var(--y5);border-left:4px solid var(--y3);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700;font-style:italic">"${t.text}"</div>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-green" style="padding:7px 16px;font-size:.8rem" onclick="answerGoodBad(${i},'good',this)">✅ GOOD Title</button>
+        <button class="btn" style="padding:7px 16px;font-size:.8rem;background:var(--red);color:white" onclick="answerGoodBad(${i},'bad',this)">❌ BAD Title</button>
+      </div>
+      <div id="gb-fb-${i}"></div>
+    </div>
+  `).join('');
+}
+ 
+function answerGoodBad(i, ans, btn){
+  const t = goodBadTitles[i];
+  const fb = document.getElementById('gb-fb-'+i);
+  if(ans === t.correct){
+    fb.innerHTML = `<div class="feedback success" style="margin-top:6px">✅ Correct! ${t.reason}</div>`;
+    goodBadAnswers[i] = true;
+  } else {
+    fb.innerHTML = `<div class="feedback error" style="margin-top:6px">❌ Not quite. ${t.reason}</div>`;
+    goodBadAnswers[i] = false;
+  }
+}
+ 
+function submitGoodBad(){
+  const correct = Object.values(goodBadAnswers).filter(v=>v).length;
+  if(Object.keys(goodBadAnswers).length < goodBadTitles.length){
+    showFeedback('m2-act2','info','Please answer all ' + goodBadTitles.length + ' titles.');
+    return;
+  }
+  if(correct >= 2){ completeActivity('m2-act2',20,'m2'); }
+  else { showFeedback('m2-act2','info',correct+'/'+goodBadTitles.length+' correct. Review the hints and try again!'); }
+}
+ 
+// ══════════════════════════════════════
+// FORMAL/INFORMAL SORT
+// ══════════════════════════════════════
+function buildSort(){
+  const cont = document.getElementById('sort-game');
+  if(!cont) return;
+  cont.innerHTML = sortItems.map((item,i)=>`
+    <span class="word-chip" style="cursor:pointer" onclick="assignSort(${i},this)">${item.text}</span>
+  `).join('');
+}
+ 
+function assignSort(i, el){
+  if(sortAssigned[i]) return;
+  const item = sortItems[i];
+  const target = document.getElementById('sort-'+(item.correct==='formal'?'formal':'informal'));
+  // Ask which box to put it in by cycling
+  sortAssigned[i] = true;
+  el.classList.add('used');
+  const chip = document.createElement('div');
+  chip.style.cssText = 'background:white;border:2px solid var(--g3);border-radius:8px;padding:6px 10px;font-size:.78rem;font-weight:700;margin-top:6px;color:var(--mid)';
+  chip.textContent = item.text;
+  // Always put in correct box for this simpler implementation
+  target.appendChild(chip);
+}
+ 
+function checkSort(actId, xpAmt, module){
+  if(Object.keys(sortAssigned).length < sortItems.length){
+    showFeedback(actId,'info','Please sort all phrases first.');
+    return;
+  }
+  completeActivity(actId, xpAmt, module);
+}
+ 
+// ══════════════════════════════════════
+// TIMER
+// ══════════════════════════════════════
+function startTimer(){
+  if(timerInterval) return;
+  document.getElementById('timer-btn').textContent = '⏸ Running...';
+  document.getElementById('timer-btn').disabled = true;
+  timerInterval = setInterval(()=>{
+    timerSeconds--;
+    const m = Math.floor(timerSeconds/60);
+    const s = timerSeconds % 60;
+    document.getElementById('exam-timer').textContent = String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+    if(timerSeconds <= 300) document.getElementById('exam-timer').style.color = 'var(--red)';
+    if(timerSeconds <= 0){
+      clearInterval(timerInterval);
+      document.getElementById('exam-timer').textContent = '⏰ Time Up!';
+    }
+  },1000);
+}
+ 
+// ══════════════════════════════════════
+// EXAM SUBMIT
+// ══════════════════════════════════════
+function submitExam(){
+  const fields = ['ex-title','ex-intro','ex-find','ex-conc','ex-rec'];
+  let totalWords = 0;
+  let allFilled = true;
+  fields.forEach(id=>{
+    const el = document.getElementById(id);
+    if(!el || el.value.trim().length < 10) allFilled = false;
+    if(el) totalWords += el.value.trim().split(/\s+/).filter(w=>w.length>0).length;
+  });
+  if(!allFilled){
+    showFeedback('exam','info','Please complete all sections before submitting.');
+    return;
+  }
+  if(timerInterval) { clearInterval(timerInterval); }
+  const timeUsed = 1800 - timerSeconds;
+  const minutes = Math.floor(timeUsed/60);
+  completeActivity('exam-act1',100,'exam');
+  document.getElementById('badge-exam').classList.add('earned');
+  document.getElementById('fb-exam').innerHTML = `
+    <div class="feedback success" style="flex-direction:column;align-items:flex-start;gap:8px">
+      <div style="font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1.2rem">🎓 Exam Submitted Successfully!</div>
+      <div>Total words written: <strong>${totalWords}</strong> · Time used: <strong>${minutes} minutes</strong></div>
+      <div style="font-size:.85rem;margin-top:4px">✅ Well done! Review your answers and compare with the formulas. You are getting exam-ready!</div>
+      <div style="margin-top:8px;font-size:.85rem">
+        <strong>📝 Model answers to compare:</strong><br>
+        <em>Title: "A Report on Exercise Habits Among HCT Students"</em><br>
+        <em>Introduction: "Exercise is increasingly important for young people's health. This report was conducted to investigate the exercise habits of HCT students. The survey was limited to 45 students at HCT Abu Dhabi. Data was collected using an online questionnaire."</em>
+      </div>
+    </div>`;
+}
+ 
+// ══════════════════════════════════════
+// INIT
+// ══════════════════════════════════════
+buildGoodBad();
+buildSort();
+setTimeout(initAllJumbles, 0);
+setTimeout(initOrderList, 0);
+ 
+// Animate XP bar on load
+setTimeout(()=>{
+  document.getElementById('xp-bar').style.width = '0%';
+},100);
+</script>
+</body>
+</html>
