@@ -244,6 +244,22 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
  
 /* scrollbar */
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--g5)}::-webkit-scrollbar-thumb{background:var(--g3);border-radius:99px}
+ 
+/* ── SAVE BAR ── */
+.save-bar{background:linear-gradient(135deg,var(--g5),var(--y5));border:2px solid var(--g3);border-radius:var(--radius);padding:14px 20px;margin-top:20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.save-bar .save-info{font-size:.8rem;color:var(--muted);font-weight:700;flex:1;min-width:160px}
+.save-bar .save-info strong{color:var(--g1)}
+.btn-save{background:var(--g1);color:white;padding:10px 20px;border-radius:99px;border:none;font-weight:800;font-size:.85rem;cursor:pointer;display:flex;align-items:center;gap:7px;transition:all .2s;box-shadow:0 4px 14px rgba(22,163,74,.3)}
+.btn-save:hover{background:#15803D;transform:translateY(-2px)}
+.save-confirm{font-size:.8rem;font-weight:800;color:var(--g1);opacity:0;transition:opacity .4s;display:flex;align-items:center;gap:5px}
+.save-confirm.show{opacity:1}
+/* home saved card */
+.saved-card{background:white;border:2px solid var(--g3);border-radius:14px;padding:16px 18px;margin-top:14px;display:none}
+.saved-card.has-data{display:block}
+.saved-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--g4);font-size:.83rem;font-weight:700;color:var(--mid)}
+.saved-row:last-child{border:none}
+.saved-row .sr-icon{font-size:1rem;width:22px;text-align:center}
+.saved-row .sr-status{margin-left:auto;font-size:.75rem;background:var(--g4);color:var(--g1);padding:2px 8px;border-radius:99px}
 </style>
 </head>
 <body>
@@ -345,6 +361,17 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       <div class="badge-item" id="badge-exam"><span class="bi">🎓</span> Exam Ready</div>
     </div>
   </div>
+</div>
+ 
+  <div class="card" id="saved-progress-card" style="display:none">
+    <div class="card-title">📂 Your Saved Progress</div>
+    <p style="font-size:.85rem;color:var(--muted);margin-bottom:10px">Your previous work has been restored automatically. Click a module to continue.</p>
+    <div id="saved-summary"></div>
+    <div class="btn-row" style="margin-top:12px">
+      <button class="btn btn-outline" style="font-size:.8rem;color:var(--red);border-color:var(--red)" onclick="clearAllProgress()">🗑️ Clear All Saved Data</button>
+    </div>
+  </div>
+ 
 </div>
  
 <!-- ══ MODULE 1 — REPORT PARTS ══ -->
@@ -456,6 +483,15 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       </div>
     </div>
     <div id="fb-m1-act3" style="margin-top:12px"></div>
+  </div>
+ 
+  <div class="save-bar">
+    <div>
+      <div style="font-weight:900;font-size:.88rem;color:var(--g1);margin-bottom:3px">💾 📋 Module 1</div>
+      <div class="save-info">No text to save — activity scores saved automatically. &nbsp;|&nbsp; Last saved: <strong id="saved-time-m1">Not yet saved</strong></div>
+    </div>
+    <button class="btn-save" onclick="saveModuleData('m1')">💾 Save My Progress</button>
+    <div class="save-confirm" id="save-confirm-m1">✅ Saved!</div>
   </div>
 </div>
  
@@ -775,6 +811,15 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="btn-row"><button class="btn btn-green" onclick="submitFullTitle()">✅ Submit My Title</button></div>
     <div id="fb-m2-act7"></div>
   </div>
+ 
+  <div class="save-bar">
+    <div>
+      <div style="font-weight:900;font-size:.88rem;color:var(--g1);margin-bottom:3px">💾 ✍️ Module 2</div>
+      <div class="save-info">Saves your title builder inputs. &nbsp;|&nbsp; Last saved: <strong id="saved-time-m2">Not yet saved</strong></div>
+    </div>
+    <button class="btn-save" onclick="saveModuleData('m2')">💾 Save My Progress</button>
+    <div class="save-confirm" id="save-confirm-m2">✅ Saved!</div>
+  </div>
 </div>
  
 <!-- ══ MODULE 3 — INTRODUCTION ══ -->
@@ -997,6 +1042,15 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       </div>
     </div>
   </div>
+ 
+  <div class="save-bar">
+    <div>
+      <div style="font-weight:900;font-size:.88rem;color:var(--g1);margin-bottom:3px">💾 📖 Module 3</div>
+      <div class="save-info">Saves your introduction sentences. &nbsp;|&nbsp; Last saved: <strong id="saved-time-m3">Not yet saved</strong></div>
+    </div>
+    <button class="btn-save" onclick="saveModuleData('m3')">💾 Save My Progress</button>
+    <div class="save-confirm" id="save-confirm-m3">✅ Saved!</div>
+  </div>
 </div>
  
 <!-- ══ MODULE 4 — FINDINGS ══ -->
@@ -1140,6 +1194,15 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="btn-row"><button class="btn btn-green" onclick="completeMultiWrite(['m4-s1','m4-s2','m4-s3'],'m4-act3',40,'m4',5)">🎉 Submit Findings</button></div>
     <div id="fb-m4-act3"></div>
   </div>
+ 
+  <div class="save-bar">
+    <div>
+      <div style="font-weight:900;font-size:.88rem;color:var(--g1);margin-bottom:3px">💾 📊 Module 4</div>
+      <div class="save-info">Saves your findings sentences. &nbsp;|&nbsp; Last saved: <strong id="saved-time-m4">Not yet saved</strong></div>
+    </div>
+    <button class="btn-save" onclick="saveModuleData('m4')">💾 Save My Progress</button>
+    <div class="save-confirm" id="save-confirm-m4">✅ Saved!</div>
+  </div>
 </div>
  
 <!-- ══ MODULE 5 — CONCLUSION ══ -->
@@ -1237,6 +1300,15 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     </div>
     <div class="btn-row"><button class="btn btn-green" onclick="completeMultiWrite(['m5-conc','m5-rec'],'m5-act2',40,'m5',8)">🎉 Submit!</button></div>
     <div id="fb-m5-act2"></div>
+  </div>
+ 
+  <div class="save-bar">
+    <div>
+      <div style="font-weight:900;font-size:.88rem;color:var(--g1);margin-bottom:3px">💾 🔚 Module 5</div>
+      <div class="save-info">Saves your conclusion and recommendations. &nbsp;|&nbsp; Last saved: <strong id="saved-time-m5">Not yet saved</strong></div>
+    </div>
+    <button class="btn-save" onclick="saveModuleData('m5')">💾 Save My Progress</button>
+    <div class="save-confirm" id="save-confirm-m5">✅ Saved!</div>
   </div>
 </div>
  
@@ -1344,6 +1416,15 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="btn-row"><button class="btn btn-green" onclick="completeWriteActivity('m6-rewrite1','m6-act3',20,'m6',8)">✅ Submit</button></div>
     <div id="fb-m6-act3"></div>
   </div>
+ 
+  <div class="save-bar">
+    <div>
+      <div style="font-weight:900;font-size:.88rem;color:var(--g1);margin-bottom:3px">💾 💬 Module 6</div>
+      <div class="save-info">Saves your formal rewrite. &nbsp;|&nbsp; Last saved: <strong id="saved-time-m6">Not yet saved</strong></div>
+    </div>
+    <button class="btn-save" onclick="saveModuleData('m6')">💾 Save My Progress</button>
+    <div class="save-confirm" id="save-confirm-m6">✅ Saved!</div>
+  </div>
 </div>
  
 <!-- ══ EXAM PRACTICE ══ -->
@@ -1428,10 +1509,18 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     </div>
     <div id="fb-exam"></div>
   </div>
+ 
+  <div class="save-bar">
+    <div>
+      <div style="font-weight:900;font-size:.88rem;color:var(--g1);margin-bottom:3px">💾 🎓 Exam Practice</div>
+      <div class="save-info">Saves all your exam answers. &nbsp;|&nbsp; Last saved: <strong id="saved-time-exam">Not yet saved</strong></div>
+    </div>
+    <button class="btn-save" onclick="saveModuleData('exam')">💾 Save My Progress</button>
+    <div class="save-confirm" id="save-confirm-exam">✅ Saved!</div>
+  </div>
 </div>
  
 </main>
-</div>
  
 <script>
 // ══════════════════════════════════════
@@ -2170,15 +2259,116 @@ function submitExam(){
   const minutes = Math.floor(timeUsed/60);
   completeActivity('exam-act1',100,'exam');
   document.getElementById('badge-exam').classList.add('earned');
+  // Auto-save exam answers on submit
+  saveModuleData('exam');
+ 
   document.getElementById('fb-exam').innerHTML = `
-    <div class="feedback success" style="flex-direction:column;align-items:flex-start;gap:8px">
-      <div style="font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1.2rem">🎓 Exam Submitted Successfully!</div>
-      <div>Total words written: <strong>${totalWords}</strong> · Time used: <strong>${minutes} minutes</strong></div>
-      <div style="font-size:.85rem;margin-top:4px">✅ Well done! Review your answers and compare with the formulas. You are getting exam-ready!</div>
-      <div style="margin-top:8px;font-size:.85rem">
-        <strong>📝 Model answers to compare:</strong><br>
-        <em>Title: "A Report on Exercise Habits Among HCT Students"</em><br>
-        <em>Introduction: "Exercise is increasingly important for young people's health. This report was conducted to investigate the exercise habits of HCT students. The survey was limited to 45 students at HCT Abu Dhabi. Data was collected using an online questionnaire."</em>
+    <div style="margin-top:16px">
+ 
+      <!-- Submission banner -->
+      <div style="background:linear-gradient(135deg,#0f5c2a,#16A34A);color:white;border-radius:14px;padding:20px 24px;margin-bottom:18px;display:flex;align-items:center;gap:16px">
+        <div style="font-size:2.5rem">🎓</div>
+        <div>
+          <div style="font-weight:900;font-size:1.15rem;margin-bottom:4px">Exam Submitted!</div>
+          <div style="font-size:.85rem;opacity:.85">Words written: <strong>${totalWords}</strong> &nbsp;·&nbsp; Time used: <strong>${minutes} min</strong></div>
+        </div>
+      </div>
+ 
+      <!-- Student answers side by side with model -->
+      <div style="font-weight:900;font-size:.95rem;color:var(--g1);margin-bottom:12px">📋 Compare Your Answers with the Model Answer</div>
+ 
+      <!-- Title -->
+      <div style="border:2px solid var(--g3);border-radius:12px;overflow:hidden;margin-bottom:12px">
+        <div style="background:var(--g1);color:white;font-weight:900;font-size:.75rem;padding:8px 14px;text-transform:uppercase;letter-spacing:.5px">1️⃣ Title</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+          <div style="padding:14px;background:#F8FFF8;border-right:2px solid var(--g3)">
+            <div style="font-size:.68rem;font-weight:900;color:var(--muted);text-transform:uppercase;margin-bottom:6px">✏️ Your Answer</div>
+            <div style="font-size:.88rem;color:var(--dark);font-weight:600;line-height:1.6">${document.getElementById('ex-title').value.trim() || '<em style="color:#9CA3AF">No answer written</em>'}</div>
+          </div>
+          <div style="padding:14px;background:#ECFDF5">
+            <div style="font-size:.68rem;font-weight:900;color:var(--g1);text-transform:uppercase;margin-bottom:6px">✅ Model Answer</div>
+            <div style="font-size:.88rem;color:var(--dark);font-weight:600;line-height:1.6">An Informative Report to Analyse the Exercise Habits of HCT Students in Abu Dhabi in 2024 Using a Google Form Questionnaire.</div>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Introduction -->
+      <div style="border:2px solid var(--y3);border-radius:12px;overflow:hidden;margin-bottom:12px">
+        <div style="background:var(--y2);color:var(--dark);font-weight:900;font-size:.75rem;padding:8px 14px;text-transform:uppercase;letter-spacing:.5px">2️⃣ Introduction (3 sentences)</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+          <div style="padding:14px;background:#FEFCE8;border-right:2px solid var(--y3)">
+            <div style="font-size:.68rem;font-weight:900;color:var(--muted);text-transform:uppercase;margin-bottom:6px">✏️ Your Answer</div>
+            <div style="font-size:.88rem;color:var(--dark);font-weight:600;line-height:1.8">${document.getElementById('ex-intro').value.trim() || '<em style="color:#9CA3AF">No answer written</em>'}</div>
+          </div>
+          <div style="padding:14px;background:#FEFCE8">
+            <div style="font-size:.68rem;font-weight:900;color:var(--y1);text-transform:uppercase;margin-bottom:6px">✅ Model Answer</div>
+            <div style="font-size:.88rem;color:var(--dark);font-weight:600;line-height:1.9">
+              <span style="background:var(--g4);color:#166534;padding:1px 6px;border-radius:5px">S1</span> This is an Informative report, requested by the college manager.<br>
+              <span style="background:var(--y4);color:#78350F;padding:1px 6px;border-radius:5px">S2</span> The purpose of this report is to analyse the exercise habits of HCT students to help improve student health and wellbeing.<br>
+              <span style="background:#DBEAFE;color:#1E3A8A;padding:1px 6px;border-radius:5px">S3</span> It includes an overview of the survey methods used, the key findings, and specific recommendations, with each section providing insights and data that support the main findings and conclusions.
+            </div>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Findings -->
+      <div style="border:2px solid #93C5FD;border-radius:12px;overflow:hidden;margin-bottom:12px">
+        <div style="background:#3B82F6;color:white;font-weight:900;font-size:.75rem;padding:8px 14px;text-transform:uppercase;letter-spacing:.5px">3️⃣ Findings (3+ sentences)</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+          <div style="padding:14px;background:#EFF6FF;border-right:2px solid #93C5FD">
+            <div style="font-size:.68rem;font-weight:900;color:var(--muted);text-transform:uppercase;margin-bottom:6px">✏️ Your Answer</div>
+            <div style="font-size:.88rem;color:var(--dark);font-weight:600;line-height:1.8">${document.getElementById('ex-find').value.trim() || '<em style="color:#9CA3AF">No answer written</em>'}</div>
+          </div>
+          <div style="padding:14px;background:#EFF6FF">
+            <div style="font-size:.68rem;font-weight:900;color:#1D4ED8;text-transform:uppercase;margin-bottom:6px">✅ Model Answer</div>
+            <div style="font-size:.88rem;color:var(--dark);font-weight:600;line-height:1.9">According to Figure 1, the majority of students (58%) exercise 3–4 times per week, making it the most common response. (See Figure 1) A further 25% reported exercising daily, while only 15% said they never exercise. (See Figure 1) Additionally, students who exercise 3–4 times per week also reported the highest energy levels and academic concentration. (See Figure 1)</div>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Conclusion -->
+      <div style="border:2px solid #C084FC;border-radius:12px;overflow:hidden;margin-bottom:12px">
+        <div style="background:#A855F7;color:white;font-weight:900;font-size:.75rem;padding:8px 14px;text-transform:uppercase;letter-spacing:.5px">4️⃣ Conclusion (2 sentences)</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+          <div style="padding:14px;background:#FDF4FF;border-right:2px solid #C084FC">
+            <div style="font-size:.68rem;font-weight:900;color:var(--muted);text-transform:uppercase;margin-bottom:6px">✏️ Your Answer</div>
+            <div style="font-size:.88rem;color:var(--dark);font-weight:600;line-height:1.8">${document.getElementById('ex-conc').value.trim() || '<em style="color:#9CA3AF">No answer written</em>'}</div>
+          </div>
+          <div style="padding:14px;background:#FDF4FF">
+            <div style="font-size:.68rem;font-weight:900;color:#7C3AED;text-transform:uppercase;margin-bottom:6px">✅ Model Answer</div>
+            <div style="font-size:.88rem;color:var(--dark);font-weight:600;line-height:1.9">Overall, the findings show that most HCT students have regular exercise habits, with the majority exercising between 3–4 times per week. However, a small proportion of students never exercise, which may negatively affect their academic performance and health.</div>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Recommendations -->
+      <div style="border:2px solid #FDC68A;border-radius:12px;overflow:hidden;margin-bottom:18px">
+        <div style="background:#F97316;color:white;font-weight:900;font-size:.75rem;padding:8px 14px;text-transform:uppercase;letter-spacing:.5px">5️⃣ Recommendations (2 sentences)</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+          <div style="padding:14px;background:#FFF7ED;border-right:2px solid #FDC68A">
+            <div style="font-size:.68rem;font-weight:900;color:var(--muted);text-transform:uppercase;margin-bottom:6px">✏️ Your Answer</div>
+            <div style="font-size:.88rem;color:var(--dark);font-weight:600;line-height:1.8">${document.getElementById('ex-rec').value.trim() || '<em style="color:#9CA3AF">No answer written</em>'}</div>
+          </div>
+          <div style="padding:14px;background:#FFF7ED">
+            <div style="font-size:.68rem;font-weight:900;color:#C2410C;text-transform:uppercase;margin-bottom:6px">✅ Model Answer</div>
+            <div style="font-size:.88rem;color:var(--dark);font-weight:600;line-height:1.9">It is recommended that the college should introduce a weekly sports programme to encourage students who do not exercise regularly. Additionally, students could be advised to use fitness apps to track their daily activity and set personal health goals.</div>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- Key tips -->
+      <div style="background:var(--dark);border-radius:12px;padding:16px 20px">
+        <div style="color:var(--y3);font-weight:900;font-size:.8rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">💡 Key Things to Check in Your Answer</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:.82rem;color:rgba(255,255,255,.85)">
+          <div>✅ Title includes the report type + "to" + purpose verb</div>
+          <div>✅ All 5W+1H parts in the title</div>
+          <div>✅ Introduction follows the 3-sentence template</div>
+          <div>✅ Findings use "According to Figure 1,"</div>
+          <div>✅ Findings include percentages from the chart</div>
+          <div>✅ Conclusion starts with "Overall, the findings show..."</div>
+          <div>✅ Recommendations use "It is recommended that..."</div>
+          <div>✅ No informal language or "I think..."</div>
+        </div>
       </div>
     </div>`;
 }
@@ -2195,6 +2385,196 @@ setTimeout(initOrderList, 0);
 setTimeout(()=>{
   document.getElementById('xp-bar').style.width = '0%';
 },100);
+ 
+ 
+// ══════════════════════════════════════
+// SAVE / LOAD SYSTEM (localStorage)
+// ══════════════════════════════════════
+const SAVE_KEY = 'lsc1103_booster_v2';
+ 
+// Fields to save per module
+const MODULE_FIELDS = {
+  m1: [],
+  m2: ['m2-part-type','m2-part-verb','m2-part-what','m2-part-who','m2-part-where','m2-part-when','m2-part-how','m2-title-write'],
+  m3: ['m3-s1','m3-s2','m3-s3'],
+  m4: ['m4-s1','m4-s2','m4-s3'],
+  m5: ['m5-conc','m5-rec'],
+  m6: ['m6-rewrite1'],
+  exam: ['ex-title','ex-intro','ex-find','ex-conc','ex-rec']
+};
+ 
+const MODULE_LABELS = {
+  m1:'📋 Report Parts', m2:'✍️ Title Writing', m3:'📖 Introduction',
+  m4:'📊 Findings', m5:'🔚 Conclusion', m6:'💬 Language Bank', exam:'🎓 Exam Practice'
+};
+ 
+function saveModuleData(mod){
+  try {
+    // Load existing save or start fresh
+    const existing = JSON.parse(localStorage.getItem(SAVE_KEY) || '{}');
+    
+    // Save global state
+    existing.xp = xp;
+    existing.completed = [...completedActivities];
+    existing.stars = moduleStars;
+    
+    // Save this module's text fields
+    existing.fields = existing.fields || {};
+    existing.fields[mod] = {};
+    (MODULE_FIELDS[mod] || []).forEach(id => {
+      const el = document.getElementById(id);
+      if(el) existing.fields[mod][id] = el.value || el.textContent || '';
+    });
+    
+    // Save timestamp per module
+    existing.savedAt = existing.savedAt || {};
+    const now = new Date();
+    const timeStr = now.toLocaleDateString('en-GB',{day:'2-digit',month:'short'}) + ' ' +
+                    now.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+    existing.savedAt[mod] = timeStr;
+    existing.savedAt['_last'] = timeStr;
+ 
+    localStorage.setItem(SAVE_KEY, JSON.stringify(existing));
+    
+    // Show confirmation
+    const confirm = document.getElementById('save-confirm-'+mod);
+    const timeEl  = document.getElementById('saved-time-'+mod);
+    if(confirm){ confirm.classList.add('show'); setTimeout(()=>confirm.classList.remove('show'), 2500); }
+    if(timeEl)  timeEl.textContent = timeStr;
+    showToast('Progress saved!', 0);
+    document.getElementById('toast-xp').style.display = 'none';
+    setTimeout(()=>{ const txp=document.getElementById('toast-xp'); if(txp) txp.style.display=''; }, 3000);
+ 
+  } catch(e){ console.warn('Save failed:', e); }
+}
+ 
+function loadAllData(){
+  try {
+    const raw = localStorage.getItem(SAVE_KEY);
+    if(!raw) return;
+    const data = JSON.parse(raw);
+ 
+    // Restore XP and level
+    if(data.xp){
+      xp = data.xp;
+      document.getElementById('xp-display').textContent = xp;
+      const lvl = getCurrentLevel();
+      const nextLvlXP = levels[lvl+1] ? levels[lvl+1].min : levels[lvl].min + 200;
+      const progress = Math.min(((xp - levels[lvl].min) / (nextLvlXP - levels[lvl].min)) * 100, 100);
+      document.getElementById('xp-bar').style.width = progress + '%';
+      document.getElementById('level-badge').textContent = 'Lv ' + (lvl+1);
+      document.getElementById('level-name').textContent = levels[lvl].name;
+    }
+ 
+    // Restore completed activities
+    if(data.completed){
+      data.completed.forEach(id => completedActivities.add(id));
+    }
+ 
+    // Restore module stars
+    if(data.stars){
+      moduleStars = {...moduleStars, ...data.stars};
+      Object.keys(moduleStars).forEach(mod => updateStars(mod));
+    }
+ 
+    // Restore text fields
+    if(data.fields){
+      Object.keys(data.fields).forEach(mod => {
+        const fields = data.fields[mod];
+        Object.keys(fields).forEach(id => {
+          const el = document.getElementById(id);
+          if(el && fields[id]){
+            el.value = fields[id];
+            // Trigger word count update
+            const wcMap = {
+              'm3-s1':'wc-s1','m3-s2':'wc-s2','m3-s3':'wc-s3',
+              'm4-s1':'wc-f1','m4-s2':'wc-f2','m4-s3':'wc-f3',
+              'm5-conc':'wc-conc','m5-rec':'wc-rec',
+              'm6-rewrite1':'wc-rw1',
+              'ex-title':'wc-ext','ex-intro':'wc-exi','ex-find':'wc-exf',
+              'ex-conc':'wc-exc','ex-rec':'wc-exr'
+            };
+            if(wcMap[id]){ 
+              const wc = document.getElementById(wcMap[id]);
+              if(wc) wc.textContent = el.value.trim().split(/\s+/).filter(w=>w.length>0).length;
+            }
+            // Trigger title preview rebuild
+            if(id.startsWith('m2-part')) buildTitlePreview();
+          }
+        });
+      });
+    }
+ 
+    // Restore saved timestamps in save bars
+    if(data.savedAt){
+      Object.keys(data.savedAt).forEach(mod => {
+        if(mod === '_last') return;
+        const el = document.getElementById('saved-time-'+mod);
+        if(el) el.textContent = data.savedAt[mod];
+      });
+    }
+ 
+    // Show the saved progress card on home
+    updateHomeSavedCard(data);
+ 
+  } catch(e){ console.warn('Load failed:', e); }
+}
+ 
+function updateHomeSavedCard(data){
+  if(!data) {
+    try { data = JSON.parse(localStorage.getItem(SAVE_KEY) || 'null'); } catch(e){}
+  }
+  const card = document.getElementById('saved-progress-card');
+  const summary = document.getElementById('saved-summary');
+  if(!card || !summary || !data) return;
+ 
+  const hasMeaningfulData = (data.xp && data.xp > 0) || (data.completed && data.completed.length > 0);
+  if(!hasMeaningfulData){ card.style.display = 'none'; return; }
+ 
+  card.style.display = 'block';
+  const savedAt = (data.savedAt || {})['_last'] || 'Unknown';
+  
+  const rows = Object.keys(MODULE_LABELS).map(mod => {
+    const stars = (data.stars || {})[mod] || 0;
+    const starStr = stars >= 3 ? '⭐⭐⭐' : stars === 2 ? '⭐⭐' : stars === 1 ? '⭐' : '';
+    const hasText = data.fields && data.fields[mod] && 
+                    Object.values(data.fields[mod]).some(v => v && v.trim().length > 0);
+    const status = stars > 0 ? starStr : hasText ? '✏️ In progress' : '—';
+    return `<div class="saved-row">
+      <span class="sr-icon">${MODULE_LABELS[mod].split(' ')[0]}</span>
+      <span>${MODULE_LABELS[mod].substring(2)}</span>
+      <span class="sr-status">${status}</span>
+    </div>`;
+  }).join('');
+ 
+  summary.innerHTML = `
+    <div style="font-size:.78rem;color:var(--muted);margin-bottom:10px">Last saved: <strong>${savedAt}</strong> &nbsp;|&nbsp; XP: <strong style="color:var(--g1)">${data.xp || 0}</strong></div>
+    ${rows}`;
+}
+ 
+function clearAllProgress(){
+  if(!confirm('Are you sure you want to clear all your saved progress? This cannot be undone.')) return;
+  localStorage.removeItem(SAVE_KEY);
+  location.reload();
+}
+ 
+// Auto-save XP whenever it changes
+const _origAddXP = addXP;
+function addXP(amount){
+  _origAddXP(amount);
+  // Silently save global state after XP update
+  try {
+    const existing = JSON.parse(localStorage.getItem(SAVE_KEY) || '{}');
+    existing.xp = xp;
+    existing.completed = [...completedActivities];
+    existing.stars = moduleStars;
+    localStorage.setItem(SAVE_KEY, JSON.stringify(existing));
+  } catch(e){}
+}
+ 
+// Load on startup (after all init)
+setTimeout(loadAllData, 150);
+ 
 </script>
 </body>
 </html>
