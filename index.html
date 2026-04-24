@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Report Writing Booster | LSC 1103</title>
- 
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -16,7 +16,7 @@
   --radius:16px;
 }
 body{font-family:system-ui,-apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;background:var(--g5);color:var(--dark);min-height:100vh;overflow-x:hidden}
- 
+
 /* ── LAYOUT ── */
 *{box-sizing:border-box}
 body{margin:0;padding:0}
@@ -31,7 +31,7 @@ body{margin:0;padding:0}
 .topbar-bar-wrap{width:90px;background:rgba(255,255,255,.2);border-radius:99px;height:7px;overflow:hidden}
 .topbar-bar-fill{height:100%;background:linear-gradient(90deg,var(--y3),var(--y2));border-radius:99px;transition:width .6s ease;width:0%}
 .level-pill{background:var(--y3);color:var(--dark);font-weight:900;font-size:.68rem;padding:3px 9px;border-radius:99px;white-space:nowrap}
- 
+
 .topbar-nav{display:flex;align-items:center;gap:2px;padding:6px 16px 8px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
 .topbar-nav::-webkit-scrollbar{display:none}
 .nav-item{display:flex;align-items:center;gap:6px;padding:7px 13px;cursor:pointer;font-size:.78rem;font-weight:700;border-radius:99px;border:2px solid transparent;color:rgba(255,255,255,.75);white-space:nowrap;transition:all .2s;flex-shrink:0}
@@ -39,12 +39,12 @@ body{margin:0;padding:0}
 .nav-item.active{background:rgba(255,255,255,.18);border-color:var(--y3);color:var(--y3)}
 .nav-icon{font-size:.9rem}
 .nav-stars{font-size:.65rem;margin-left:2px}
- 
+
 .main{max-width:860px;margin:0 auto;padding:26px 24px 80px;min-height:calc(100vh - 110px)}
 @media(max-width:640px){.main{padding:16px 14px 60px}.topbar-xp-label,.topbar-bar-wrap{display:none}}
 /* ── SIDEBAR ── */
- 
- 
+
+
 /* ── MAIN HEADER ── */
 .page-header{background:white;border-radius:var(--radius);padding:22px 26px;margin-bottom:22px;box-shadow:var(--shadow);display:flex;align-items:center;gap:16px;position:relative;overflow:hidden}
 .page-header::before{content:'';position:absolute;right:-20px;top:-20px;width:120px;height:120px;background:var(--g4);border-radius:50%;opacity:.4}
@@ -52,30 +52,30 @@ body{margin:0;padding:0}
 .page-header-text h2{font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1.5rem;color:var(--g1)}
 .page-header-text p{font-size:.85rem;color:var(--muted);margin-top:2px}
 .page-header-xp{margin-left:auto;background:var(--y4);color:var(--y1);font-weight:900;font-size:.8rem;padding:5px 12px;border-radius:99px;display:flex;align-items:center;gap:5px;z-index:1}
- 
+
 /* ── CARDS ── */
 .card{background:white;border-radius:var(--radius);padding:22px;margin-bottom:18px;box-shadow:var(--shadow);overflow:hidden;min-width:0}
 .card-title{font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1.1rem;color:var(--g1);margin-bottom:12px;display:flex;align-items:center;gap:8px}
 .card-subtitle{font-size:.85rem;color:var(--muted);margin-bottom:16px;line-height:1.5}
- 
+
 /* ── LESSON BOX ── */
 .lesson-box{background:linear-gradient(135deg,var(--g5) 0%,var(--y5) 100%);border:2px solid var(--g3);border-radius:14px;padding:18px 20px;margin-bottom:16px}
 .lesson-box .lb-label{font-size:.7rem;font-weight:900;text-transform:uppercase;letter-spacing:.8px;color:var(--g1);margin-bottom:8px}
 .lesson-box p{font-size:.9rem;line-height:1.7;color:var(--mid)}
 .lesson-box strong{color:var(--g1)}
- 
+
 /* ── FORMULA BOX ── */
 .formula-box{background:var(--dark);border-radius:12px;padding:16px 20px;margin:14px 0;color:white}
 .formula-box .fl{font-size:.7rem;font-weight:900;text-transform:uppercase;letter-spacing:.8px;color:var(--y3);margin-bottom:8px}
 .formula-box code{font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1rem;color:var(--y3);display:block;line-height:1.6}
 .formula-box .fex{font-size:.82rem;color:rgba(255,255,255,.7);margin-top:8px;font-style:italic}
- 
+
 /* ── MODEL SENTENCE ── */
 .model-sent{background:var(--g4);border-left:5px solid var(--g2);border-radius:0 12px 12px 0;padding:14px 18px;margin:12px 0}
 .model-sent .ms-label{font-size:.68rem;font-weight:900;text-transform:uppercase;color:var(--g1);letter-spacing:.7px;margin-bottom:5px}
 .model-sent p{font-size:.9rem;color:var(--dark);font-weight:600;line-height:1.5}
 .model-sent em{color:var(--g1)}
- 
+
 /* ── ACTIVITIES ── */
 .activity-card{background:white;border:2px solid var(--g3);border-radius:var(--radius);padding:22px;margin-bottom:16px;overflow:hidden;min-width:0}
 .activity-header{display:flex;align-items:center;gap:10px;margin-bottom:16px}
@@ -86,7 +86,7 @@ body{margin:0;padding:0}
 .act-badge.purple{background:#A855F7;color:white}
 .act-title{font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1rem;color:var(--dark)}
 .xp-chip{margin-left:auto;background:var(--y5);border:2px solid var(--y3);color:var(--y1);font-weight:900;font-size:.72rem;padding:3px 10px;border-radius:99px}
- 
+
 /* ── FILL BLANK ── */
 .fill-sent{font-size:.95rem;line-height:2.2;color:var(--mid);margin-bottom:12px}
 .blank{display:inline-block;border-bottom:3px solid var(--g2);min-width:120px;padding:0 6px;margin:0 3px;text-align:center;font-weight:700;color:var(--g1);cursor:pointer;border-radius:4px;transition:background .2s}
@@ -94,13 +94,13 @@ body{margin:0;padding:0}
 .blank.filled{background:var(--g4);color:var(--g1);border-bottom-color:var(--g1)}
 .blank.wrong{background:#FEE2E2;border-bottom-color:var(--red);color:var(--red)}
 .blank.correct{background:#DCFCE7;border-bottom-color:var(--g1);color:var(--g1)}
- 
+
 /* ── WORD BANK ── */
 .word-bank{display:flex;flex-wrap:wrap;gap:8px;padding:14px;background:var(--y5);border:2px dashed var(--y3);border-radius:12px;margin-bottom:14px}
 .word-chip{background:var(--y3);color:var(--dark);font-weight:800;font-size:.8rem;padding:6px 14px;border-radius:99px;cursor:pointer;transition:all .2s;user-select:none;border:2px solid var(--y2)}
 .word-chip:hover{background:var(--y2);transform:translateY(-2px);box-shadow:0 4px 10px rgba(234,179,8,.3)}
 .word-chip.used{background:#E5E7EB;color:#9CA3AF;border-color:#D1D5DB;cursor:default;transform:none;box-shadow:none}
- 
+
 /* ── MCQ ── */
 .mcq-options{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:12px}
 .mcq-opt{background:var(--g5);border:2px solid var(--g3);border-radius:12px;padding:12px 16px;cursor:pointer;font-size:.88rem;font-weight:700;color:var(--mid);transition:all .2s;display:flex;align-items:center;gap:10px}
@@ -110,7 +110,7 @@ body{margin:0;padding:0}
 .mcq-opt .opt-letter{width:28px;height:28px;border-radius:50%;background:var(--g2);color:white;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:900;flex-shrink:0}
 .mcq-opt.correct .opt-letter{background:var(--g1)}
 .mcq-opt.wrong .opt-letter{background:var(--red)}
- 
+
 /* ── SENTENCE BUILDER ── */
 .sent-builder{background:var(--g5);border:2px solid var(--g3);border-radius:12px;padding:16px;margin-bottom:14px}
 .sb-parts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
@@ -118,12 +118,12 @@ body{margin:0;padding:0}
 .sb-part.fixed{background:var(--g4);border-color:var(--g2);color:var(--g1)}
 .sb-input-area{border:2px solid var(--g2);border-radius:10px;padding:12px;background:white;font-size:.88rem;color:var(--dark);width:100%;min-height:60px;resize:none;font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif;outline:none}
 .sb-input-area:focus{border-color:var(--g1);box-shadow:0 0 0 3px rgba(34,197,94,.15)}
- 
+
 /* ── TEXT INPUTS ── */
 textarea.ans-area{width:100%;border:2px solid var(--g3);border-radius:12px;padding:12px 14px;font-size:.88rem;color:var(--dark);font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif;resize:vertical;min-height:80px;outline:none;transition:border .2s;background:var(--g5)}
 textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0 3px rgba(34,197,94,.15)}
 .wc-row{display:flex;justify-content:flex-end;margin-top:5px;font-size:.72rem;color:var(--muted);font-weight:700}
- 
+
 /* ── CHECKLIST ── */
 .checklist{display:flex;flex-direction:column;gap:8px;margin-top:12px}
 .chk-item{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--g5);border:2px solid var(--g3);border-radius:10px;cursor:pointer;transition:all .2s;font-size:.85rem;font-weight:600}
@@ -131,7 +131,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
 .chk-item.checked{background:#DCFCE7;border-color:var(--g1)}
 .chk-box{width:22px;height:22px;border-radius:6px;border:2.5px solid var(--g2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
 .chk-item.checked .chk-box{background:var(--g1);border-color:var(--g1);color:white}
- 
+
 /* ── BUTTONS ── */
 .btn{padding:10px 22px;border-radius:99px;border:none;font-family:system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-weight:800;font-size:.88rem;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:7px}
 .btn-green{background:var(--g1);color:white;box-shadow:0 4px 14px rgba(22,163,74,.35)}
@@ -141,14 +141,14 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
 .btn-outline{background:transparent;border:2px solid var(--g2);color:var(--g1)}
 .btn-outline:hover{background:var(--g4)}
 .btn-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
- 
+
 /* ── FEEDBACK ── */
 .feedback{border-radius:12px;padding:14px 18px;margin-top:12px;font-size:.88rem;font-weight:700;display:flex;align-items:flex-start;gap:10px;animation:slideIn .3s ease}
 .feedback.success{background:#DCFCE7;color:var(--g1);border:2px solid var(--g3)}
 .feedback.error{background:#FEE2E2;color:var(--red);border:2px solid #FECACA}
 .feedback.info{background:var(--y5);color:var(--y1);border:2px solid var(--y3)}
 @keyframes slideIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
- 
+
 /* ── PROGRESS STEPS ── */
 .step-trail{display:flex;align-items:center;gap:0;margin-bottom:20px;flex-wrap:wrap}
 .step-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:900;flex-shrink:0;transition:all .3s}
@@ -157,7 +157,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
 .step-dot.pending{background:#E5E7EB;color:#9CA3AF}
 .step-line{flex:1;height:3px;background:#E5E7EB;min-width:20px}
 .step-line.done{background:var(--g2)}
- 
+
 /* ── REPORT PARTS VISUAL ── */
 .report-map{display:grid;grid-template-columns:1fr;gap:8px;margin:14px 0}
 .rm-row{display:flex;align-items:stretch;gap:12px;border-radius:12px;overflow:hidden;border:2px solid var(--g3)}
@@ -165,7 +165,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
 .rm-content{padding:12px 16px;font-size:.85rem;color:var(--mid);line-height:1.5;flex:1;background:white}
 .rm-content strong{color:var(--g1);display:block;margin-bottom:3px}
 .rm-content em{color:var(--muted);font-style:italic}
- 
+
 /* ── DRAG REORDER ── */
 .drag-list{display:flex;flex-direction:column;gap:8px;margin:14px 0}
 .drag-item{background:white;border:2px solid var(--g3);border-radius:12px;padding:12px 16px;cursor:grab;display:flex;align-items:center;gap:10px;font-size:.87rem;font-weight:700;color:var(--mid);transition:all .2s;user-select:none}
@@ -173,7 +173,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
 .drag-item.dragging{opacity:.5;border-style:dashed}
 .drag-item .drag-handle{color:#9CA3AF;font-size:1rem}
 .drag-item .drag-num{background:var(--g3);color:white;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:900;flex-shrink:0}
- 
+
 /* ── CHART MINI ── */
 .chart-area{background:white;border:2px solid var(--g3);border-radius:12px;padding:14px;margin:12px 0;overflow:hidden}
 .chart-title{font-size:.78rem;font-weight:900;color:var(--g1);text-align:center;margin-bottom:12px;text-transform:uppercase;letter-spacing:.5px}
@@ -182,7 +182,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
 .bar{width:100%;border-radius:6px 6px 0 0;transition:height .8s ease;position:relative;display:flex;align-items:flex-start;justify-content:center;padding-top:5px}
 .bar span{font-size:.72rem;font-weight:900;color:white}
 .bar-label{font-size:.72rem;font-weight:700;color:var(--muted);text-align:center}
- 
+
 /* ── SENTENCE FRAMES ── */
 .sent-frame{background:var(--y5);border:2px solid var(--y3);border-radius:12px;padding:16px 18px;margin:12px 0}
 .sf-label{font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.7px;color:var(--y1);margin-bottom:8px}
@@ -190,13 +190,13 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
 .sf-fixed{color:var(--dark)}
 .sf-blank{background:white;border:2px solid var(--y3);border-radius:8px;padding:4px 12px;min-width:90px;text-align:center;color:var(--muted);font-style:italic}
 .sf-blank.filled{color:var(--y1);font-style:normal;font-weight:800;border-color:var(--y2)}
- 
+
 /* ── BADGE DISPLAY ── */
 .badges-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
 .badge-item{background:white;border:2px solid var(--g3);border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:8px;font-size:.8rem;font-weight:700;color:var(--mid)}
 .badge-item.earned{border-color:var(--y2);background:var(--y5);color:var(--y1)}
 .badge-item .bi{font-size:1.3rem}
- 
+
 /* ── HOME MODULE ── */
 .module-map{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:16px}
 .mm-card{background:white;border:2px solid var(--g3);border-radius:14px;padding:16px 12px;text-align:center;cursor:pointer;transition:all .25s}
@@ -206,12 +206,12 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
 .mm-icon{font-size:2rem;margin-bottom:8px}
 .mm-title{font-size:.78rem;font-weight:800;color:var(--dark);margin-bottom:4px}
 .mm-stars{font-size:.8rem;color:var(--y2)}
- 
+
 /* ── TOAST ── */
 .toast{position:fixed;bottom:30px;right:30px;background:var(--dark);color:white;padding:14px 22px;border-radius:14px;font-weight:800;font-size:.88rem;display:flex;align-items:center;gap:10px;z-index:9999;transform:translateY(80px);opacity:0;transition:all .4s;box-shadow:0 8px 30px rgba(0,0,0,.3)}
 .toast.show{transform:translateY(0);opacity:1}
 .toast .xp-gain{background:var(--y3);color:var(--dark);padding:3px 10px;border-radius:99px;font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif}
- 
+
 /* ── MATCH GAME ── */
 .match-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;min-width:0}
 .match-col{display:flex;flex-direction:column;gap:8px}
@@ -221,26 +221,26 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
 .match-item.matched{border-color:var(--g1);background:#DCFCE7;color:var(--g1);cursor:default}
 .match-item.wrong-flash{border-color:var(--red);background:#FEE2E2;animation:shake .3s}
 @keyframes shake{0%,100%{transform:translateX(0)}25%,75%{transform:translateX(-4px)}50%{transform:translateX(4px)}}
- 
+
 /* ── SECTIONS HIDDEN/SHOW ── */
 .module-section{display:none}
 .module-section.active{display:block;animation:fadeUp .4s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
- 
+
 /* ── DIVIDER ── */
 .divider{height:2px;background:linear-gradient(90deg,var(--g3),var(--y3),transparent);border-radius:99px;margin:20px 0;opacity:.5}
- 
+
 /* ── INFO PILL ── */
 .info-pill{display:inline-flex;align-items:center;gap:6px;background:var(--y4);color:var(--y1);font-size:.75rem;font-weight:800;padding:5px 12px;border-radius:99px;margin-bottom:10px}
- 
+
 /* ── SCORE RING ── */
 .score-ring{width:80px;height:80px;border-radius:50%;background:conic-gradient(var(--g2) 0%, #E5E7EB 0%);display:flex;align-items:center;justify-content:center;font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1.2rem;color:var(--g1);flex-shrink:0;position:relative;transition:all .5s}
 .score-ring::before{content:'';position:absolute;inset:8px;background:white;border-radius:50%}
 .score-ring span{position:relative;z-index:1}
- 
+
 /* scrollbar */
 ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--g5)}::-webkit-scrollbar-thumb{background:var(--g3);border-radius:99px}
- 
+
 /* ── SAVE BAR ── */
 .save-bar{background:linear-gradient(135deg,var(--g5),var(--y5));border:2px solid var(--g3);border-radius:var(--radius);padding:14px 20px;margin-top:20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .save-bar .save-info{font-size:.8rem;color:var(--muted);font-weight:700;flex:1;min-width:160px}
@@ -259,9 +259,9 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
 </style>
 </head>
 <body>
- 
+
 <div class="toast" id="toast"><span id="toast-msg">✅ Well done!</span> <span class="xp-gain" id="toast-xp">+20 XP</span></div>
- 
+
 <!-- TOP BAR -->
 <header class="topbar">
   <div class="topbar-brand">
@@ -290,10 +290,10 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="nav-item" onclick="showModule('exam')" id="nav-exam"><span class="nav-icon">🎓</span> Exam Practice<span class="nav-stars" id="stars-exam"></span></div>
   </nav>
 </header>
- 
+
 <!-- MAIN -->
 <main class="main">
- 
+
 <!-- ══ HOME ══ -->
 <div class="module-section active" id="mod-home">
   <div class="page-header" style="background:linear-gradient(135deg,white 60%,var(--g4))">
@@ -303,7 +303,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       <p>Build your report sentence by sentence — one step at a time 💪</p>
     </div>
   </div>
- 
+
   <div class="card">
     <div class="card-title">📌 How to Use This App</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px">
@@ -329,7 +329,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       </div>
     </div>
   </div>
- 
+
   <div class="card">
     <div class="card-title">🗺️ Your Learning Map — Choose a Module</div>
     <div class="module-map">
@@ -342,7 +342,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       <div class="mm-card" onclick="showModule('exam')" style="grid-column:span 1;border-color:var(--y2);background:var(--y5)"><div class="mm-icon">🎓</div><div class="mm-title">Exam Practice</div><div class="mm-stars" id="map-stars-exam">☆☆☆</div></div>
     </div>
   </div>
- 
+
   <div class="card">
     <div class="card-title">🏅 Your Badges</div>
     <div class="badges-grid" id="badge-display">
@@ -356,7 +356,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     </div>
   </div>
 </div>
- 
+
   <div class="card" id="saved-progress-card" style="display:none">
     <div class="card-title">📂 Your Saved Progress</div>
     <p style="font-size:.85rem;color:var(--muted);margin-bottom:10px">Your previous work has been restored automatically. Click a module to continue.</p>
@@ -365,9 +365,9 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       <button class="btn btn-outline" style="font-size:.8rem;color:var(--red);border-color:var(--red)" onclick="clearAllProgress()">🗑️ Clear All Saved Data</button>
     </div>
   </div>
- 
+
 </div>
- 
+
 <!-- ══ MODULE 1 — REPORT PARTS ══ -->
 <div class="module-section" id="mod-m1">
   <div class="page-header" style="background:linear-gradient(135deg,white,var(--g4))">
@@ -375,7 +375,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="page-header-text"><h2>Module 1 · Report Parts</h2><p>Learn the structure of a formal report</p></div>
     <div class="page-header-xp">⚡ Up to 60 XP</div>
   </div>
- 
+
   <!-- LESSON -->
   <div class="card">
     <div class="card-title">📚 What is a Report?</div>
@@ -392,7 +392,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       <div class="rm-row"><div class="rm-label">5 · Recommendations</div><div class="rm-content"><strong>What should happen next?</strong><em>Give advice based on the findings</em></div></div>
     </div>
   </div>
- 
+
   <!-- ACTIVITY 1 — MCQ -->
   <div class="activity-card">
     <div class="activity-header">
@@ -401,7 +401,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       <span class="xp-chip">+20 XP</span>
     </div>
     <p style="font-size:.88rem;color:var(--muted);margin-bottom:14px">Read each sentence. Which part of the report does it belong to? Click the correct answer.</p>
- 
+
     <div id="m1-q1" style="margin-bottom:18px">
       <div style="background:var(--y5);border-left:4px solid var(--y3);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700;color:var(--dark)">"It is recommended that the college provides more computer labs."</div>
       <div class="mcq-options">
@@ -411,7 +411,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
         <div class="mcq-opt" onclick="checkMCQ(this,'correct','m1-q1')"><span class="opt-letter">D</span>Recommendations</div>
       </div>
     </div>
- 
+
     <div id="m1-q2" style="margin-bottom:18px">
       <div style="background:var(--y5);border-left:4px solid var(--y3);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700;color:var(--dark)">"According to the chart, 65% of students use Instagram daily."</div>
       <div class="mcq-options">
@@ -421,7 +421,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
         <div class="mcq-opt" onclick="checkMCQ(this,'wrong','m1-q2')"><span class="opt-letter">D</span>Recommendations</div>
       </div>
     </div>
- 
+
     <div id="m1-q3">
       <div style="background:var(--y5);border-left:4px solid var(--y3);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700;color:var(--dark)">"This report was conducted to investigate the social media habits of HCT students."</div>
       <div class="mcq-options">
@@ -434,7 +434,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="btn-row"><button class="btn btn-green" onclick="completeActivity('m1-act1',20,'m1')">✅ Submit Answers</button></div>
     <div id="fb-m1-act1"></div>
   </div>
- 
+
   <!-- ACTIVITY 2 — REORDER WITH ARROWS -->
   <div class="activity-card">
     <div class="activity-header">
@@ -451,7 +451,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     </div>
     <div id="fb-m1-act2"></div>
   </div>
- 
+
   <!-- ACTIVITY 3 — MATCH -->
   <div class="activity-card">
     <div class="activity-header">
@@ -478,7 +478,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     </div>
     <div id="fb-m1-act3" style="margin-top:12px"></div>
   </div>
- 
+
   <div class="save-bar">
     <div>
       <div style="font-weight:900;font-size:.88rem;color:var(--g1);margin-bottom:3px">💾 📋 Module 1</div>
@@ -488,7 +488,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="save-confirm" id="save-confirm-m1">✅ Saved!</div>
   </div>
 </div>
- 
+
 <!-- ══ MODULE 2 — TITLE WRITING ══ -->
 <div class="module-section" id="mod-m2">
   <div class="page-header" style="background:linear-gradient(135deg,white,var(--y5))">
@@ -496,7 +496,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="page-header-text"><h2>Module 2 · Writing the Title</h2><p>Master the full formula — Type + Purpose + 5W+1H</p></div>
     <div class="page-header-xp">⚡ Up to 140 XP</div>
   </div>
- 
+
   <!-- LESSON: 3 TYPES -->
   <div class="card">
     <div class="card-title">📚 Step 1 — Know Your Report Type</div>
@@ -528,7 +528,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       </div>
     </div>
   </div>
- 
+
   <!-- LESSON: FULL FORMULA WITH 5W+1H -->
   <div class="card">
     <div class="card-title">📚 Step 2 — The Full Title Formula (5W+1H)</div>
@@ -582,7 +582,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       </div>
     </div>
   </div>
- 
+
   <!-- ACTIVITY 1: REPORT TYPE -->
   <div class="activity-card">
     <div class="activity-header">
@@ -618,7 +618,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="btn-row"><button class="btn btn-green" onclick="completeActivity('m2-act1',20,'m2')">✅ Submit</button></div>
     <div id="fb-m2-act1"></div>
   </div>
- 
+
   <!-- ACTIVITY 2: MATCH VERB -->
   <div class="activity-card">
     <div class="activity-header">
@@ -647,7 +647,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     </div>
     <div id="fb-m2-act2" style="margin-top:12px"></div>
   </div>
- 
+
   <!-- ACTIVITY 3: LABEL 5W+1H -->
   <div class="activity-card">
     <div class="activity-header">
@@ -689,7 +689,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="btn-row"><button class="btn btn-green" onclick="completeActivity('m2-act3',20,'m2')">✅ Submit</button></div>
     <div id="fb-m2-act3"></div>
   </div>
- 
+
   <!-- ACTIVITY 4: JUMBLE — INFORMATIVE -->
   <div class="activity-card">
     <div class="activity-header">
@@ -708,7 +708,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     </div>
     <div id="fb-m2-act4"></div>
   </div>
- 
+
   <!-- ACTIVITY 5: JUMBLE — PROBLEM-SOLVING -->
   <div class="activity-card">
     <div class="activity-header">
@@ -725,7 +725,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     </div>
     <div id="fb-m2-act5"></div>
   </div>
- 
+
   <!-- ACTIVITY 6: JUMBLE — EVALUATION -->
   <div class="activity-card">
     <div class="activity-header">
@@ -742,7 +742,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     </div>
     <div id="fb-m2-act6"></div>
   </div>
- 
+
   <!-- ACTIVITY 7: BUILD YOUR OWN TITLE -->
   <div class="activity-card">
     <div class="activity-header">
@@ -805,7 +805,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="btn-row"><button class="btn btn-green" onclick="submitFullTitle()">✅ Submit My Title</button></div>
     <div id="fb-m2-act7"></div>
   </div>
- 
+
   <div class="save-bar">
     <div>
       <div style="font-weight:900;font-size:.88rem;color:var(--g1);margin-bottom:3px">💾 ✍️ Module 2</div>
@@ -815,7 +815,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="save-confirm" id="save-confirm-m2">✅ Saved!</div>
   </div>
 </div>
- 
+
 <!-- ══ MODULE 3 — INTRODUCTION ══ -->
 <div class="module-section" id="mod-m3">
   <div class="page-header" style="background:linear-gradient(135deg,white,#EFF6FF)">
@@ -823,7 +823,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="page-header-text"><h2>Module 3 · Writing the Introduction</h2><p>Learn to write 4 key sentences — one by one</p></div>
     <div class="page-header-xp">⚡ Up to 80 XP</div>
   </div>
- 
+
   <div class="card">
     <div class="card-title">📚 The Introduction — 3 Key Sentences</div>
     <div class="lesson-box">
@@ -854,7 +854,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       </div>
     </div>
   </div>
- 
+
   <!-- FORMULA CARD -->
   <div class="card">
     <div class="card-title">🔑 The Introduction Template — Memorise This!</div>
@@ -864,7 +864,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       <div style="margin-bottom:8px"><span style="background:var(--y4);color:#78350F;padding:2px 10px;border-radius:6px;font-weight:800;font-size:.85rem">S2</span>&nbsp; The purpose of this report is to [<em style="color:var(--y3)">verb</em>] [<em style="color:var(--y3)">topic</em>] to help [<em style="color:var(--y3)">goal</em>].</div>
       <div><span style="background:#DBEAFE;color:#1E3A8A;padding:2px 10px;border-radius:6px;font-weight:800;font-size:.85rem">S3</span>&nbsp; It includes an overview of [<em style="color:var(--y3)">sections</em>], with each section providing insights and data that support the main findings and conclusions.</div>
     </div>
- 
+
     <div style="margin-top:16px;font-size:.78rem;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px">Full example — Informative Report</div>
     <div style="background:var(--g5);border:2px solid var(--g3);border-radius:12px;padding:16px;font-size:.88rem;line-height:1.9;color:var(--dark)">
       <span style="background:var(--g4);color:#166534;font-weight:800;padding:1px 6px;border-radius:5px">This is an Informative report, requested by the training supervisor.</span>
@@ -872,7 +872,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       <span style="background:#DBEAFE;color:#1E3A8A;font-weight:800;padding:1px 6px;border-radius:5px">It includes an overview of the survey methods used, findings from worker feedback, and an analysis of key areas of improvement. Each section provides insights and data that support the main findings and conclusions.</span>
     </div>
   </div>
- 
+
   <!-- ACTIVITY 1 — IDENTIFY INTRO SENTENCES -->
   <div class="activity-card">
     <div class="activity-header">
@@ -881,7 +881,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       <span class="xp-chip">+20 XP</span>
     </div>
     <p style="font-size:.88rem;color:var(--muted);margin-bottom:14px">Read each sentence. Is it Sentence 1 (Type), Sentence 2 (Purpose), or Sentence 3 (Overview)?</p>
- 
+
     <div id="intro-q1" style="margin-bottom:16px">
       <div style="background:var(--y5);border-left:4px solid var(--y3);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700">"The purpose of this report is to address the challenges of material waste to help reduce costs and improve sustainability."</div>
       <div class="mcq-options">
@@ -909,7 +909,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="btn-row"><button class="btn btn-green" onclick="completeActivity('m3-act1',20,'m3')">✅ Done</button></div>
     <div id="fb-m3-act1"></div>
   </div>
- 
+
   <!-- ACTIVITY 2 — FILL BLANKS INTRO (PPTX TEMPLATE) -->
   <div class="activity-card">
     <div class="activity-header">
@@ -940,7 +940,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="btn-row"><button class="btn btn-green" onclick="checkFillBlanks(['i3-b1','i3-b2','i3-b3','i3-b4','i3-b5','i3-b6'],['Informative','the college manager','analyse','improve','the survey methods and key findings','support'],'m3-act2',20,'m3')">✅ Check</button></div>
     <div id="fb-m3-act2"></div>
   </div>
- 
+
   <!-- ACTIVITY 3 — WRITE INTRODUCTION SENTENCE BY SENTENCE (PPTX TEMPLATE) -->
   <div class="activity-card">
     <div class="activity-header">
@@ -952,13 +952,13 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       <div class="lb-label">📌 Your Scenario</div>
       <p>You conducted an <strong>Informative</strong> report about <strong>screen time habits</strong> of <strong>40 HCT students</strong>, requested by the <strong>college manager</strong>. Data was collected using a <strong>Google Form questionnaire</strong>. Write your 3-sentence introduction using the template.</p>
     </div>
- 
+
     <div class="step-trail">
       <div class="step-dot active" id="step-1">1</div><div class="step-line" id="line-1"></div>
       <div class="step-dot pending" id="step-2">2</div><div class="step-line" id="line-2"></div>
       <div class="step-dot pending" id="step-3">3</div>
     </div>
- 
+
     <!-- Sentence 1: Type + Who Requested -->
     <div id="intro-s1">
       <div style="font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1rem;color:var(--g1);margin-bottom:8px">Sentence 1 — Type + Who Requested It 🏷️</div>
@@ -981,7 +981,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       <div class="btn-row"><button class="btn btn-green" onclick="nextIntroStep(1)">✅ Next Sentence →</button></div>
       <div id="fb-intro-s1"></div>
     </div>
- 
+
     <!-- Sentence 2: Purpose + Goal -->
     <div id="intro-s2" style="display:none;margin-top:16px">
       <div style="font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1rem;color:var(--y1);margin-bottom:8px">Sentence 2 — Purpose + Goal 🎯</div>
@@ -1005,7 +1005,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       <div class="btn-row"><button class="btn btn-green" onclick="nextIntroStep(2)">✅ Next Sentence →</button></div>
       <div id="fb-intro-s2"></div>
     </div>
- 
+
     <!-- Sentence 3: Overview of sections -->
     <div id="intro-s3" style="display:none;margin-top:16px">
       <div style="font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1rem;color:#1D4ED8;margin-bottom:8px">Sentence 3 — Overview of Sections 📋</div>
@@ -1026,7 +1026,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       <div class="btn-row"><button class="btn btn-green" onclick="finishIntro()">🎉 Finish My Introduction!</button></div>
       <div id="fb-intro-s3"></div>
     </div>
- 
+
     <div id="intro-complete" style="display:none;margin-top:16px">
       <div class="feedback success">🎉 Excellent! Here is your complete Introduction:</div>
       <div id="full-intro" style="background:var(--g4);border:2px solid var(--g2);border-radius:12px;padding:16px 20px;margin-top:10px;font-size:.9rem;line-height:2;color:var(--dark);font-weight:600"></div>
@@ -1036,7 +1036,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       </div>
     </div>
   </div>
- 
+
   <div class="save-bar">
     <div>
       <div style="font-weight:900;font-size:.88rem;color:var(--g1);margin-bottom:3px">💾 📖 Module 3</div>
@@ -1046,7 +1046,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="save-confirm" id="save-confirm-m3">✅ Saved!</div>
   </div>
 </div>
- 
+
 <!-- ══ MODULE 4 — FINDINGS ══ -->
 <div class="module-section" id="mod-m4">
   <div class="page-header" style="background:linear-gradient(135deg,white,var(--g4))">
@@ -1054,7 +1054,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="page-header-text"><h2>Module 4 · Writing Findings</h2><p>Describe charts and data — sentence by sentence</p></div>
     <div class="page-header-xp">⚡ Up to 160 XP</div>
   </div>
- 
+
   <!-- LESSON CARD 1: KEY RULE + FORMULAS -->
   <div class="card">
     <div class="card-title">📚 How to Write Findings</div>
@@ -1082,7 +1082,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       <code>In contrast, only [%]% of [who] [verb] [what], making it the least common response.</code>
       <div class="fex">In contrast, only 12% of students used Facebook, making it the least popular platform.</div>
     </div>
- 
+
     <div style="margin-top:16px">
       <div class="info-pill">📌 Useful Language Bank</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
@@ -1105,7 +1105,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       </div>
     </div>
   </div>
- 
+
   <!-- MODEL PARAGRAPH -->
   <div class="card">
     <div class="card-title">📖 Study This Model Findings Paragraph</div>
@@ -1123,7 +1123,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       <span style="font-size:.75rem;background:#FFE4E6;color:#9F1239;padding:3px 9px;border-radius:99px;border:1.5px solid #FECDD3;font-weight:800">🔴 S4 Contrast</span>
     </div>
   </div>
- 
+
   <!-- ACTIVITY 1: READ CHART + MCQ -->
   <div class="activity-card">
     <div class="activity-header">
@@ -1171,7 +1171,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="btn-row"><button class="btn btn-green" onclick="completeActivity('m4-act1',20,'m4')">✅ Submit</button></div>
     <div id="fb-m4-act1"></div>
   </div>
- 
+
   <!-- ACTIVITY 2: FIX THE SENTENCE -->
   <div class="activity-card">
     <div class="activity-header">
@@ -1210,7 +1210,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="btn-row"><button class="btn btn-green" onclick="completeActivity('m4-act2',20,'m4')">✅ Submit</button></div>
     <div id="fb-m4-act2"></div>
   </div>
- 
+
   <!-- ACTIVITY 3: FILL IN BLANKS — COMPLETE SENTENCES -->
   <div class="activity-card">
     <div class="activity-header">
@@ -1245,7 +1245,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="btn-row"><button class="btn btn-green" onclick="checkFillBlanks(['f4-b1','f4-b2','f4-b3','f4-b4','f4-b5','f4-b6'],['50 HCT students','social media habits','the most common response','Furthermore','In contrast','least popular'],'m4-act3',20,'m4')">✅ Check</button></div>
     <div id="fb-m4-act3"></div>
   </div>
- 
+
   <!-- ACTIVITY 4: SENTENCE-BY-SENTENCE STEPPER -->
   <div class="activity-card">
     <div class="activity-header">
@@ -1266,14 +1266,14 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
         <div class="bar-wrap"><div class="bar" style="height:40%;background:linear-gradient(180deg,#FB923C,#F97316))"><span>28%</span></div><div class="bar-label">5+ hrs</div></div>
       </div>
     </div>
- 
+
     <div class="step-trail">
       <div class="step-dot active" id="fstep-1">1</div><div class="step-line" id="fline-1"></div>
       <div class="step-dot pending" id="fstep-2">2</div><div class="step-line" id="fline-2"></div>
       <div class="step-dot pending" id="fstep-3">3</div><div class="step-line" id="fline-3"></div>
       <div class="step-dot pending" id="fstep-4">4</div>
     </div>
- 
+
     <div id="find-s1">
       <div style="font-weight:900;font-size:.92rem;color:var(--g1);margin-bottom:8px">🟢 Sentence 1 — Opening</div>
       <div class="sent-frame"><div class="sf-label">✨ Formula</div><div class="sf-parts"><span class="sf-fixed">In our survey, we asked</span><span class="sf-blank">[number + who]</span><span class="sf-fixed">about their</span><span class="sf-blank">[topic]</span><span class="sf-fixed">.</span></div></div>
@@ -1283,7 +1283,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       <div class="btn-row"><button class="btn btn-green" onclick="nextFindingsStep(1)">✅ Next →</button></div>
       <div id="fb-find-s1"></div>
     </div>
- 
+
     <div id="find-s2" style="display:none;margin-top:16px">
       <div style="font-weight:900;font-size:.92rem;color:var(--y1);margin-bottom:8px">🟡 Sentence 2 — Key Finding (highest %)</div>
       <div class="sent-frame"><div class="sf-label">✨ Formula</div><div class="sf-parts"><span class="sf-fixed">According to Figure 2,</span><span class="sf-blank">[%]% of students</span><span class="sf-blank">[verb + what]</span><span class="sf-fixed">, making it the most common response.</span></div></div>
@@ -1293,7 +1293,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       <div class="btn-row"><button class="btn btn-green" onclick="nextFindingsStep(2)">✅ Next →</button></div>
       <div id="fb-find-s2"></div>
     </div>
- 
+
     <div id="find-s3" style="display:none;margin-top:16px">
       <div style="font-weight:900;font-size:.92rem;color:#1D4ED8;margin-bottom:8px">🔵 Sentence 3 — Second Finding (linking word)</div>
       <div class="sent-frame"><div class="sf-label">✨ Formula</div><div class="sf-parts"><span class="sf-fixed">Furthermore / Additionally,</span><span class="sf-blank">[%]% of students</span><span class="sf-blank">[verb + what]</span><span class="sf-fixed">. (See Figure 2)</span></div></div>
@@ -1303,7 +1303,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       <div class="btn-row"><button class="btn btn-green" onclick="nextFindingsStep(3)">✅ Next →</button></div>
       <div id="fb-find-s3"></div>
     </div>
- 
+
     <div id="find-s4" style="display:none;margin-top:16px">
       <div style="font-weight:900;font-size:.92rem;color:var(--red);margin-bottom:8px">🔴 Sentence 4 — Contrast (lowest %)</div>
       <div class="sent-frame"><div class="sf-label">✨ Formula</div><div class="sf-parts"><span class="sf-fixed">In contrast, only</span><span class="sf-blank">[%]% of students</span><span class="sf-blank">[verb + what]</span><span class="sf-fixed">, making it the least common response.</span></div></div>
@@ -1313,7 +1313,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       <div class="btn-row"><button class="btn btn-green" onclick="finishFindings()">🎉 Finish My Findings!</button></div>
       <div id="fb-find-s4"></div>
     </div>
- 
+
     <div id="findings-complete" style="display:none;margin-top:16px">
       <div class="feedback success">🎉 Excellent! Here is your complete Findings paragraph:</div>
       <div id="full-findings" style="background:var(--g4);border:2px solid var(--g2);border-radius:12px;padding:16px 20px;margin-top:10px;font-size:.9rem;line-height:2;color:var(--dark);font-weight:600"></div>
@@ -1323,7 +1323,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       </div>
     </div>
   </div>
- 
+
   <!-- ACTIVITY 5: FULL PARAGRAPH FROM NEW CHART -->
   <div class="activity-card">
     <div class="activity-header">
@@ -1360,7 +1360,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="btn-row"><button class="btn btn-green" onclick="submitFindingsParagraph()">🎉 Submit &amp; See Model Answer</button></div>
     <div id="fb-m4-act5"></div>
   </div>
- 
+
   <div class="save-bar">
     <div>
       <div style="font-weight:900;font-size:.88rem;color:var(--g1);margin-bottom:3px">💾 📊 Module 4</div>
@@ -1370,104 +1370,235 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="save-confirm" id="save-confirm-m4">✅ Saved!</div>
   </div>
 </div>
- 
+
 <!-- ══ MODULE 5 — CONCLUSION ══ -->
 <div class="module-section" id="mod-m5">
   <div class="page-header" style="background:linear-gradient(135deg,white,#FDF4FF)">
     <div class="page-header-icon" style="background:#E9D5FF">🔚</div>
-    <div class="page-header-text"><h2>Module 5 · Conclusion & Recommendations</h2><p>Summarise findings and give advice</p></div>
-    <div class="page-header-xp">⚡ Up to 60 XP</div>
+    <div class="page-header-text"><h2>Module 5 · Conclusion &amp; Recommendations</h2><p>Write a strong conclusion and two clear recommendations</p></div>
+    <div class="page-header-xp">⚡ Up to 100 XP</div>
   </div>
- 
+
+  <!-- LESSON: CONCLUSION STARTERS -->
   <div class="card">
-    <div class="card-title">📚 Conclusion vs Recommendations</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+    <div class="card-title">📚 Part 1 — The Conclusion</div>
+    <div class="lesson-box">
+      <div class="lb-label">📌 What is the Conclusion?</div>
+      <p>The conclusion <strong>summarises the most important findings</strong>. It is short — 1 to 2 sentences. You do <strong>NOT</strong> add new information here.</p>
+    </div>
+    <div style="margin:14px 0 8px;font-size:.8rem;font-weight:900;color:var(--muted);text-transform:uppercase;letter-spacing:.5px">✨ Conclusion Starter Phrases — use ONE of these:</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px;margin-bottom:14px">
+      <div style="background:var(--g5);border:2px solid var(--g2);border-radius:12px;padding:12px 14px">
+        <div style="font-weight:900;color:var(--g1);font-size:.82rem;margin-bottom:5px">Option A</div>
+        <div style="font-size:.88rem;color:var(--dark);font-weight:700">"In conclusion, the findings show that..."</div>
+      </div>
+      <div style="background:var(--y5);border:2px solid var(--y2);border-radius:12px;padding:12px 14px">
+        <div style="font-weight:900;color:var(--y1);font-size:.82rem;margin-bottom:5px">Option B</div>
+        <div style="font-size:.88rem;color:var(--dark);font-weight:700">"To conclude, the data shows that..."</div>
+      </div>
+      <div style="background:#EFF6FF;border:2px solid #93C5FD;border-radius:12px;padding:12px 14px">
+        <div style="font-weight:900;color:#1D4ED8;font-size:.82rem;margin-bottom:5px">Option C</div>
+        <div style="font-size:.88rem;color:var(--dark);font-weight:700">"Overall, the findings show that..."</div>
+      </div>
+    </div>
+    <div class="formula-box">
+      <div class="fl">🔚 CONCLUSION FORMULA</div>
+      <code>[In conclusion / To conclude / Overall,] the findings show that [main result]. [Add one more key point.]</code>
+      <div class="fex">In conclusion, the findings show that the majority of students (60%) spend 3–4 hours on social media daily, with Instagram being the most popular platform.</div>
+    </div>
+  </div>
+
+  <!-- LESSON: RECOMMENDATIONS -->
+  <div class="card">
+    <div class="card-title">📚 Part 2 — Recommendations (exactly 2)</div>
+    <div class="lesson-box">
+      <div class="lb-label">📌 What are Recommendations?</div>
+      <p>Recommendations give <strong>advice based on the findings</strong>. In the exam you must write <strong>exactly 2 recommendations</strong>. You can write them as <strong>numbered points or bullet points</strong> — this makes them clear and easy to read.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px">
       <div>
-        <div class="lesson-box">
-          <div class="lb-label">🔚 Conclusion</div>
-          <p>Summarise the <strong>most important findings</strong>. What did your data show? Keep it short — 2 to 3 sentences.</p>
-        </div>
-        <div class="formula-box" style="margin-top:8px">
-          <div class="fl">Formula</div>
-          <code>Overall, the findings show that [main result].</code>
-          <div class="fex">Overall, the findings show that the majority of students spend too much time on social media.</div>
+        <div style="font-weight:900;font-size:.82rem;color:var(--g1);margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px">✅ Style A — Numbered list</div>
+        <div style="background:var(--g5);border:2px solid var(--g3);border-radius:12px;padding:14px;font-size:.85rem;line-height:1.9;color:var(--dark)">
+          <strong>Recommendations:</strong><br>
+          1. It is recommended that students should limit their daily screen time to 2 hours.<br>
+          2. The college could provide digital wellness workshops to raise awareness.
         </div>
       </div>
       <div>
-        <div class="lesson-box">
-          <div class="lb-label">💡 Recommendations</div>
-          <p>Give <strong>advice</strong> based on the findings. Use modal verbs like <strong>should / could / it is recommended that</strong>.</p>
+        <div style="font-weight:900;font-size:.82rem;color:var(--y1);margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px">✅ Style B — Bullet points</div>
+        <div style="background:var(--y5);border:2px solid var(--y3);border-radius:12px;padding:14px;font-size:.85rem;line-height:1.9;color:var(--dark)">
+          <strong>Recommendations:</strong><br>
+          • It is recommended that students should limit their daily screen time to 2 hours.<br>
+          • The college could provide digital wellness workshops to raise awareness.
         </div>
-        <div class="formula-box" style="margin-top:8px">
-          <div class="fl">Formula</div>
-          <code>It is recommended that [who] [should + action].</code>
-          <div class="fex">It is recommended that students should limit their daily screen time to 2 hours.</div>
+      </div>
+    </div>
+    <div style="margin-top:14px">
+      <div class="info-pill">💬 Useful Language for Recommendations</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;font-size:.82rem">
+        <div style="background:var(--g5);border:2px solid var(--g3);border-radius:10px;padding:12px;color:var(--mid);line-height:1.9">
+          <div style="font-weight:900;color:var(--g1);margin-bottom:5px">Strong Modal Verbs</div>
+          It is recommended that [who] <strong>should</strong> [action].<br>
+          [Who] <strong>must</strong> [action].<br>
+          It is essential that [who] <strong>should</strong> [action].
+        </div>
+        <div style="background:var(--y5);border:2px solid var(--y3);border-radius:10px;padding:12px;color:var(--mid);line-height:1.9">
+          <div style="font-weight:900;color:var(--y1);margin-bottom:5px">Softer Modal Verbs</div>
+          [Who] <strong>could</strong> [action].<br>
+          It would be beneficial if [who] <strong>would</strong> [action].<br>
+          [Who] <strong>may wish to</strong> [action].
         </div>
       </div>
     </div>
   </div>
- 
-  <!-- ACTIVITY 1 — CONC OR REC? -->
+
+  <!-- MODEL ANSWER -->
+  <div class="card">
+    <div class="card-title">📖 Study This Model Answer</div>
+    <div style="background:var(--dark);border-radius:12px;padding:18px 20px">
+      <div style="color:var(--y3);font-weight:900;font-size:.72rem;text-transform:uppercase;letter-spacing:.8px;margin-bottom:12px">✨ Based on: Social Media Survey of 50 HCT Students</div>
+      <div style="font-size:.88rem;line-height:2;color:white;margin-bottom:14px">
+        <span style="background:#DCFCE7;color:#166534;padding:2px 8px;border-radius:6px;font-weight:800;font-size:.75rem">Conclusion</span><br>
+        In conclusion, the findings show that the majority of HCT students (65%) use Instagram daily, making it the most popular social media platform. Furthermore, 60% of students spend 3–4 hours on social media per day.
+      </div>
+      <div style="font-size:.88rem;line-height:2;color:white">
+        <span style="background:var(--y4);color:#78350F;padding:2px 8px;border-radius:6px;font-weight:800;font-size:.75rem">Recommendations</span><br>
+        1. It is recommended that students should limit their daily social media use to 2 hours to improve academic focus.<br>
+        2. The college could provide digital wellness workshops to help students manage their screen time effectively.
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIVITY 1: IDENTIFY CONCLUSION STARTER -->
   <div class="activity-card">
     <div class="activity-header">
       <span class="act-badge">Activity 1</span>
       <span class="act-title">🔍 Conclusion or Recommendation?</span>
       <span class="xp-chip">+20 XP</span>
     </div>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:14px">Read each sentence. Is it a Conclusion sentence or a Recommendation?</p>
     <div id="cr-q1" style="margin-bottom:14px">
-      <div style="background:var(--y5);border-left:4px solid var(--y3);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700">"Overall, the data revealed that Instagram was the most used platform."</div>
+      <div style="background:var(--y5);border-left:4px solid var(--y3);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700">"In conclusion, the findings show that the majority of students exercise 3–4 times per week."</div>
       <div class="mcq-options" style="grid-template-columns:1fr 1fr">
         <div class="mcq-opt" onclick="checkMCQ(this,'correct','cr-q1')"><span class="opt-letter">A</span>✅ Conclusion</div>
         <div class="mcq-opt" onclick="checkMCQ(this,'wrong','cr-q1')"><span class="opt-letter">B</span>Recommendation</div>
       </div>
     </div>
     <div id="cr-q2" style="margin-bottom:14px">
-      <div style="background:var(--y5);border-left:4px solid var(--y3);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700">"It is recommended that the college should provide digital wellness workshops."</div>
+      <div style="background:var(--y5);border-left:4px solid var(--y3);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700">"It is recommended that the college should provide weekly sports sessions for students."</div>
       <div class="mcq-options" style="grid-template-columns:1fr 1fr">
         <div class="mcq-opt" onclick="checkMCQ(this,'wrong','cr-q2')"><span class="opt-letter">A</span>Conclusion</div>
         <div class="mcq-opt" onclick="checkMCQ(this,'correct','cr-q2')"><span class="opt-letter">B</span>✅ Recommendation</div>
       </div>
     </div>
-    <div id="cr-q3">
-      <div style="background:var(--y5);border-left:4px solid var(--y3);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700">"Students could be encouraged to use apps to track their screen time."</div>
+    <div id="cr-q3" style="margin-bottom:14px">
+      <div style="background:var(--y5);border-left:4px solid var(--y3);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700">"To conclude, the data shows that only 15% of students never exercise."</div>
       <div class="mcq-options" style="grid-template-columns:1fr 1fr">
-        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','cr-q3')"><span class="opt-letter">A</span>Conclusion</div>
-        <div class="mcq-opt" onclick="checkMCQ(this,'correct','cr-q3')"><span class="opt-letter">B</span>✅ Recommendation</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','cr-q3')"><span class="opt-letter">A</span>✅ Conclusion</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','cr-q3')"><span class="opt-letter">B</span>Recommendation</div>
+      </div>
+    </div>
+    <div id="cr-q4">
+      <div style="background:var(--y5);border-left:4px solid var(--y3);padding:12px 16px;border-radius:0 10px 10px 0;margin-bottom:10px;font-size:.9rem;font-weight:700">"Students could be encouraged to use fitness apps to track their daily activity."</div>
+      <div class="mcq-options" style="grid-template-columns:1fr 1fr">
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','cr-q4')"><span class="opt-letter">A</span>Conclusion</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','cr-q4')"><span class="opt-letter">B</span>✅ Recommendation</div>
       </div>
     </div>
     <div class="btn-row"><button class="btn btn-green" onclick="completeActivity('m5-act1',20,'m5')">✅ Submit</button></div>
     <div id="fb-m5-act1"></div>
   </div>
- 
-  <!-- ACTIVITY 2 — COMPLETE CONCLUSION + RECS -->
+
+  <!-- ACTIVITY 2: CHOOSE THE BEST CONCLUSION STARTER -->
   <div class="activity-card">
     <div class="activity-header">
       <span class="act-badge yellow">Activity 2</span>
-      <span class="act-title">✍️ Write Your Conclusion & Recommendations</span>
-      <span class="xp-chip">+40 XP</span>
+      <span class="act-title">✏️ Choose the Best Conclusion Starter</span>
+      <span class="xp-chip">+20 XP</span>
     </div>
-    <div class="lesson-box" style="margin-bottom:14px">
-      <div class="lb-label">📌 Context</div>
-      <p>Based on your findings: 60% of students use 3–4 hours of social media daily. Instagram is the most popular (65%). Only 12% use Facebook.</p>
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:14px">Which sentence is the BEST conclusion sentence? Choose the correct option.</p>
+    <div id="cs-q1" style="margin-bottom:18px">
+      <p style="font-size:.88rem;font-weight:700;margin-bottom:10px">Q1: Which sentence correctly starts a conclusion?</p>
+      <div class="mcq-options">
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','cs-q1')"><span class="opt-letter">A</span>"So basically, loads of students use Instagram."</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','cs-q1')"><span class="opt-letter">B</span>"According to Figure 1, 65% of students use Instagram."</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','cs-q1')"><span class="opt-letter">C</span>"In conclusion, the findings show that Instagram is the most popular platform among HCT students."</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','cs-q1')"><span class="opt-letter">D</span>"It is recommended that students use Instagram less."</div>
+      </div>
     </div>
-    <div style="font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:.95rem;color:var(--g1);margin-bottom:8px">🔚 Your Conclusion (2 sentences)</div>
-    <div class="sent-frame"><div class="sf-label">✨ Start with</div><div class="sf-parts"><span class="sf-fixed">Overall, the findings show that...</span></div></div>
-    <textarea class="ans-area" id="m5-conc" placeholder="Overall, the findings show that..." oninput="updateWC(this,'wc-conc')"></textarea>
-    <div class="wc-row">Words: <span id="wc-conc">0</span></div>
-    <div style="font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:.95rem;color:var(--y1);margin:14px 0 8px">💡 Your Recommendations (2 sentences)</div>
-    <div class="sent-frame"><div class="sf-label">✨ Start with</div><div class="sf-parts"><span class="sf-fixed">It is recommended that...</span></div></div>
-    <textarea class="ans-area" id="m5-rec" placeholder="It is recommended that..." oninput="updateWC(this,'wc-rec')"></textarea>
-    <div class="wc-row">Words: <span id="wc-rec">0</span></div>
-    <div class="checklist">
-      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>My conclusion summarises key findings</div>
-      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>I used "Overall, the findings show..."</div>
-      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>I used "It is recommended that..." OR "Students should..."</div>
-      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>My recommendations are based on the data</div>
+    <div id="cs-q2">
+      <p style="font-size:.88rem;font-weight:700;margin-bottom:10px">Q2: Which is the correct format for 2 recommendations?</p>
+      <div class="mcq-options">
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','cs-q2')"><span class="opt-letter">A</span>"I think students should do two things."</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'correct','cs-q2')"><span class="opt-letter">B</span>"1. It is recommended that students limit screen time. 2. The college could run wellness workshops."</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','cs-q2')"><span class="opt-letter">C</span>"Students should do many things to improve."</div>
+        <div class="mcq-opt" onclick="checkMCQ(this,'wrong','cs-q2')"><span class="opt-letter">D</span>"Overall, there are some good ideas."</div>
+      </div>
     </div>
-    <div class="btn-row"><button class="btn btn-green" onclick="completeMultiWrite(['m5-conc','m5-rec'],'m5-act2',40,'m5',8)">🎉 Submit!</button></div>
+    <div class="btn-row"><button class="btn btn-green" onclick="completeActivity('m5-act2',20,'m5')">✅ Submit</button></div>
     <div id="fb-m5-act2"></div>
   </div>
- 
+
+  <!-- ACTIVITY 3: WRITE CONCLUSION + 2 NUMBERED RECOMMENDATIONS -->
+  <div class="activity-card">
+    <div class="activity-header">
+      <span class="act-badge orange">Activity 3</span>
+      <span class="act-title">✍️ Write Your Conclusion &amp; 2 Recommendations</span>
+      <span class="xp-chip">+60 XP</span>
+    </div>
+    <div class="lesson-box" style="margin-bottom:14px">
+      <div class="lb-label">📌 Context — Social Media Survey</div>
+      <p>Based on your findings: <strong>65%</strong> of students use Instagram daily. <strong>60%</strong> spend 3–4 hours on social media per day. Only <strong>12%</strong> use Facebook.</p>
+    </div>
+
+    <div style="font-weight:900;font-size:.92rem;color:#7C3AED;margin-bottom:8px">🔚 Your Conclusion (1–2 sentences)</div>
+    <div class="sent-frame">
+      <div class="sf-label">✨ Choose a starter</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px" id="starter-picker">
+        <button class="btn btn-outline" style="font-size:.8rem" onclick="pickStarter(this,'In conclusion, the findings show that')">In conclusion,</button>
+        <button class="btn btn-outline" style="font-size:.8rem" onclick="pickStarter(this,'To conclude, the data shows that')">To conclude,</button>
+        <button class="btn btn-outline" style="font-size:.8rem" onclick="pickStarter(this,'Overall, the findings show that')">Overall,</button>
+      </div>
+      <div id="starter-preview" style="margin-top:8px;font-size:.82rem;color:var(--muted);font-style:italic">Select a starter above to begin your conclusion...</div>
+    </div>
+    <textarea class="ans-area" id="m5-conc" placeholder="In conclusion, the findings show that..." oninput="updateWC(this,'wc-conc')"></textarea>
+    <div class="wc-row">Words: <span id="wc-conc">0</span></div>
+
+    <div style="font-weight:900;font-size:.92rem;color:var(--y1);margin:18px 0 8px">💡 Your 2 Recommendations (numbered or bullet points)</div>
+    <div style="background:var(--y5);border:2px solid var(--y3);border-radius:12px;padding:14px;margin-bottom:10px;font-size:.85rem;color:var(--mid)">
+      <div style="font-weight:900;color:var(--y1);margin-bottom:6px">📌 Write exactly 2 — each starting with one of these phrases:</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <span style="background:var(--y4);color:var(--dark);padding:4px 10px;border-radius:8px;font-weight:800;font-size:.78rem">It is recommended that...</span>
+        <span style="background:var(--y4);color:var(--dark);padding:4px 10px;border-radius:8px;font-weight:800;font-size:.78rem">[Who] should...</span>
+        <span style="background:var(--y4);color:var(--dark);padding:4px 10px;border-radius:8px;font-weight:800;font-size:.78rem">[Who] could...</span>
+        <span style="background:var(--y4);color:var(--dark);padding:4px 10px;border-radius:8px;font-weight:800;font-size:.78rem">It would be beneficial if...</span>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div>
+        <label style="font-size:.8rem;font-weight:900;color:var(--g1);display:block;margin-bottom:5px">Recommendation 1</label>
+        <textarea class="ans-area" id="m5-rec1" placeholder="1. It is recommended that..." oninput="updateWC(this,'wc-rec1')"></textarea>
+        <div class="wc-row">Words: <span id="wc-rec1">0</span></div>
+      </div>
+      <div>
+        <label style="font-size:.8rem;font-weight:900;color:var(--g1);display:block;margin-bottom:5px">Recommendation 2</label>
+        <textarea class="ans-area" id="m5-rec2" placeholder="2. The college could..." oninput="updateWC(this,'wc-rec2')"></textarea>
+        <div class="wc-row">Words: <span id="wc-rec2">0</span></div>
+      </div>
+    </div>
+
+    <div class="checklist" style="margin-top:14px">
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>My conclusion uses "In conclusion," / "To conclude," / "Overall,"</div>
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>My conclusion summarises a key finding with a percentage</div>
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>I have written exactly 2 recommendations</div>
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>Each recommendation uses a modal verb (should / could / must)</div>
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>My recommendations are based on the data — not random ideas</div>
+    </div>
+    <div class="btn-row"><button class="btn btn-green" onclick="submitConclusionRec()">🎉 Submit &amp; See Model Answer</button></div>
+    <div id="fb-m5-act3"></div>
+  </div>
+
   <div class="save-bar">
     <div>
       <div style="font-weight:900;font-size:.88rem;color:var(--g1);margin-bottom:3px">💾 🔚 Module 5</div>
@@ -1477,7 +1608,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="save-confirm" id="save-confirm-m5">✅ Saved!</div>
   </div>
 </div>
- 
+
 <!-- ══ MODULE 6 — LANGUAGE BANK ══ -->
 <div class="module-section" id="mod-m6">
   <div class="page-header" style="background:linear-gradient(135deg,white,var(--y5))">
@@ -1485,7 +1616,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="page-header-text"><h2>Module 6 · Language Bank</h2><p>Learn and practise key report vocabulary</p></div>
     <div class="page-header-xp">⚡ Up to 60 XP</div>
   </div>
- 
+
   <div class="card">
     <div class="card-title">📚 Essential Report Language</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px">
@@ -1507,7 +1638,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       </div>
     </div>
   </div>
- 
+
   <!-- ACTIVITY 1 — FORMAL/INFORMAL SORT -->
   <div class="activity-card">
     <div class="activity-header">
@@ -1528,7 +1659,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="btn-row"><button class="btn btn-green" onclick="checkSort('m6-act1',20,'m6')">✅ Check Sorting</button></div>
     <div id="fb-m6-act1"></div>
   </div>
- 
+
   <!-- ACTIVITY 2 — COMPLETE SENTENCES VOCAB -->
   <div class="activity-card">
     <div class="activity-header">
@@ -1566,7 +1697,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="btn-row"><button class="btn btn-green" onclick="completeActivity('m6-act2',20,'m6')">✅ Submit</button></div>
     <div id="fb-m6-act2"></div>
   </div>
- 
+
   <!-- ACTIVITY 3 — FORMAL REWRITE -->
   <div class="activity-card">
     <div class="activity-header">
@@ -1582,7 +1713,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="btn-row"><button class="btn btn-green" onclick="completeWriteActivity('m6-rewrite1','m6-act3',20,'m6',8)">✅ Submit</button></div>
     <div id="fb-m6-act3"></div>
   </div>
- 
+
   <div class="save-bar">
     <div>
       <div style="font-weight:900;font-size:.88rem;color:var(--g1);margin-bottom:3px">💾 💬 Module 6</div>
@@ -1592,7 +1723,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="save-confirm" id="save-confirm-m6">✅ Saved!</div>
   </div>
 </div>
- 
+
 <!-- ══ EXAM PRACTICE ══ -->
 <div class="module-section" id="mod-exam">
   <div class="page-header" style="background:linear-gradient(135deg,var(--dark),#16A34A)">
@@ -1600,7 +1731,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div class="page-header-text" style="color:white"><h2 style="color:var(--y3)">Exam Practice Mode</h2><p style="color:rgba(255,255,255,.75)">Write a full report section — timed practice!</p></div>
     <div class="page-header-xp" style="background:var(--y3);color:var(--dark)">⚡ Up to 100 XP</div>
   </div>
- 
+
   <div class="card">
     <div class="card-title">🗒️ Exam Tips — Read Before You Start</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px">
@@ -1618,7 +1749,7 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       </div>
     </div>
   </div>
- 
+
   <div class="card" id="exam-card">
     <div class="card-title">📝 Exam Scenario</div>
     <div style="background:var(--dark);border-radius:12px;padding:18px;color:white;margin-bottom:16px">
@@ -1634,13 +1765,13 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
         <div class="bar-wrap"><div class="bar" style="height:35%;background:linear-gradient(180deg,#FB923C,#F97316)"><span>25%</span></div><div class="bar-label">Daily</div></div>
       </div>
     </div>
- 
+
     <div style="display:flex;align-items:center;justify-content:space-between;margin:16px 0 10px">
       <div style="font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1rem;color:var(--g1)">⏱️ Timer</div>
       <div id="exam-timer" style="font-family:'Arial Rounded MT Bold','Trebuchet MS',system-ui,sans-serif;font-size:1.4rem;color:var(--g1);background:var(--g4);padding:6px 16px;border-radius:99px">30:00</div>
       <button class="btn btn-green" onclick="startTimer()" id="timer-btn">▶ Start Timer</button>
     </div>
- 
+
     <div style="margin-top:16px">
       <label style="font-size:.85rem;font-weight:900;color:var(--g1);display:block;margin-bottom:5px">1️⃣ Title</label>
       <textarea class="ans-area" id="ex-title" placeholder="A Report on ..." oninput="updateWC(this,'wc-ext')"></textarea>
@@ -1658,24 +1789,25 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
       <textarea class="ans-area" id="ex-rec" placeholder="It is recommended that..." oninput="updateWC(this,'wc-exr')"></textarea>
       <div class="wc-row">Words: <span id="wc-exr">0</span></div>
     </div>
- 
+
     <div class="checklist" style="margin-top:16px">
       <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>✅ My title uses the formula "A Report on..."</div>
       <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>✅ My introduction has all 3 sentences (Type/Requested, Purpose/Goal, Overview)</div>
       <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>✅ My findings mention "According to Figure 1"</div>
       <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>✅ I used percentages and numbers from the chart</div>
       <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>✅ My conclusion starts with "Overall, the findings show..."</div>
-      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>✅ My recommendations use formal language</div>
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>✅ I have exactly 2 numbered or bulleted recommendations</div>
+      <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>✅ Each recommendation uses "It is recommended that..." / "should" / "could"</div>
       <div class="chk-item" onclick="toggleCheck(this)"><div class="chk-box">✓</div>✅ No informal language or "I think"</div>
     </div>
- 
+
     <div class="btn-row">
       <button class="btn btn-green" onclick="submitExam()">🎓 Submit My Exam!</button>
       <button class="btn btn-outline" onclick="window.print()">🖨️ Print</button>
     </div>
     <div id="fb-exam"></div>
   </div>
- 
+
   <div class="save-bar">
     <div>
       <div style="font-weight:900;font-size:.88rem;color:var(--g1);margin-bottom:3px">💾 🎓 Exam Practice</div>
@@ -1684,10 +1816,10 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <button class="btn-save" onclick="saveModuleData('exam')">💾 Save My Progress</button>
     <div class="save-confirm" id="save-confirm-exam">✅ Saved!</div>
   </div>
- 
- 
+
+
 </main>
- 
+
 <script>
 // ══════════════════════════════════════
 // STATE
@@ -1699,7 +1831,7 @@ let matchState = {left:null,right:null,matched:[]};
 let timerInterval = null;
 let timerSeconds = 1800;
 let introStep = 0;
- 
+
 const levels = [
   {name:'Beginner Writer',min:0},
   {name:'Sentence Builder',min:60},
@@ -1707,7 +1839,7 @@ const levels = [
   {name:'Advanced Analyst',min:280},
   {name:'Report Expert',min:400}
 ];
- 
+
 // FORMAL/INFORMAL data
 const sortItems = [
   {text:'According to the data',correct:'formal'},
@@ -1719,7 +1851,7 @@ const sortItems = [
   {text:'The majority of respondents',correct:'formal'},
   {text:'So basically...',correct:'informal'},
 ];
- 
+
 // GOOD/BAD TITLES
 const goodBadTitles = [
   {text:'An Informative Report to Analyse the Study Habits of HCT Students in Abu Dhabi in 2024 Using Survey Methods.', correct:'good', reason:'✅ Correct! Has all parts: Type + Purpose verb (to Analyse) + What + Who + Where + When + How.'},
@@ -1729,13 +1861,13 @@ const goodBadTitles = [
   {text:'What do HCT Students Think About Exercise???', correct:'bad', reason:'❌ This is a question — titles are NEVER questions. Also has no report type, no purpose verb, and no 5W+1H details.'},
   {text:'An Informative Report to Examine Exercise Habits of HCT Students in HCT Abu Dhabi in 2024.', correct:'bad', reason:'❌ Missing the HOW part — you must include "Using [method]" e.g. Using Survey Methods.'},
 ];
- 
+
 let sortAssigned = {};
 let goodBadAnswers = {};
 let selectedWord = null;
 let selectedWordBank = null;
 let fillBlanks = {};
- 
+
 // ══════════════════════════════════════
 // XP & LEVELS
 // ══════════════════════════════════════
@@ -1750,13 +1882,13 @@ function addXP(amount){
   document.getElementById('level-name').textContent = levels[lvl].name;
   showToast('Well done!', amount);
 }
- 
+
 function getCurrentLevel(){
   let lv = 0;
   for(let i=0;i<levels.length;i++){if(xp >= levels[i].min) lv=i;}
   return lv;
 }
- 
+
 function showToast(msg, xpAmt){
   const t = document.getElementById('toast');
   document.getElementById('toast-msg').textContent = '⭐ ' + msg;
@@ -1764,7 +1896,7 @@ function showToast(msg, xpAmt){
   t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'), 2800);
 }
- 
+
 // ══════════════════════════════════════
 // NAVIGATION
 // ══════════════════════════════════════
@@ -1775,7 +1907,7 @@ function showModule(id){
   document.getElementById('nav-'+id).classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
 }
- 
+
 // ══════════════════════════════════════
 // FEEDBACK
 // ══════════════════════════════════════
@@ -1784,7 +1916,7 @@ function showFeedback(id, type, msg){
   if(!el) return;
   el.innerHTML = `<div class="feedback ${type}"><span>${type==='success'?'🎉':'ℹ️'}</span> ${msg}</div>`;
 }
- 
+
 // ══════════════════════════════════════
 // MCQ
 // ══════════════════════════════════════
@@ -1802,7 +1934,7 @@ function checkMCQ(el, result, groupId){
     });
   }
 }
- 
+
 // ══════════════════════════════════════
 // COMPLETE ACTIVITIES
 // ══════════════════════════════════════
@@ -1815,7 +1947,7 @@ function completeActivity(actId, xpAmt, module){
   showFeedback(actId, 'success', 'Great job! You earned +' + xpAmt + ' XP! ⭐');
   checkBadge(module);
 }
- 
+
 function updateStars(mod){
   const s = moduleStars[mod];
   const star = s >= 3 ? '⭐⭐⭐' : s === 2 ? '⭐⭐☆' : s === 1 ? '⭐☆☆' : '☆☆☆';
@@ -1824,7 +1956,7 @@ function updateStars(mod){
   const mel = document.getElementById('map-stars-'+mod);
   if(mel) mel.textContent = star;
 }
- 
+
 function checkBadge(module){
   const badges = {m1:'badge-starter',m2:'badge-title',m3:'badge-intro',m4:'badge-findings',m5:'badge-conc',m6:'badge-vocab',exam:'badge-exam'};
   if(moduleStars[module] >= 2){
@@ -1832,7 +1964,7 @@ function checkBadge(module){
     if(b) b.classList.add('earned');
   }
 }
- 
+
 // ══════════════════════════════════════
 // FILL BLANKS SYSTEM
 // ══════════════════════════════════════
@@ -1843,7 +1975,7 @@ function pickWord(el, wbId){
   selectedWordBank = wbId;
   el.style.outline = '3px solid var(--g1)';
 }
- 
+
 function fillBlank(blankId, correctWord, wbId){
   if(!selectedWord || selectedWordBank !== wbId) return;
   const blank = document.getElementById(blankId);
@@ -1856,7 +1988,7 @@ function fillBlank(blankId, correctWord, wbId){
   selectedWord = null;
   selectedWordBank = null;
 }
- 
+
 function checkFillBlanks(ids, answers, actId, xpAmt, module){
   let correct = 0;
   ids.forEach((id,i)=>{
@@ -1873,7 +2005,7 @@ function checkFillBlanks(ids, answers, actId, xpAmt, module){
     showFeedback(actId, 'info', correct + '/' + ids.length + ' correct. Check the red blanks and try again!');
   }
 }
- 
+
 // ══════════════════════════════════════
 // ══════════════════════════════════════
 // ARROW-BASED REORDER (M1 Activity 2)
@@ -1885,10 +2017,10 @@ const orderItems = [
   {label:'Conclusion',    icon:'🔚', correct:4, color:'#FDF4FF',   border:'#C084FC'},
   {label:'Recommendations',icon:'💡',correct:5, color:'#FFF7ED',   border:'#FDC68A'},
 ];
- 
+
 // currentOrder holds indices into orderItems (shuffled on init)
 let currentOrder = [];
- 
+
 function initOrderList(){
   currentOrder = [0,1,2,3,4];
   // Shuffle
@@ -1901,7 +2033,7 @@ function initOrderList(){
   if(alreadyCorrect) { currentOrder.reverse(); }
   renderOrderList();
 }
- 
+
 function renderOrderList(){
   const container = document.getElementById('order-list-m1');
   if(!container) return;
@@ -1925,20 +2057,20 @@ function renderOrderList(){
       </div>`;
   }).join('');
 }
- 
+
 function moveOrderItem(pos, dir){
   const newPos = pos + dir;
   if(newPos < 0 || newPos >= currentOrder.length) return;
   [currentOrder[pos], currentOrder[newPos]] = [currentOrder[newPos], currentOrder[pos]];
   renderOrderList();
 }
- 
+
 function shuffleOrderList(){
   const fb = document.getElementById('fb-m1-act2');
   if(fb) fb.innerHTML = '';
   initOrderList();
 }
- 
+
 function checkOrderList(actId, xpAmt, module){
   const isCorrect = currentOrder.every((itemIdx, pos) => orderItems[itemIdx].correct === pos + 1);
   if(isCorrect){
@@ -1967,7 +2099,7 @@ function checkOrderList(actId, xpAmt, module){
     showFeedback(actId,'info',`${wrongCount} part${wrongCount>1?'s are':' is'} in the wrong position. Use ↑ ↓ to adjust and try again!`);
   }
 }
- 
+
 // ══════════════════════════════════════
 // MATCHING
 // ══════════════════════════════════════
@@ -2007,7 +2139,7 @@ function selectMatch(el, side, itemId){
     ms.left = null; ms.right = null;
   }
 }
- 
+
 // ══════════════════════════════════════
 // WRITE ACTIVITY
 // ══════════════════════════════════════
@@ -2015,7 +2147,7 @@ function updateWC(el, countId){
   const words = el.value.trim().split(/\s+/).filter(w=>w.length>0).length;
   document.getElementById(countId).textContent = words;
 }
- 
+
 function completeWriteActivity(inputId, actId, xpAmt, module, minWords){
   const el = document.getElementById(inputId);
   if(!el) return;
@@ -2026,7 +2158,7 @@ function completeWriteActivity(inputId, actId, xpAmt, module, minWords){
   }
   completeActivity(actId, xpAmt, module);
 }
- 
+
 function completeMultiWrite(ids, actId, xpAmt, module, minWords){
   let total = 0;
   ids.forEach(id=>{
@@ -2039,14 +2171,14 @@ function completeMultiWrite(ids, actId, xpAmt, module, minWords){
   }
   completeActivity(actId, xpAmt, module);
 }
- 
+
 // ══════════════════════════════════════
 // TOGGLE CHECKLIST
 // ══════════════════════════════════════
 function toggleCheck(el){
   el.classList.toggle('checked');
 }
- 
+
 // ══════════════════════════════════════
 // INTRO STEP BY STEP
 // ══════════════════════════════════════
@@ -2074,7 +2206,7 @@ function nextIntroStep(step){
     introStep = nextStep;
   }, 800);
 }
- 
+
 function finishIntro(){
   // Activity 3 ends at sentence 3
   const el = document.getElementById('m3-s3');
@@ -2094,7 +2226,7 @@ function finishIntro(){
   if(completeEl) completeEl.style.display = 'block';
   completeActivity('m3-act3',40,'m3');
 }
- 
+
 // ══════════════════════════════════════
 // WORD JUMBLE SYSTEM
 // ══════════════════════════════════════
@@ -2142,13 +2274,13 @@ const jumbleData = {
     textColors: ['#166534','#854D0E','#1E3A8A','#581C87','#9F1239','#134E4A','#78350F']
   }
 };
- 
+
 let jumbleState = {};
- 
+
 function initAllJumbles(){
   ['jumble1','jumble2','jumble3'].forEach(id => initJumble(id));
 }
- 
+
 function initJumble(id){
   const data = jumbleData[id];
   // Shuffle chunk indices
@@ -2160,21 +2292,21 @@ function initJumble(id){
   jumbleState[id] = { available: shuffled, placed: [] };
   renderJumble(id);
 }
- 
+
 function renderJumble(id){
   const data = jumbleData[id];
   const state = jumbleState[id];
   const chipsEl = document.getElementById(id+'-chips');
   const buildEl = document.getElementById(id+'-build');
   if(!chipsEl || !buildEl || !state) return;
- 
+
   // Render available chips
   chipsEl.innerHTML = state.available.map(idx => `
     <span onclick="placeJumbleChunk('${id}',${idx})"
       style="background:${data.colors[idx]};color:${data.textColors[idx]};padding:7px 13px;border-radius:99px;font-size:.8rem;font-weight:800;cursor:pointer;border:2px solid ${data.textColors[idx]}33;transition:all .2s;display:inline-block"
       onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">${data.chunks[idx]}</span>
   `).join('');
- 
+
   // Render placed chunks
   if(state.placed.length === 0){
     buildEl.innerHTML = '<span style="color:var(--muted);font-style:italic">Click parts above to build your title...</span>';
@@ -2186,7 +2318,7 @@ function renderJumble(id){
     `).join('');
   }
 }
- 
+
 function placeJumbleChunk(id, idx){
   const state = jumbleState[id];
   if(!state) return;
@@ -2194,7 +2326,7 @@ function placeJumbleChunk(id, idx){
   state.placed.push(idx);
   renderJumble(id);
 }
- 
+
 function removeJumbleChunk(id, idx){
   const state = jumbleState[id];
   if(!state) return;
@@ -2202,14 +2334,14 @@ function removeJumbleChunk(id, idx){
   state.available.push(idx);
   renderJumble(id);
 }
- 
+
 function resetJumble(id){
   initJumble(id);
   const fbMap = {jumble1:'4',jumble2:'5',jumble3:'6'};
   const fb = document.getElementById('fb-m2-act'+(fbMap[id]||'4'));
   if(fb) fb.innerHTML = '';
 }
- 
+
 function checkJumble(id, actId, xpAmt, module){
   const state = jumbleState[id];
   const data = jumbleData[id];
@@ -2226,7 +2358,7 @@ function checkJumble(id, actId, xpAmt, module){
     showFeedback(actId,'info','Not quite right. Remember the order: Type → Purpose → What → Who → Where → When → How. The correct title is: <em>'+correctTitle+'</em>');
   }
 }
- 
+
 // ══════════════════════════════════════
 // TITLE PREVIEW BUILDER (Activity 7)
 // ══════════════════════════════════════
@@ -2247,7 +2379,7 @@ function buildTitlePreview(){
     preview.textContent = title;
   }
 }
- 
+
 function submitFullTitle(){
   const type = (document.getElementById('m2-part-type')||{value:''}).value;
   const verb = (document.getElementById('m2-part-verb')||{value:''}).value;
@@ -2273,12 +2405,12 @@ function submitFullTitle(){
   completeActivity('m2-act7',20,'m2');
   showFeedback('m2-act7','success','Excellent! Your full title includes all 5W+1H parts. You are ready for the exam! 🎉');
 }
- 
+
 // ══════════════════════════════════════
 // TITLE TYPE PICKER
 // ══════════════════════════════════════
 let selectedReportType = '';
- 
+
 function pickType(btn, typeText){
   document.querySelectorAll('#type-picker .btn').forEach(b=>{
     b.classList.remove('btn-green');b.classList.add('btn-outline');
@@ -2288,7 +2420,7 @@ function pickType(btn, typeText){
   document.getElementById('type-selected').innerHTML = `✅ You chose: <strong style="color:var(--g1)">${typeText}</strong>`;
   document.getElementById('frame-type').textContent = typeText;
 }
- 
+
 function submitTitleActivity(){
   const el = document.getElementById('m2-title-write');
   const val = el ? el.value.trim() : '';
@@ -2310,7 +2442,7 @@ function submitTitleActivity(){
   completeActivity('m2-act3',20,'m2');
   showFeedback('m2-act3','success','Perfect! Your title includes the report type. Well done! ⭐');
 }
- 
+
 // ══════════════════════════════════════
 // GOOD/BAD TITLES
 // ══════════════════════════════════════
@@ -2328,7 +2460,7 @@ function buildGoodBad(){
     </div>
   `).join('');
 }
- 
+
 function answerGoodBad(i, ans, btn){
   const t = goodBadTitles[i];
   const fb = document.getElementById('gb-fb-'+i);
@@ -2340,7 +2472,7 @@ function answerGoodBad(i, ans, btn){
     goodBadAnswers[i] = false;
   }
 }
- 
+
 function submitGoodBad(){
   const correct = Object.values(goodBadAnswers).filter(v=>v).length;
   if(Object.keys(goodBadAnswers).length < goodBadTitles.length){
@@ -2350,7 +2482,7 @@ function submitGoodBad(){
   if(correct >= 2){ completeActivity('m2-act2',20,'m2'); }
   else { showFeedback('m2-act2','info',correct+'/'+goodBadTitles.length+' correct. Review the hints and try again!'); }
 }
- 
+
 // ══════════════════════════════════════
 // FORMAL/INFORMAL SORT
 // ══════════════════════════════════════
@@ -2361,7 +2493,7 @@ function buildSort(){
     <span class="word-chip" style="cursor:pointer" onclick="assignSort(${i},this)">${item.text}</span>
   `).join('');
 }
- 
+
 function assignSort(i, el){
   if(sortAssigned[i]) return;
   const item = sortItems[i];
@@ -2375,7 +2507,7 @@ function assignSort(i, el){
   // Always put in correct box for this simpler implementation
   target.appendChild(chip);
 }
- 
+
 function checkSort(actId, xpAmt, module){
   if(Object.keys(sortAssigned).length < sortItems.length){
     showFeedback(actId,'info','Please sort all phrases first.');
@@ -2383,7 +2515,7 @@ function checkSort(actId, xpAmt, module){
   }
   completeActivity(actId, xpAmt, module);
 }
- 
+
 // ══════════════════════════════════════
 // TIMER
 // ══════════════════════════════════════
@@ -2403,7 +2535,7 @@ function startTimer(){
     }
   },1000);
 }
- 
+
 // ══════════════════════════════════════
 // EXAM SUBMIT
 // ══════════════════════════════════════
@@ -2427,10 +2559,10 @@ function submitExam(){
   document.getElementById('badge-exam').classList.add('earned');
   // Auto-save exam answers on submit
   saveModuleData('exam');
- 
+
   document.getElementById('fb-exam').innerHTML = `
     <div style="margin-top:16px">
- 
+
       <!-- Submission banner -->
       <div style="background:linear-gradient(135deg,#0f5c2a,#16A34A);color:white;border-radius:14px;padding:20px 24px;margin-bottom:18px;display:flex;align-items:center;gap:16px">
         <div style="font-size:2.5rem">🎓</div>
@@ -2439,10 +2571,10 @@ function submitExam(){
           <div style="font-size:.85rem;opacity:.85">Words written: <strong>${totalWords}</strong> &nbsp;·&nbsp; Time used: <strong>${minutes} min</strong></div>
         </div>
       </div>
- 
+
       <!-- Student answers side by side with model -->
       <div style="font-weight:900;font-size:.95rem;color:var(--g1);margin-bottom:12px">📋 Compare Your Answers with the Model Answer</div>
- 
+
       <!-- Title -->
       <div style="border:2px solid var(--g3);border-radius:12px;overflow:hidden;margin-bottom:12px">
         <div style="background:var(--g1);color:white;font-weight:900;font-size:.75rem;padding:8px 14px;text-transform:uppercase;letter-spacing:.5px">1️⃣ Title</div>
@@ -2457,7 +2589,7 @@ function submitExam(){
           </div>
         </div>
       </div>
- 
+
       <!-- Introduction -->
       <div style="border:2px solid var(--y3);border-radius:12px;overflow:hidden;margin-bottom:12px">
         <div style="background:var(--y2);color:var(--dark);font-weight:900;font-size:.75rem;padding:8px 14px;text-transform:uppercase;letter-spacing:.5px">2️⃣ Introduction (3 sentences)</div>
@@ -2476,7 +2608,7 @@ function submitExam(){
           </div>
         </div>
       </div>
- 
+
       <!-- Findings -->
       <div style="border:2px solid #93C5FD;border-radius:12px;overflow:hidden;margin-bottom:12px">
         <div style="background:#3B82F6;color:white;font-weight:900;font-size:.75rem;padding:8px 14px;text-transform:uppercase;letter-spacing:.5px">3️⃣ Findings (3+ sentences)</div>
@@ -2491,7 +2623,7 @@ function submitExam(){
           </div>
         </div>
       </div>
- 
+
       <!-- Conclusion -->
       <div style="border:2px solid #C084FC;border-radius:12px;overflow:hidden;margin-bottom:12px">
         <div style="background:#A855F7;color:white;font-weight:900;font-size:.75rem;padding:8px 14px;text-transform:uppercase;letter-spacing:.5px">4️⃣ Conclusion (2 sentences)</div>
@@ -2506,7 +2638,7 @@ function submitExam(){
           </div>
         </div>
       </div>
- 
+
       <!-- Recommendations -->
       <div style="border:2px solid #FDC68A;border-radius:12px;overflow:hidden;margin-bottom:18px">
         <div style="background:#F97316;color:white;font-weight:900;font-size:.75rem;padding:8px 14px;text-transform:uppercase;letter-spacing:.5px">5️⃣ Recommendations (2 sentences)</div>
@@ -2521,7 +2653,7 @@ function submitExam(){
           </div>
         </div>
       </div>
- 
+
       <!-- Key tips -->
       <div style="background:var(--dark);border-radius:12px;padding:16px 20px">
         <div style="color:var(--y3);font-weight:900;font-size:.8rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px">💡 Key Things to Check in Your Answer</div>
@@ -2538,7 +2670,7 @@ function submitExam(){
       </div>
     </div>`;
 }
- 
+
 // ══════════════════════════════════════
 // INIT
 // ══════════════════════════════════════
@@ -2546,13 +2678,80 @@ buildGoodBad();
 buildSort();
 setTimeout(initAllJumbles, 0);
 setTimeout(initOrderList, 0);
- 
+
 // Animate XP bar on load
 setTimeout(()=>{
   document.getElementById('xp-bar').style.width = '0%';
 },100);
- 
- 
+
+
+// ══════════════════════════════════════
+// M5 CONCLUSION + RECOMMENDATIONS
+// ══════════════════════════════════════
+function pickStarter(btn, starterText){
+  document.querySelectorAll('#starter-picker .btn').forEach(b=>{
+    b.classList.remove('btn-green'); b.classList.add('btn-outline');
+  });
+  btn.classList.remove('btn-outline'); btn.classList.add('btn-green');
+  const preview = document.getElementById('starter-preview');
+  if(preview) preview.innerHTML = '<strong style="color:var(--g1)">'+starterText+'</strong> [your findings summary here]...';
+  const ta = document.getElementById('m5-conc');
+  if(ta && !ta.value.trim()){
+    ta.placeholder = starterText + '...';
+  }
+}
+
+function submitConclusionRec(){
+  const concEl  = document.getElementById('m5-conc');
+  const rec1El  = document.getElementById('m5-rec1');
+  const rec2El  = document.getElementById('m5-rec2');
+  const concVal = concEl  ? concEl.value.trim()  : '';
+  const rec1Val = rec1El  ? rec1El.value.trim()  : '';
+  const rec2Val = rec2El  ? rec2El.value.trim()  : '';
+  const missing = [];
+  if(concVal.split(/\s+/).filter(w=>w).length < 8)  missing.push('Conclusion (at least 8 words)');
+  if(rec1Val.split(/\s+/).filter(w=>w).length < 6)  missing.push('Recommendation 1 (at least 6 words)');
+  if(rec2Val.split(/\s+/).filter(w=>w).length < 6)  missing.push('Recommendation 2 (at least 6 words)');
+  if(missing.length){
+    showFeedback('m5-act3','info','Please complete: ' + missing.join(' · '));
+    return;
+  }
+  const hasStarter = /in conclusion|to conclude|overall/i.test(concVal);
+  if(!hasStarter){
+    showFeedback('m5-act3','info','⚠️ Your conclusion needs a starter phrase — use "In conclusion,", "To conclude," or "Overall, the findings show that".');
+    return;
+  }
+  const hasModal1 = /should|could|must|recommended|beneficial|may wish/i.test(rec1Val);
+  const hasModal2 = /should|could|must|recommended|beneficial|may wish/i.test(rec2Val);
+  if(!hasModal1 || !hasModal2){
+    showFeedback('m5-act3','info','⚠️ Each recommendation needs a modal verb: should / could / must / it is recommended that.');
+    return;
+  }
+  completeActivity('m5-act3',60,'m5');
+  document.getElementById('fb-m5-act3').innerHTML = `
+    <div style="margin-top:14px">
+      <div class="model-sent">
+        <div class="ms-label">✅ Model Answer — Compare with yours</div>
+        <div style="font-size:.88rem;line-height:1.9;color:var(--dark);font-weight:600">
+          <strong>Conclusion:</strong><br>
+          In conclusion, the findings show that the majority of HCT students (65%) use Instagram daily, making it the most popular social media platform. Furthermore, 60% of students spend 3–4 hours on social media per day.<br><br>
+          <strong>Recommendations:</strong><br>
+          1. It is recommended that students should limit their daily social media use to 2 hours to improve academic focus.<br>
+          2. The college could provide digital wellness workshops to help students manage their screen time effectively.
+        </div>
+      </div>
+      <div style="background:var(--g5);border:2px solid var(--g3);border-radius:12px;padding:14px;margin-top:10px;font-size:.82rem;color:var(--mid)">
+        <div style="font-weight:900;color:var(--g1);margin-bottom:8px">🔍 Self-check your answer:</div>
+        <div>✅ Conclusion starts with "In conclusion," / "To conclude," / "Overall,"</div>
+        <div>✅ Conclusion includes at least one percentage from the data</div>
+        <div>✅ Exactly 2 recommendations — numbered or bulleted</div>
+        <div>✅ Each recommendation uses should / could / must / it is recommended</div>
+        <div>✅ Recommendations are based on the findings — not random ideas</div>
+      </div>
+    </div>`;
+}
+
+
 // ══════════════════════════════════════
 // FINDINGS STEPPER (M4 Activity 4)
 // ══════════════════════════════════════
@@ -2576,7 +2775,7 @@ function nextFindingsStep(step){
     if(nd){ nd.classList.add('active'); nd.classList.remove('pending'); }
   }, 700);
 }
- 
+
 function finishFindings(){
   const el = document.getElementById('m4-s4');
   const fb = document.getElementById('fb-find-s4');
@@ -2596,7 +2795,7 @@ function finishFindings(){
   if(comp) comp.style.display = 'block';
   completeActivity('m4-act4',40,'m4');
 }
- 
+
 function submitFindingsParagraph(){
   const el = document.getElementById('m4-para');
   const words = el ? el.value.trim().split(/\s+/).filter(w=>w.length>0).length : 0;
@@ -2621,29 +2820,29 @@ function submitFindingsParagraph(){
       </div>
     </div>`;
 }
- 
- 
+
+
 // ══════════════════════════════════════
 // SAVE / LOAD SYSTEM (localStorage)
 // ══════════════════════════════════════
 const SAVE_KEY = 'lsc1103_booster_v2';
- 
+
 // Fields to save per module
 const MODULE_FIELDS = {
   m1: [],
   m2: ['m2-part-type','m2-part-verb','m2-part-what','m2-part-who','m2-part-where','m2-part-when','m2-part-how','m2-title-write'],
   m3: ['m3-s1','m3-s2','m3-s3'],
   m4: ['m4-s1','m4-s2','m4-s3','m4-s4','m4-para'],
-  m5: ['m5-conc','m5-rec'],
+  m5: ['m5-conc','m5-rec1','m5-rec2'],
   m6: ['m6-rewrite1'],
   exam: ['ex-title','ex-intro','ex-find','ex-conc','ex-rec']
 };
- 
+
 const MODULE_LABELS = {
   m1:'📋 Report Parts', m2:'✍️ Title Writing', m3:'📖 Introduction',
   m4:'📊 Findings', m5:'🔚 Conclusion', m6:'💬 Language Bank', exam:'🎓 Exam Practice'
 };
- 
+
 function saveModuleData(mod){
   try {
     // Load existing save or start fresh
@@ -2669,7 +2868,7 @@ function saveModuleData(mod){
                     now.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
     existing.savedAt[mod] = timeStr;
     existing.savedAt['_last'] = timeStr;
- 
+
     localStorage.setItem(SAVE_KEY, JSON.stringify(existing));
     
     // Show confirmation
@@ -2680,16 +2879,16 @@ function saveModuleData(mod){
     showToast('Progress saved!', 0);
     document.getElementById('toast-xp').style.display = 'none';
     setTimeout(()=>{ const txp=document.getElementById('toast-xp'); if(txp) txp.style.display=''; }, 3000);
- 
+
   } catch(e){ console.warn('Save failed:', e); }
 }
- 
+
 function loadAllData(){
   try {
     const raw = localStorage.getItem(SAVE_KEY);
     if(!raw) return;
     const data = JSON.parse(raw);
- 
+
     // Restore XP and level
     if(data.xp){
       xp = data.xp;
@@ -2701,18 +2900,18 @@ function loadAllData(){
       document.getElementById('level-badge').textContent = 'Lv ' + (lvl+1);
       document.getElementById('level-name').textContent = levels[lvl].name;
     }
- 
+
     // Restore completed activities
     if(data.completed){
       data.completed.forEach(id => completedActivities.add(id));
     }
- 
+
     // Restore module stars
     if(data.stars){
       moduleStars = {...moduleStars, ...data.stars};
       Object.keys(moduleStars).forEach(mod => updateStars(mod));
     }
- 
+
     // Restore text fields
     if(data.fields){
       Object.keys(data.fields).forEach(mod => {
@@ -2740,7 +2939,7 @@ function loadAllData(){
         });
       });
     }
- 
+
     // Restore saved timestamps in save bars
     if(data.savedAt){
       Object.keys(data.savedAt).forEach(mod => {
@@ -2749,13 +2948,13 @@ function loadAllData(){
         if(el) el.textContent = data.savedAt[mod];
       });
     }
- 
+
     // Show the saved progress card on home
     updateHomeSavedCard(data);
- 
+
   } catch(e){ console.warn('Load failed:', e); }
 }
- 
+
 function updateHomeSavedCard(data){
   if(!data) {
     try { data = JSON.parse(localStorage.getItem(SAVE_KEY) || 'null'); } catch(e){}
@@ -2763,10 +2962,10 @@ function updateHomeSavedCard(data){
   const card = document.getElementById('saved-progress-card');
   const summary = document.getElementById('saved-summary');
   if(!card || !summary || !data) return;
- 
+
   const hasMeaningfulData = (data.xp && data.xp > 0) || (data.completed && data.completed.length > 0);
   if(!hasMeaningfulData){ card.style.display = 'none'; return; }
- 
+
   card.style.display = 'block';
   const savedAt = (data.savedAt || {})['_last'] || 'Unknown';
   
@@ -2782,18 +2981,18 @@ function updateHomeSavedCard(data){
       <span class="sr-status">${status}</span>
     </div>`;
   }).join('');
- 
+
   summary.innerHTML = `
     <div style="font-size:.78rem;color:var(--muted);margin-bottom:10px">Last saved: <strong>${savedAt}</strong> &nbsp;|&nbsp; XP: <strong style="color:var(--g1)">${data.xp || 0}</strong></div>
     ${rows}`;
 }
- 
+
 function clearAllProgress(){
   if(!confirm('Are you sure you want to clear all your saved progress? This cannot be undone.')) return;
   localStorage.removeItem(SAVE_KEY);
   location.reload();
 }
- 
+
 // Auto-save XP whenever it changes
 const _origAddXP = addXP;
 function addXP(amount){
@@ -2807,11 +3006,10 @@ function addXP(amount){
     localStorage.setItem(SAVE_KEY, JSON.stringify(existing));
   } catch(e){}
 }
- 
+
 // Load on startup (after all init)
 setTimeout(loadAllData, 150);
- 
+
 </script>
 </body>
 </html>
- 
