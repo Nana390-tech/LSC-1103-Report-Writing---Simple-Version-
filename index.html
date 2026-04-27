@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -256,6 +256,17 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
 .saved-row:last-child{border:none}
 .saved-row .sr-icon{font-size:1rem;width:22px;text-align:center}
 .saved-row .sr-status{margin-left:auto;font-size:.75rem;background:var(--g4);color:var(--g1);padding:2px 8px;border-radius:99px}
+
+/* ── MODULE BADGE PANEL ── */
+.badge-panel{display:none;background:linear-gradient(135deg,#0f5c2a,#16A34A);border-radius:var(--radius);padding:24px 26px;margin-top:20px;color:white;text-align:center;animation:badgePop .5s cubic-bezier(.34,1.56,.64,1)}
+@keyframes badgePop{from{opacity:0;transform:scale(.7)} to{opacity:1;transform:scale(1)}}
+.badge-panel .bp-emoji{font-size:3.5rem;margin-bottom:10px;display:block;filter:drop-shadow(0 4px 12px rgba(0,0,0,.3))}
+.badge-panel .bp-title{font-weight:900;font-size:1.3rem;color:var(--y3);margin-bottom:6px}
+.badge-panel .bp-sub{font-size:.88rem;opacity:.85;margin-bottom:16px}
+.badge-panel .bp-badge{display:inline-flex;align-items:center;gap:10px;background:var(--y3);color:var(--dark);font-weight:900;font-size:.95rem;padding:10px 22px;border-radius:99px;margin-bottom:16px}
+.badge-panel .bp-next{background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);color:white;padding:9px 20px;border-radius:99px;border:none;font-weight:800;font-size:.85rem;cursor:pointer;transition:all .2s}
+.badge-panel .bp-next:hover{background:rgba(255,255,255,.25)}
+.badge-panel .bp-stars{font-size:1.2rem;margin-bottom:4px}
 </style>
 </head>
 <body>
@@ -479,6 +490,15 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div id="fb-m1-act3" style="margin-top:12px"></div>
   </div>
 
+  <div class="badge-panel" id="badge-panel-m1">
+    <span class="bp-emoji">🌱</span>
+    <div class="bp-stars">⭐⭐⭐</div>
+    <div class="bp-title">🎉 Module Complete!</div>
+    <div class="bp-sub">You know all 5 parts of a formal report!</div>
+    <div class="bp-badge">🌱 Report Structure Master</div>
+    <br>
+    <button class="bp-next" onclick="showModule('m2')">➡️ Continue to M2 · Title Writing</button>
+  </div>
   <div class="save-bar">
     <div>
       <div style="font-weight:900;font-size:.88rem;color:var(--g1);margin-bottom:3px">💾 📋 Module 1</div>
@@ -806,6 +826,15 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div id="fb-m2-act7"></div>
   </div>
 
+  <div class="badge-panel" id="badge-panel-m2">
+    <span class="bp-emoji">🏷️</span>
+    <div class="bp-stars">⭐⭐⭐</div>
+    <div class="bp-title">🎉 Module Complete!</div>
+    <div class="bp-sub">You can write a complete 5W+1H report title!</div>
+    <div class="bp-badge">🏷️ Title Writing Expert</div>
+    <br>
+    <button class="bp-next" onclick="showModule('m3')">➡️ Continue to M3 · Introduction</button>
+  </div>
   <div class="save-bar">
     <div>
       <div style="font-weight:900;font-size:.88rem;color:var(--g1);margin-bottom:3px">💾 ✍️ Module 2</div>
@@ -1037,6 +1066,15 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     </div>
   </div>
 
+  <div class="badge-panel" id="badge-panel-m3">
+    <span class="bp-emoji">📖</span>
+    <div class="bp-stars">⭐⭐⭐</div>
+    <div class="bp-title">🎉 Module Complete!</div>
+    <div class="bp-sub">You can write a perfect 3-sentence introduction!</div>
+    <div class="bp-badge">📖 Introduction Writer</div>
+    <br>
+    <button class="bp-next" onclick="showModule('m4')">➡️ Continue to M4 · Findings</button>
+  </div>
   <div class="save-bar">
     <div>
       <div style="font-weight:900;font-size:.88rem;color:var(--g1);margin-bottom:3px">💾 📖 Module 3</div>
@@ -1361,6 +1399,15 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div id="fb-m4-act5"></div>
   </div>
 
+  <div class="badge-panel" id="badge-panel-m4">
+    <span class="bp-emoji">📊</span>
+    <div class="bp-stars">⭐⭐⭐</div>
+    <div class="bp-title">🎉 Module Complete!</div>
+    <div class="bp-sub">You can describe charts with formal language!</div>
+    <div class="bp-badge">📊 Data Analyst</div>
+    <br>
+    <button class="bp-next" onclick="showModule('m5')">➡️ Continue to M5 · Conclusion</button>
+  </div>
   <div class="save-bar">
     <div>
       <div style="font-weight:900;font-size:.88rem;color:var(--g1);margin-bottom:3px">💾 📊 Module 4</div>
@@ -1599,6 +1646,15 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div id="fb-m5-act3"></div>
   </div>
 
+  <div class="badge-panel" id="badge-panel-m5">
+    <span class="bp-emoji">🔚</span>
+    <div class="bp-stars">⭐⭐⭐</div>
+    <div class="bp-title">🎉 Module Complete!</div>
+    <div class="bp-sub">You can write conclusions and recommendations!</div>
+    <div class="bp-badge">🔚 Conclusion Pro</div>
+    <br>
+    <button class="bp-next" onclick="showModule('m6')">➡️ Continue to M6 · Language Bank</button>
+  </div>
   <div class="save-bar">
     <div>
       <div style="font-weight:900;font-size:.88rem;color:var(--g1);margin-bottom:3px">💾 🔚 Module 5</div>
@@ -1714,6 +1770,15 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div id="fb-m6-act3"></div>
   </div>
 
+  <div class="badge-panel" id="badge-panel-m6">
+    <span class="bp-emoji">💬</span>
+    <div class="bp-stars">⭐⭐⭐</div>
+    <div class="bp-title">🎉 Module Complete!</div>
+    <div class="bp-sub">You know the key language of report writing!</div>
+    <div class="bp-badge">💬 Word Power Champion</div>
+    <br>
+    <button class="bp-next" onclick="showModule('exam')">➡️ Continue to Exam Practice</button>
+  </div>
   <div class="save-bar">
     <div>
       <div style="font-weight:900;font-size:.88rem;color:var(--g1);margin-bottom:3px">💾 💬 Module 6</div>
@@ -1808,6 +1873,15 @@ textarea.ans-area:focus{border-color:var(--g1);background:white;box-shadow:0 0 0
     <div id="fb-exam"></div>
   </div>
 
+  <div class="badge-panel" id="badge-panel-exam">
+    <span class="bp-emoji">🎓</span>
+    <div class="bp-stars">⭐⭐⭐</div>
+    <div class="bp-title">🎉 Module Complete!</div>
+    <div class="bp-sub">Outstanding! You completed the full exam practice!</div>
+    <div class="bp-badge">🎓 Exam Ready</div>
+    <br>
+    <button class="bp-next" onclick="showModule('home')">➡️ Continue to Home · Your Badges</button>
+  </div>
   <div class="save-bar">
     <div>
       <div style="font-weight:900;font-size:.88rem;color:var(--g1);margin-bottom:3px">💾 🎓 Exam Practice</div>
@@ -1873,14 +1947,33 @@ let fillBlanks = {};
 // ══════════════════════════════════════
 function addXP(amount){
   xp += amount;
-  document.getElementById('xp-display').textContent = xp;
+
+  // Update topbar XP display
+  const xpEl = document.getElementById('xp-display');
+  if(xpEl) xpEl.textContent = xp;
+
+  // Update progress bar and level
   const lvl = getCurrentLevel();
   const nextLvlXP = levels[lvl+1] ? levels[lvl+1].min : levels[lvl].min + 200;
   const progress = Math.min(((xp - levels[lvl].min) / (nextLvlXP - levels[lvl].min)) * 100, 100);
-  document.getElementById('xp-bar').style.width = progress + '%';
-  const lb=document.getElementById('level-badge'); if(lb) lb.textContent = 'Lv '+(lvl+1);
-  document.getElementById('level-name').textContent = levels[lvl].name;
-  showToast('Well done!', amount);
+  const barEl = document.getElementById('xp-bar');
+  if(barEl) barEl.style.width = progress + '%';
+  const lb = document.getElementById('level-badge');
+  if(lb) lb.textContent = 'Lv ' + (lvl + 1);
+  const lnEl = document.getElementById('level-name');
+  if(lnEl) lnEl.textContent = levels[lvl].name;
+
+  // Show toast
+  if(amount > 0) showToast('Well done!', amount);
+
+  // Auto-save XP to localStorage
+  try {
+    const saved = JSON.parse(localStorage.getItem(SAVE_KEY) || '{}');
+    saved.xp = xp;
+    saved.completed = [...completedActivities];
+    saved.stars = moduleStars;
+    localStorage.setItem(SAVE_KEY, JSON.stringify(saved));
+  } catch(e){}
 }
 
 function getCurrentLevel(){
@@ -1903,9 +1996,29 @@ function showToast(msg, xpAmt){
 function showModule(id){
   document.querySelectorAll('.module-section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
-  document.getElementById('mod-'+id).classList.add('active');
-  document.getElementById('nav-'+id).classList.add('active');
+  const mod = document.getElementById('mod-'+id);
+  if(mod) mod.classList.add('active');
+  const nav = document.getElementById('nav-'+id);
+  if(nav) nav.classList.add('active');
   window.scrollTo({top:0,behavior:'smooth'});
+  // Randomize any un-answered MCQs in this module
+  if(mod){
+    mod.querySelectorAll('.mcq-options').forEach(container => {
+      // Only shuffle if no answer selected yet
+      if(container.querySelector('.correct,.wrong')) return;
+      const opts = [...container.children];
+      for(let i = opts.length-1; i > 0; i--){
+        const j = Math.floor(Math.random()*(i+1));
+        container.appendChild(opts[j]);
+        opts.splice(j,1);
+      }
+      const letters = ['A','B','C','D','E'];
+      [...container.children].forEach((opt,idx)=>{
+        const lEl = opt.querySelector('.opt-letter');
+        if(lEl) lEl.textContent = letters[idx]||String.fromCharCode(65+idx);
+      });
+    });
+  }
 }
 
 // ══════════════════════════════════════
@@ -1957,11 +2070,61 @@ function updateStars(mod){
   if(mel) mel.textContent = star;
 }
 
+const MODULE_ALL_ACTS = {
+  'm1': [
+    'm1-act1',
+    'm1-act2',
+    'm1-act3'
+  ],
+  'm2': [
+    'm2-act1',
+    'm2-act2',
+    'm2-act3',
+    'm2-act4',
+    'm2-act5',
+    'm2-act6',
+    'm2-act7'
+  ],
+  'm3': [
+    'm3-act1',
+    'm3-act2',
+    'm3-act3'
+  ],
+  'm4': [
+    'm4-act1',
+    'm4-act2',
+    'm4-act3',
+    'm4-act4',
+    'm4-act5'
+  ],
+  'm5': [
+    'm5-act1',
+    'm5-act2',
+    'm5-act3'
+  ],
+  'm6': [
+    'm6-act1',
+    'm6-act2',
+    'm6-act3'
+  ],
+  'exam': [
+    'exam-act1'
+  ]
+};
+
 function checkBadge(module){
-  const badges = {m1:'badge-starter',m2:'badge-title',m3:'badge-intro',m4:'badge-findings',m5:'badge-conc',m6:'badge-vocab',exam:'badge-exam'};
-  if(moduleStars[module] >= 2){
-    const b = document.getElementById(badges[module]);
+  const badgeIds = {m1:'badge-starter',m2:'badge-title',m3:'badge-intro',m4:'badge-findings',m5:'badge-conc',m6:'badge-vocab',exam:'badge-exam'};
+  const allRequired = MODULE_ALL_ACTS[module] || [];
+  const allDone = allRequired.length > 0 && allRequired.every(id => completedActivities.has(id));
+  if(allDone){
+    const b = document.getElementById(badgeIds[module]);
     if(b) b.classList.add('earned');
+    const panel = document.getElementById('badge-panel-' + module);
+    if(panel && !panel.classList.contains('revealed')){
+      panel.classList.add('revealed');
+      panel.style.display = 'block';
+      setTimeout(() => panel.scrollIntoView({behavior:'smooth', block:'center'}), 200);
+    }
   }
 }
 
@@ -2226,6 +2389,28 @@ function finishIntro(){
   if(completeEl) completeEl.style.display = 'block';
   completeActivity('m3-act3',40,'m3');
 }
+
+// ══════════════════════════════════════
+// MCQ RANDOMIZATION
+// ══════════════════════════════════════
+function randomizeMCQs(){
+  document.querySelectorAll('.mcq-options').forEach(container => {
+    const opts = [...container.children];
+    // Fisher-Yates shuffle
+    for(let i = opts.length - 1; i > 0; i--){
+      const j = Math.floor(Math.random() * (i + 1));
+      container.appendChild(opts[j]);
+      opts.splice(j, 1);
+    }
+    // Re-letter A B C D after shuffle
+    const letters = ['A','B','C','D','E'];
+    [...container.children].forEach((opt, idx) => {
+      const letterEl = opt.querySelector('.opt-letter');
+      if(letterEl) letterEl.textContent = letters[idx] || String.fromCharCode(65+idx);
+    });
+  });
+}
+
 
 // ══════════════════════════════════════
 // WORD JUMBLE SYSTEM
@@ -2678,6 +2863,7 @@ buildGoodBad();
 buildSort();
 setTimeout(initAllJumbles, 0);
 setTimeout(initOrderList, 0);
+setTimeout(randomizeMCQs, 0);
 
 // Animate XP bar on load
 setTimeout(()=>{
@@ -2993,19 +3179,7 @@ function clearAllProgress(){
   location.reload();
 }
 
-// Auto-save XP whenever it changes
-const _origAddXP = addXP;
-function addXP(amount){
-  _origAddXP(amount);
-  // Silently save global state after XP update
-  try {
-    const existing = JSON.parse(localStorage.getItem(SAVE_KEY) || '{}');
-    existing.xp = xp;
-    existing.completed = [...completedActivities];
-    existing.stars = moduleStars;
-    localStorage.setItem(SAVE_KEY, JSON.stringify(existing));
-  } catch(e){}
-}
+// XP is auto-saved inside addXP directly (no wrapper needed)
 
 // Load on startup (after all init)
 setTimeout(loadAllData, 150);
